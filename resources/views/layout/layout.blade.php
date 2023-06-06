@@ -10,14 +10,14 @@
     <meta content="Coderthemes" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" href="{{asset('assets/images/favicon.ico')}}">
 
     <!-- App css -->
 
-    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
+    <link href="{{asset('public/assets/css/app.min.css')}}" rel="stylesheet" type="text/css" id="app-style" />
 
     <!-- icons -->
-    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{asset('public/assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -77,7 +77,7 @@
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                                         <div class="d-flex align-items-start">
-                                            <img class="d-flex me-2 rounded-circle" src="assets/images/users/user-2.jpg"
+                                            <img class="d-flex me-2 rounded-circle" src="{{asset('public/assets/images/users/user-2.jpg')}}"
                                                 alt="Generic placeholder image" height="32">
                                             <div class="w-100">
                                                 <h5 class="m-0 font-14">Erwin E. Brown</h5>
@@ -89,7 +89,7 @@
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                                         <div class="d-flex align-items-start">
-                                            <img class="d-flex me-2 rounded-circle" src="assets/images/users/user-5.jpg"
+                                            <img class="d-flex me-2 rounded-circle" src="{{asset('public/assets/images/users/user-5.jpg')}}"
                                                 alt="Generic placeholder image" height="32">
                                             <div class="w-100">
                                                 <h5 class="m-0 font-14">Jacob Deo</h5>
@@ -141,7 +141,7 @@
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item notify-item active">
                                 <div class="notify-icon">
-                                    <img src="assets/images/users/user-1.jpg" class="img-fluid rounded-circle"
+                                    <img src="{{asset('public/assets/images/users/user-1.jpg')}}" class="img-fluid rounded-circle"
                                         alt="" />
                                 </div>
                                 <p class="notify-details">Cristina Pride</p>
@@ -163,7 +163,7 @@
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item notify-item">
                                 <div class="notify-icon">
-                                    <img src="assets/images/users/user-4.jpg" class="img-fluid rounded-circle"
+                                    <img src="{{asset('public/assets/images/users/user-4.jpg')}}" class="img-fluid rounded-circle"
                                         alt="" />
                                 </div>
                                 <p class="notify-details">Karen Robinson</p>
@@ -218,7 +218,7 @@
                     <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light"
                         data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false"
                         aria-expanded="false">
-                        <img src="assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle">
+                        <img src="{{asset('public/assets/images/users/user-1.jpg')}}" alt="user-image" class="rounded-circle">
                         <span class="pro-user-name ms-1">
                             Nowak <i class="mdi mdi-chevron-down"></i>
                         </span>
@@ -259,23 +259,23 @@
                 </li>
 
             </ul>
-
+            @yield('section')
             <!-- LOGO -->
             <div class="logo-box">
                 <a href="index.html" class="logo logo-light text-center">
                     <span class="logo-sm">
-                        <img src="assets/images/logo-sm.png" alt="" height="22">
+                        <img src="{{asset('public/assets/images/logo-sm.png')}}" alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="assets/images/logo-light.png" alt="" height="16">
+                        <img src="{{asset('public/assets/images/logo-light.png')}}" alt="" height="16">
                     </span>
                 </a>
                 <a href="index.html" class="logo logo-dark text-center">
                     <span class="logo-sm">
-                        <img src="assets/images/logo-sm.png" alt="" height="22">
+                        <img src="{{asset('public/assets/images/logo-sm.png')}}" alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="assets/images/logo-dark.png" alt="" height="16">
+                        <img src="{{asset('public/assets/images/logo-dark.png')}}" alt="" height="16">
                     </span>
                 </a>
             </div>
@@ -306,7 +306,7 @@
                 <!-- User box -->
                 <div class="user-box text-center">
 
-                    <img src="assets/images/users/user-1.jpg" alt="user-img" title="Mat Helme"
+                    <img src="{{asset('public/assets/images/users/user-1.jpg')}}" alt="user-img" title="Mat Helme"
                         class="rounded-circle img-thumbnail avatar-md">
                     <div class="dropdown">
                         <a href="#" class="user-name dropdown-toggle h5 mt-2 mb-1 d-block"
@@ -860,11 +860,6 @@
                 <div class="container-fluid">
 
 
-
-                    @yield('content')
-
-
-
                 </div> <!-- container-fluid -->
 
             </div> <!-- content -->
@@ -1057,26 +1052,26 @@
     <div class="rightbar-overlay"></div>
 
     <!-- Vendor -->
-    <script src="assets/libs/jquery/jquery.min.js"></script>
-    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="assets/libs/node-waves/waves.min.js"></script>
-    <script src="assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
-    <script src="assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
-    <script src="assets/libs/feather-icons/feather.min.js"></script>
+    <script src="{{asset('public/assets/libs/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('public/assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('public/assets/libs/simplebar/simplebar.min.js')}}"></script>
+    <script src="{{asset('public/assets/libs/node-waves/waves.min.js')}}"></script>
+    <script src="{{asset('public/assets/libs/waypoints/lib/jquery.waypoints.min.js')}}"></script>
+    <script src="{{asset('public/assets/libs/jquery.counterup/jquery.counterup.min.js')}}"></script>
+    <script src="{{asset('public/assets/libs/feather-icons/feather.min.js')}}"></script>
 
     <!-- knob plugin -->
-    <script src="assets/libs/jquery-knob/jquery.knob.min.js"></script>
+    <script src="{{asset('public/assets/libs/jquery-knob/jquery.knob.min.js')}}"></script>
 
     <!--Morris Chart-->
-    <script src="assets/libs/morris.js06/morris.min.js"></script>
-    <script src="assets/libs/raphael/raphael.min.js"></script>
+    <script src="{{asset('public/assets/libs/morris.js06/morris.min.js')}}"></script>
+    <script src="{{asset('public/assets/libs/raphael/raphael.min.js')}}"></script>
 
     <!-- Dashboar init js-->
-    <script src="assets/js/pages/dashboard.init.js"></script>
+    <script src="{{asset('public/assets/js/pages/dashboard.init.js')}}"></script>
 
     <!-- App js-->
-    <script src="assets/js/app.min.js"></script>
+    <script src="{{asset('public/assets/js/app.min.js')}}"></script>
 
 </body>
 
