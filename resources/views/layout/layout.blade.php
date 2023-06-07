@@ -4,20 +4,29 @@
 <head>
 
     <meta charset="utf-8" />
+    {{-- <title>{{ $title ?? translate('Pitac') }}</title> --}}
     <title>{{ $title ?? 'Pitac' }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
+
+    <!-- third party css -->
+    <link href="{{ asset('assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/libs/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/libs/datatables.net-select-bs5/css/select.bootstrap5.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/libs/selectize/css/selectize.bootstrap3.css') }}" rel="stylesheet" type="text/css" />
+    <!-- third party css end -->
 
     <!-- App css -->
-
-    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
+    <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style" />
 
     <!-- icons -->
-    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -39,6 +48,7 @@
                     <form class="app-search">
                         <div class="app-search-box">
                             <div class="input-group">
+                                {{-- <input type="text" class="form-control" placeholder="{{ translate('Search...') }}" id="top-search"> --}}
                                 <input type="text" class="form-control" placeholder="Search..." id="top-search">
                                 <button class="btn input-group-text" type="submit">
                                     <i class="fe-search"></i>
@@ -77,7 +87,7 @@
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                                         <div class="d-flex align-items-start">
-                                            <img class="d-flex me-2 rounded-circle" src="assets/images/users/user-2.jpg"
+                                            <img class="d-flex me-2 rounded-circle" src="{{ asset('assets/images/users/user-2.jpg') }}"
                                                 alt="Generic placeholder image" height="32">
                                             <div class="w-100">
                                                 <h5 class="m-0 font-14">Erwin E. Brown</h5>
@@ -89,7 +99,7 @@
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                                         <div class="d-flex align-items-start">
-                                            <img class="d-flex me-2 rounded-circle" src="assets/images/users/user-5.jpg"
+                                            <img class="d-flex me-2 rounded-circle" src="{{ asset('assets/images/users/user-5.jpg') }}"
                                                 alt="Generic placeholder image" height="32">
                                             <div class="w-100">
                                                 <h5 class="m-0 font-14">Jacob Deo</h5>
@@ -141,7 +151,7 @@
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item notify-item active">
                                 <div class="notify-icon">
-                                    <img src="assets/images/users/user-1.jpg" class="img-fluid rounded-circle"
+                                    <img src="{{ asset('assets/images/users/user-1.jpg') }}" class="img-fluid rounded-circle"
                                         alt="" />
                                 </div>
                                 <p class="notify-details">Cristina Pride</p>
@@ -163,7 +173,7 @@
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item notify-item">
                                 <div class="notify-icon">
-                                    <img src="assets/images/users/user-4.jpg" class="img-fluid rounded-circle"
+                                    <img src="{{ asset('assets/images/users/user-4.jpg') }}" class="img-fluid rounded-circle"
                                         alt="" />
                                 </div>
                                 <p class="notify-details">Karen Robinson</p>
@@ -218,7 +228,7 @@
                     <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light"
                         data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false"
                         aria-expanded="false">
-                        <img src="assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle">
+                        <img src="{{ asset('assets/images/users/user-1.jpg') }}" alt="user-image" class="rounded-circle">
                         <span class="pro-user-name ms-1">
                             Nowak <i class="mdi mdi-chevron-down"></i>
                         </span>
@@ -264,18 +274,18 @@
             <div class="logo-box">
                 <a href="index.html" class="logo logo-light text-center">
                     <span class="logo-sm">
-                        <img src="assets/images/logo-sm.png" alt="" height="22">
+                        <img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="assets/images/logo-light.png" alt="" height="16">
+                        <img src="{{ asset('assets/images/logo-light.png') }}" alt="" height="16">
                     </span>
                 </a>
                 <a href="index.html" class="logo logo-dark text-center">
                     <span class="logo-sm">
-                        <img src="assets/images/logo-sm.png" alt="" height="22">
+                        <img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="assets/images/logo-dark.png" alt="" height="16">
+                        <img src="{{ asset('assets/images/logo-dark.png') }}" alt="" height="16">
                     </span>
                 </a>
             </div>
@@ -306,7 +316,7 @@
                 <!-- User box -->
                 <div class="user-box text-center">
 
-                    <img src="assets/images/users/user-1.jpg" alt="user-img" title="Mat Helme"
+                    <img src="{{ asset('assets/images/users/user-1.jpg') }}" alt="user-img" title="Mat Helme"
                         class="rounded-circle img-thumbnail avatar-md">
                     <div class="dropdown">
                         <a href="#" class="user-name dropdown-toggle h5 mt-2 mb-1 d-block"
@@ -365,21 +375,22 @@
                         {{-- <li class="menu-title">Navigation</li> --}}
 
                         <li>
-                            <a href="index.html">
+                            <a href="{{ route('order.index') }}">
                                 <i class="mdi mdi-view-dashboard-outline"></i>
                                 {{-- <span class="badge bg-success rounded-pill float-end">9+</span> --}}
-                                <span> Dashboard </span>
+                                <span> Order </span>
+                                {{-- <span> {{ translate('Order') }} </span> --}}
                             </a>
                         </li>
 
-                        {{-- <li class="menu-title mt-2">Apps</li>
-
-                        <li>
+                        {{-- <li>
                             <a href="apps-calendar.html">
                                 <i class="mdi mdi-calendar-blank-outline"></i>
                                 <span> Calendar </span>
                             </a>
-                        </li>
+                        </li> --}}
+                        {{-- <li class="menu-title mt-2">Apps</li>
+
 
                         <li>
                             <a href="apps-chat.html">
@@ -859,11 +870,19 @@
                 <!-- Start Content-->
                 <div class="container-fluid">
 
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+
+                                    
+                                    @yield('content')
 
 
-                    @yield('content')
-
-
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 </div> <!-- container-fluid -->
 
@@ -876,7 +895,7 @@
                         <div class="col-md-6">
                             <script>
                                 document.write(new Date().getFullYear())
-                            </script> 
+                            </script>
                             {{-- &copy; Adminto theme by <a href="">Coderthemes</a> --}}
                         </div>
                         <div class="col-md-6">
@@ -1057,26 +1076,46 @@
     <div class="rightbar-overlay"></div>
 
     <!-- Vendor -->
-    <script src="assets/libs/jquery/jquery.min.js"></script>
-    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="assets/libs/node-waves/waves.min.js"></script>
-    <script src="assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
-    <script src="assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
-    <script src="assets/libs/feather-icons/feather.min.js"></script>
+    <script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/node-waves/waves.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/waypoints/lib/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/jquery.counterup/jquery.counterup.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/feather-icons/feather.min.js') }}"></script>
+
+    <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-select/js/dataTables.select.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script>
+
+    <script src="{{ asset('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/form-pickers.init.js') }}"></script>
 
     <!-- knob plugin -->
-    <script src="assets/libs/jquery-knob/jquery.knob.min.js"></script>
+    <script src="{{ asset('assets/libs/jquery-knob/jquery.knob.min.js') }}"></script>
 
     <!--Morris Chart-->
-    <script src="assets/libs/morris.js06/morris.min.js"></script>
-    <script src="assets/libs/raphael/raphael.min.js"></script>
+    <script src="{{ asset('assets/libs/morris.js06/morris.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/raphael/raphael.min.js') }}"></script>
 
     <!-- Dashboar init js-->
-    <script src="assets/js/pages/dashboard.init.js"></script>
+    <script src="{{ asset('assets/js/pages/dashboard.init.js') }}"></script>
+
+    <!-- Datatables init -->
+    <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
 
     <!-- App js-->
-    <script src="assets/js/app.min.js"></script>
+    <script src="{{ asset('assets/js/app.min.js') }}"></script>
 
 </body>
 
