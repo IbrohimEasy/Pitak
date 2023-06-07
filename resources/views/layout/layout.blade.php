@@ -10,7 +10,7 @@
     <meta content="Coderthemes" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{asset('assets/images/favicon.ico')}}">
+    <link rel="shortcut icon" href="{{asset('public/assets/images/favicon.ico')}}">
 
     <!-- App css -->
 
@@ -259,7 +259,6 @@
                 </li>
 
             </ul>
-            @yield('section')
             <!-- LOGO -->
             <div class="logo-box">
                 <a href="index.html" class="logo logo-light text-center">
@@ -365,13 +364,49 @@
                         {{-- <li class="menu-title">Navigation</li> --}}
 
                         <li>
-                            <a href="index.html">
+                            <a href="{{route('dashboard')}}">
                                 <i class="mdi mdi-view-dashboard-outline"></i>
                                 {{-- <span class="badge bg-success rounded-pill float-end">9+</span> --}}
                                 <span> Dashboard </span>
                             </a>
                         </li>
-
+                        <li>
+                            <a href="{{route('user.index')}}">
+                                <i class="mdi mdi-account-multiple-plus-outline"></i>
+                                {{-- <span class="badge bg-success rounded-pill float-end">9+</span> --}}
+                                <span> Users </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{route('role.index')}}">
+                                <i class="mdi mdi-account-multiple-plus-outline"></i>
+                                {{-- <span class="badge bg-success rounded-pill float-end">9+</span> --}}
+                                <span> Role </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#cars" data-bs-toggle="collapse">
+                                <i class="mdi mdi-car-outline"></i>
+                                <span> Cars </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="cars">
+                                <ul class="nav-second-level">
+                                    <li>
+                                        <a href="email-inbox.html">Cars</a>
+                                    </li>
+                                    <li>
+                                        <a href="email-templates.html">Cars list</a>
+                                    </li>
+                                    <li>
+                                        <a href="email-templates.html">Car Types</a>
+                                    </li>
+                                    <li>
+                                        <a href="email-templates.html">Class list</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
                         {{-- <li class="menu-title mt-2">Apps</li>
 
                         <li>
@@ -855,13 +890,11 @@
 
         <div class="content-page">
             <div class="content">
-
                 <!-- Start Content-->
                 <div class="container-fluid">
-
-
-                </div> <!-- container-fluid -->
-
+                    @yield('content')
+                </div>
+                <!-- container-fluid -->
             </div> <!-- content -->
 
             <!-- Footer Start -->
@@ -871,7 +904,7 @@
                         <div class="col-md-6">
                             <script>
                                 document.write(new Date().getFullYear())
-                            </script> 
+                            </script>
                             {{-- &copy; Adminto theme by <a href="">Coderthemes</a> --}}
                         </div>
                         <div class="col-md-6">
