@@ -371,27 +371,23 @@
 
                     <ul id="side-menu">
 
-                        {{-- <li class="menu-title">Navigation</li> --}}
+                         <li class="menu-title">Navigation</li>
 
-                        {{-- <li>
-                            <a href="{{ route('order.index') }}">
-                                <i class="mdi mdi-view-dashboard-outline"></i>
-                                <span> Order </span>
-                        <li> --}}
+                        <li>
                             <a href="{{route('dashboard')}}">
                             <i class="mdi mdi-account-multiple-plus-outline"></i>
                                  <span class="badge bg-success rounded-pill float-end">9+</span>
                                 <span> Dashboard </span>
                             </a>
                         </li>
-                        <li>
+{{--                        <li>--}}
 {{--                            <a href="{{ route('order.index') }}">--}}
 {{--                                <i class="mdi mdi-view-dashboard-outline"></i>--}}
-{{--                                --}}{{-- <span class="badge bg-success rounded-pill float-end">9+</span> --}}
+{{--                                 <span class="badge bg-success rounded-pill float-end">9+</span>--}}
 {{--                                <span> Order </span>--}}
-{{--                                --}}{{-- <span> {{ translate('Order') }} </span> --}}
+{{--                                 <span> {{ translate('Order') }} </span>--}}
 {{--                            </a>--}}
-                        </li>
+{{--                        </li>--}}
                         <li>
                             <a href="{{route('user.index')}}">
                                 <i class="mdi mdi-account-multiple-plus-outline"></i>

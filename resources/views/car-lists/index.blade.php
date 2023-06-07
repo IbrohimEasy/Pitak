@@ -15,23 +15,19 @@
             </p>
             <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap">
                 <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Firstname</th>
-                        <th>Lastname</th>
-                        <th>Phone number</th>
-                        <th>Avatar</th>
-                        <th>Updated at</th>
-                        <th>Functions</th>
-                    </tr>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Updated_at</th>
+                    <th>Functions</th>
+                </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <th scope="row">1</th>
                     <td>Mark</td>
-                    <td>Twain</td>
-                    <td>+998904567834</td>
-                    <td><img src="" alt=""></td>
+                    <td>Active</td>
                     <td>2023-06-06 12:14:14</td>
                     <td>
                         <div class="d-flex justify-content-around">

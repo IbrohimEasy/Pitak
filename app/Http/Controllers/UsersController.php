@@ -27,7 +27,7 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return redirect()->route('user.index');
     }
 
     /**
@@ -51,7 +51,7 @@ class UsersController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return redirect()->route('user.index');
     }
 
     /**
@@ -59,6 +59,6 @@ class UsersController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return redirect()->route('user.index');
     }
 }
