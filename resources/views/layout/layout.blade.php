@@ -269,7 +269,6 @@
                 </li>
 
             </ul>
-            @yield('section')
             <!-- LOGO -->
             <div class="logo-box">
                 <a href="index.html" class="logo logo-light text-center">
@@ -378,6 +377,66 @@
                             <a href="{{ route('order.index') }}">
                                 <i class="mdi mdi-view-dashboard-outline"></i>
                                 <span> Order </span>
+                        <li> --}}
+                            <a href="{{route('dashboard')}}">
+                            <i class="mdi mdi-account-multiple-plus-outline"></i>
+                                 <span class="badge bg-success rounded-pill float-end">9+</span>
+                                <span> Dashboard </span>
+                            </a>
+                        </li>
+                        <li>
+{{--                            <a href="{{ route('order.index') }}">--}}
+{{--                                <i class="mdi mdi-view-dashboard-outline"></i>--}}
+{{--                                --}}{{-- <span class="badge bg-success rounded-pill float-end">9+</span> --}}
+{{--                                <span> Order </span>--}}
+{{--                                --}}{{-- <span> {{ translate('Order') }} </span> --}}
+{{--                            </a>--}}
+                        </li>
+                        <li>
+                            <a href="{{route('user.index')}}">
+                                <i class="mdi mdi-account-multiple-plus-outline"></i>
+                                {{-- <span class="badge bg-success rounded-pill float-end">9+</span> --}}
+                                <span> Users </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{route('role.index')}}">
+                                <i class="mdi mdi-account-multiple-plus-outline"></i>
+                                {{-- <span class="badge bg-success rounded-pill float-end">9+</span> --}}
+                                <span> Role </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#cars" data-bs-toggle="collapse">
+                                <i class="mdi mdi-car-outline"></i>
+                                <span> Cars </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="cars">
+                                <ul class="nav-second-level">
+                                    <li>
+                                        <a href="{{route('cars.index')}}">Cars</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('car-list.index')}}">Cars list</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('car-types.index')}}">Car Types</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('class-list.index')}}">Class list</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        {{-- <li class="menu-title mt-2">Apps</li>
+
+                        <li>
+
+                        {{-- <li>
+                            <a href="apps-calendar.html">
+                                <i class="mdi mdi-calendar-blank-outline"></i>
+                                <span> Calendar </span>
                             </a>
                         </li> --}}
 
@@ -433,25 +492,12 @@
 
         <div class="content-page">
             <div class="content">
-
                 <!-- Start Content-->
                 <div class="container-fluid">
-
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-body">
-
-                                    
-                                    @yield('content')
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div> <!-- container-fluid -->
+                    @yield('content')
+                </div>
+                <!-- container-fluid -->
+            </div>
 
             </div> <!-- content -->
 

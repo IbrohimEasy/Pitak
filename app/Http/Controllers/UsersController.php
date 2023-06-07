@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class CarsController extends Controller
+class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('cars.index');
+        return view('user.index');
     }
 
     /**
@@ -19,7 +19,7 @@ class CarsController extends Controller
      */
     public function create()
     {
-        return view('cars.create');
+        return view('user.create');
     }
 
     /**
@@ -27,7 +27,7 @@ class CarsController extends Controller
      */
     public function store(Request $request)
     {
-        return redirect()->route('cars.index');
+        //
     }
 
     /**
@@ -35,7 +35,7 @@ class CarsController extends Controller
      */
     public function show(string $id)
     {
-        return view('cars.show');
+        return view('user.show');
     }
 
     /**
@@ -43,7 +43,7 @@ class CarsController extends Controller
      */
     public function edit(string $id)
     {
-        return view('cars.edit');
+        return view('user.create');
     }
 
     /**
@@ -51,7 +51,7 @@ class CarsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return redirect()->route('cars.index');
+        //
     }
 
     /**
@@ -59,6 +59,6 @@ class CarsController extends Controller
      */
     public function destroy(string $id)
     {
-        return redirect()->route('cars.index');
+        //
     }
 }
