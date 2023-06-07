@@ -374,21 +374,19 @@
 
                         {{-- <li class="menu-title">Navigation</li> --}}
 
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('order.index') }}">
                                 <i class="mdi mdi-view-dashboard-outline"></i>
-                                {{-- <span class="badge bg-success rounded-pill float-end">9+</span> --}}
                                 <span> Order </span>
-                                {{-- <span> {{ translate('Order') }} </span> --}}
-                            </a>
-                        </li>
-
-                        {{-- <li>
-                            <a href="apps-calendar.html">
-                                <i class="mdi mdi-calendar-blank-outline"></i>
-                                <span> Calendar </span>
                             </a>
                         </li> --}}
+
+                        <li>
+                            <a href="{{ route('settings.index') }}">
+                                <i class="mdi mdi-calendar-blank-outline"></i>
+                                <span> Settings </span>
+                            </a>
+                        </li>
                         {{-- <li class="menu-title mt-2">Apps</li>
 
 
