@@ -31,7 +31,7 @@
                     <td>Mark</td>
                     <td>Twain</td>
                     <td>+998904567834</td>
-                    <td><img src="" alt=""></td>
+                    <td class="text-center"><img class="user_photo" src="{{asset('assets/images/man.jpg')}}" alt=""></td>
                     <td>2023-06-06 12:14:14</td>
                     <td>
                         <div class="d-flex justify-content-around">
@@ -46,9 +46,11 @@
                 </tr>
                 <tr>
                     <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Active</td>
-                    <td>2023-08-06 02:14:14</td>
+                    <td>Mark</td>
+                    <td>Twain</td>
+                    <td>+998904567834</td>
+                    <td class="text-center"><img class="user_photo" src="{{asset('assets/images/man.jpg')}}" alt=""></td>
+                    <td>2023-06-06 12:14:14</td>
                     <td>
                         <div class="d-flex justify-content-around">
                             <a class="form_functions btn btn-info" href="{{route('role.edit', 1)}}">Edit</a>
@@ -62,9 +64,11 @@
                 </tr>
                 <tr>
                     <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>No active</td>
-                    <td>2023-07-06 14:14:14</td>
+                    <td>Mark</td>
+                    <td>Twain</td>
+                    <td>+998904567834</td>
+                    <td class="text-center"><img class="user_photo" src="{{asset('assets/images/man.jpg')}}" alt=""></td>
+                    <td>2023-06-06 12:14:14</td>
                     <td>
                         <div class="d-flex justify-content-around">
                             <a class="form_functions btn btn-info" href="{{route('role.edit', 1)}}">Edit</a>
@@ -79,7 +83,9 @@
                 <tr>
                     <th scope="row">4</th>
                     <td>Mark</td>
-                    <td>Active</td>
+                    <td>Twain</td>
+                    <td>+998904567834</td>
+                    <td class="text-center"><img class="user_photo" src="{{asset('assets/images/man.jpg')}}" alt=""></td>
                     <td>2023-06-06 12:14:14</td>
                     <td>
                         <div class="d-flex justify-content-around">
@@ -94,9 +100,11 @@
                 </tr>
                 <tr>
                     <th scope="row">5</th>
-                    <td>Jacob</td>
-                    <td>Active</td>
-                    <td>2023-08-06 02:14:14</td>
+                    <td>Mark</td>
+                    <td>Twain</td>
+                    <td>+998904567834</td>
+                    <td class="text-center"><img class="user_photo" src="{{asset('assets/images/man.jpg')}}" alt=""></td>
+                    <td>2023-06-06 12:14:14</td>
                     <td>
                         <div class="d-flex justify-content-around">
                             <a class="form_functions btn btn-info" href="{{route('role.edit', 1)}}">Edit</a>
@@ -110,9 +118,11 @@
                 </tr>
                 <tr>
                     <th scope="row">6</th>
-                    <td>Larry</td>
-                    <td>No active</td>
-                    <td>2023-07-06 14:14:14</td>
+                    <td>Mark</td>
+                    <td>Twain</td>
+                    <td>+998904567834</td>
+                    <td class="text-center"><img class="user_photo" src="{{asset('assets/images/man.jpg')}}" alt=""></td>
+                    <td>2023-06-06 12:14:14</td>
                     <td>
                         <div class="d-flex justify-content-around">
                             <a class="form_functions btn btn-info" href="{{route('role.edit', 1)}}">Edit</a>
@@ -127,7 +137,9 @@
                 <tr>
                     <th scope="row">7</th>
                     <td>Mark</td>
-                    <td>Active</td>
+                    <td>Twain</td>
+                    <td>+998904567834</td>
+                    <td class="text-center"><img class="user_photo" src="{{asset('assets/images/man.jpg')}}" alt=""></td>
                     <td>2023-06-06 12:14:14</td>
                     <td>
                         <div class="d-flex justify-content-around">
@@ -142,9 +154,11 @@
                 </tr>
                 <tr>
                     <th scope="row">8</th>
-                    <td>Jacob</td>
-                    <td>Active</td>
-                    <td>2023-08-06 02:14:14</td>
+                    <td>Mark</td>
+                    <td>Twain</td>
+                    <td>+998904567834</td>
+                    <td class="text-center"><img class="user_photo" src="{{asset('assets/images/man.jpg')}}" alt=""></td>
+                    <td>2023-06-06 12:14:14</td>
                     <td>
                         <div class="d-flex justify-content-around">
                             <a class="form_functions btn btn-info" href="{{route('role.edit', 1)}}">Edit</a>
@@ -158,9 +172,11 @@
                 </tr>
                 <tr>
                     <th scope="row">9</th>
-                    <td>Larry</td>
-                    <td>No active</td>
-                    <td>2023-07-06 14:14:14</td>
+                    <td>Mark</td>
+                    <td>Twain</td>
+                    <td>+998904567834</td>
+                    <td class="text-center"><img class="user_photo" src="{{asset('assets/images/man.jpg')}}" alt=""></td>
+                    <td>2023-06-06 12:14:14</td>
                     <td>
                         <div class="d-flex justify-content-around">
                             <a class="form_functions btn btn-info" href="{{route('role.edit', 1)}}">Edit</a>
@@ -174,9 +190,11 @@
                 </tr>
                 <tr>
                     <th scope="row">10</th>
-                    <td>Jacob</td>
-                    <td>Active</td>
-                    <td>2023-08-06 02:14:14</td>
+                    <td>Mark</td>
+                    <td>Twain</td>
+                    <td>+998904567834</td>
+                    <td class="text-center"><img class="user_photo" src="{{asset('assets/images/man.jpg')}}" alt=""></td>
+                    <td>2023-06-06 12:14:14</td>
                     <td>
                         <div class="d-flex justify-content-around">
                             <a class="form_functions btn btn-info" href="{{route('role.edit', 1)}}">Edit</a>
@@ -190,9 +208,11 @@
                 </tr>
                 <tr>
                     <th scope="row">11</th>
-                    <td>Larry</td>
-                    <td>No active</td>
-                    <td>2023-07-06 14:14:14</td>
+                    <td>Mark</td>
+                    <td>Twain</td>
+                    <td>+998904567834</td>
+                    <td class="text-center"><img class="user_photo" src="{{asset('assets/images/man.jpg')}}" alt=""></td>
+                    <td>2023-06-06 12:14:14</td>
                     <td>
                         <div class="d-flex justify-content-around">
                             <a class="form_functions btn btn-info" href="{{route('role.edit', 1)}}">Edit</a>

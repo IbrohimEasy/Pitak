@@ -11,7 +11,7 @@ class ClassListController extends Controller
      */
     public function index()
     {
-        return view('role.index');
+        return view('class-lists.index');
     }
 
     /**
@@ -19,7 +19,7 @@ class ClassListController extends Controller
      */
     public function create()
     {
-        return view('role.create');
+        return view('class-lists.create');
     }
 
     /**
@@ -27,7 +27,7 @@ class ClassListController extends Controller
      */
     public function store(Request $request)
     {
-        return redirect()->route('role.index');
+        return redirect()->route('class-lists.index');
     }
 
     /**
@@ -35,7 +35,7 @@ class ClassListController extends Controller
      */
     public function show(string $id)
     {
-        return view('role.show');
+        return view('class-lists.show');
     }
 
     /**
@@ -43,7 +43,7 @@ class ClassListController extends Controller
      */
     public function edit(string $id)
     {
-        return view('role.edit');
+        return view('class-lists.edit');
     }
 
     /**
@@ -51,7 +51,7 @@ class ClassListController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return redirect()->route('role.index');
+        return redirect()->route('class-lists.index');
     }
 
     /**
@@ -59,6 +59,6 @@ class ClassListController extends Controller
      */
     public function destroy(string $id)
     {
-        return redirect()->route('role.index');
+        return redirect()->route('class-lists.index');
     }
 }

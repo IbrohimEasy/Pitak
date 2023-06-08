@@ -13,6 +13,6 @@ class Clients extends Model
 
     protected $fillable = [
         'personal_info_id',
-        'status'
+        'status_id'
     ];
 }

@@ -6,50 +6,65 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <h4 class="header-title">Horizontal Form</h4>
+            <h4 class="header-title">Validation type</h4>
             <p class="text-muted font-14">
                 Parsley is a javascript form validation library. It helps you provide your users with feedback on their form submission before sending it to your server.
             </p>
 
-            <form role="form" class="parsley-examples">
-                <div class="row mb-3">
-                    <label for="inputEmail3" class="col-4 col-form-label">Email<span class="text-danger">*</span></label>
-                    <div class="col-7">
-                        <input type="email" required parsley-type="email" class="form-control" id="inputEmail3" placeholder="Email" />
+            <form action="#" class="parsley-examples">
+                <div class="mb-3">
+                    <label for="heard" class="form-label">Heard about us via *:</label>
+                    <select id="heard" class="form-select" required="">
+                        <option value="">Choose..</option>
+                        <option value="press">Press</option>
+                        <option value="net">Internet</option>
+                        <option value="mouth">Word of mouth</option>
+                        <option value="other">Other..</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Required</label>
+                    <input type="text" class="form-control" required placeholder="Type something" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">E-Mail</label>
+                    <div>
+                        <input type="email" class="form-control" required parsley-type="email" placeholder="Enter a valid e-mail" />
                     </div>
                 </div>
-                <div class="row mb-3">
-                    <label for="hori-pass1" class="col-4 col-form-label">Password<span class="text-danger">*</span></label>
-                    <div class="col-7">
-                        <input id="hori-pass1" type="password" placeholder="Password" required class="form-control" />
+                <div class="mb-3">
+                    <label class="form-label">URL</label>
+                    <div>
+                        <input parsley-type="url" type="url" class="form-control" required placeholder="URL" />
                     </div>
                 </div>
-                <div class="row mb-3">
-                    <label for="hori-pass2" class="col-4 col-form-label">Confirm Password <span class="text-danger">*</span></label>
-                    <div class="col-7">
-                        <input data-parsley-equalto="#hori-pass1" type="password" required placeholder="Password" class="form-control" id="hori-pass2" />
+                <div class="mb-3">
+                    <label class="form-label">Digits</label>
+                    <div>
+                        <input data-parsley-type="digits" type="text" class="form-control" required placeholder="Enter only digits" />
                     </div>
                 </div>
-
-                <div class="row mb-3">
-                    <label for="webSite" class="col-4 col-form-label">Web Site<span class="text-danger">*</span></label>
-                    <div class="col-7">
-                        <input type="url" required parsley-type="url" class="form-control" id="webSite" placeholder="URL" />
+                <div class="mb-3">
+                    <label class="form-label">Number</label>
+                    <div>
+                        <input data-parsley-type="number" type="text" class="form-control" required placeholder="Enter only numbers" />
                     </div>
                 </div>
-                <div class="row mb-3">
-                    <div class="col-8 offset-4">
-                        <div class="form-check ">
-                            <input id="checkbox6" type="checkbox" class="form-check-input"/>
-                            <label for="checkbox6"class="form-check-label">Remember me</label>
-                        </div>
+                <div class="mb-3">
+                    <label class="form-label">Alphanumeric</label>
+                    <div>
+                        <input data-parsley-type="alphanum" type="text" class="form-control" required placeholder="Enter alphanumeric value" />
                     </div>
                 </div>
-                <div class="row mb-3">
-                    <div class="col-8 offset-4">
-                        <button type="submit" class="btn btn-primary waves-effect waves-light">Register</button>
-                        <button type="reset" class="btn btn-secondary waves-effect">Cancel</button>
+                <div class="mb-3">
+                    <label class="form-label">Textarea</label>
+                    <div>
+                        <textarea required class="form-control"></textarea>
                     </div>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                    <button type="reset" class="btn btn-secondary waves-effect">Cancel</button>
                 </div>
             </form>
         </div>

@@ -20,7 +20,7 @@ class Staff extends Model
       'password',
       'role_id',
       'token',
-      'status',
+      'status_id',
       'company_id',
       'personal_info_id'
     ];
