@@ -28,7 +28,6 @@ Route::group(['prefix' => 'user'], function () {
     Route::get('/settings', [UserController::class, 'settings'])->name('settings.index');
 });
 
-
 Route::get('/register', [AuthController::class, 'registerPage'])->name('register');
 Route::get('/login', [AuthController::class, 'loginPage'])->name('login');
 Route::resource('user', UserController::class);

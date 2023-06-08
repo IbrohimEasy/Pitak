@@ -13,7 +13,7 @@ class CarList extends Model
 
     protected $fillable = [
         'name',
-        'status',
-        'model_id'
+        'status_id',
+        'car_type_id'
     ];
 }
