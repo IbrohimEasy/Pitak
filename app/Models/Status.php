@@ -4,17 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Company extends Model
+class Status extends Model
 {
-    use HasFactory;
-
-    protected $table = 'yy_companies';
+    use HasFactory, SoftDeletes;
+    
+    protected $table = 'yy_statuses';
 
     protected $fillable = [
         'name',
-        'status',
-        'address',
-        'info'
     ];
 }
