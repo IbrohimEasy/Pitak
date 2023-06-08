@@ -6,65 +6,82 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <h4 class="header-title">Validation type</h4>
             <p class="text-muted font-14">
-                Parsley is a javascript form validation library. It helps you provide your users with feedback on their form submission before sending it to your server.
+                {{translate('User edit')}}
             </p>
-
-            <form action="#" class="parsley-examples">
-                <div class="mb-3">
-                    <label for="heard" class="form-label">Heard about us via *:</label>
-                    <select id="heard" class="form-select" required="">
-                        <option value="">Choose..</option>
-                        <option value="press">Press</option>
-                        <option value="net">Internet</option>
-                        <option value="mouth">Word of mouth</option>
-                        <option value="other">Other..</option>
-                    </select>
+            <form action="{{route('user.store')}}" class="parsley-examples" method="POST">
+                @csrf
+                @method('PUT')
+                <div class="row">
+                    <div class="mb-3 col-6">
+                        <label class="form-label">{{translate('First name')}}</label>
+                        <input type="text" class="form-control" required />
+                    </div>
+                    <div class="mb-3 col-6">
+                        <label class="form-label">{{translate('Last name')}}</label>
+                        <input type="text" class="form-control"/>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label">Required</label>
-                    <input type="text" class="form-control" required placeholder="Type something" />
+                <div class="row">
+                    <div class="mb-3 col-6">
+                        <label class="form-label">{{translate('Middle name')}}</label>
+                        <input type="text" class="form-control"/>
+                    </div>
+                    <div class="mb-3 col-6">
+                        <label class="form-label">{{translate('Phone number')}}</label>
+                        <input type="text" class="form-control"/>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label">E-Mail</label>
-                    <div>
-                        <input type="email" class="form-control" required parsley-type="email" placeholder="Enter a valid e-mail" />
+                <div class="row">
+                    <div class="mb-3 col-4">
+                        <label class="form-label">{{translate('Avatar')}}</label>
+                        <input type="file" class="form-control"/>
+                    </div>
+                    <div class="mb-3 col-4">
+                        <label for="gender" class="form-label">{{translate('Gender')}}</label>
+                        <select id="gender" class="form-select">
+                            <option value="">{{translate('Choose..')}}</option>
+                            <option value="0">{{translate('Man')}}</option>
+                            <option value="1">{{translate('Woman')}}</option>
+                        </select>
+                    </div>
+                    <div class="mb-3 col-4">
+                        <label class="form-label">{{translate('Birth date')}}</label>
+                        <input type="date" class="form-control"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-6">
+                        <label for="gender" class="form-label">{{translate('Role')}}</label>
+                        <select id="gender" class="form-select">
+                            <option value="">{{translate('Choose..')}}</option>
+                            <option value="0">{{translate('Man')}}</option>
+                            <option value="1">{{translate('Woman')}}</option>
+                        </select>
+                    </div>
+                    <div class="mb-3 col-6">
+                        <label for="gender" class="form-label">{{translate('Company')}}</label>
+                        <select id="gender" class="form-select">
+                            <option value="0">{{translate('Itkey')}}</option>
+                            <option value="1">{{translate('Coworking')}}</option>
+                        </select>
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">URL</label>
-                    <div>
-                        <input parsley-type="url" type="url" class="form-control" required placeholder="URL" />
-                    </div>
+                    <label class="form-label">{{translate('Login')}}</label>
+                    <input type="email" class="form-control" required/>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Digits</label>
-                    <div>
-                        <input data-parsley-type="digits" type="text" class="form-control" required placeholder="Enter only digits" />
-                    </div>
+                    <label class="form-label">{{translate('Password')}}</label>
+                    <input type="text" class="form-control" required/>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Number</label>
-                    <div>
-                        <input data-parsley-type="number" type="text" class="form-control" required placeholder="Enter only numbers" />
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Alphanumeric</label>
-                    <div>
-                        <input data-parsley-type="alphanum" type="text" class="form-control" required placeholder="Enter alphanumeric value" />
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Textarea</label>
-                    <div>
-                        <textarea required class="form-control"></textarea>
-                    </div>
+                    <label class="form-label">{{translate('Password confirmation')}}</label>
+                    <input type="text" class="form-control" required/>
                 </div>
                 <div>
-                    <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
-                    <button type="reset" class="btn btn-secondary waves-effect">Cancel</button>
+                    <button type="submit" class="btn btn-primary waves-effect waves-light">{{translate('Create')}}</button>
+                    <button type="reset" class="btn btn-secondary waves-effect">{{translate('Cancel')}}</button>
                 </div>
             </form>
         </div>

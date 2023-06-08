@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\UsersController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\CarsController;
@@ -32,7 +31,7 @@ Route::group(['prefix' => 'user'], function () {
 
 Route::get('/register', [AuthController::class, 'registerPage'])->name('register');
 Route::get('/login', [AuthController::class, 'loginPage'])->name('login');
-Route::resource('user', UsersController::class);
+Route::resource('user', UserController::class);
 Route::resource('role', RoleController::class);
 Route::resource('cars', CarsController::class);
 Route::resource('car-types', CarTypesController::class);

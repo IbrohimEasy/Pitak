@@ -35,8 +35,8 @@
                     <td>2023-06-06 12:14:14</td>
                     <td>
                         <div class="d-flex justify-content-around">
-                            <a class="form_functions btn btn-info" href="{{route('role.edit', 1)}}">Edit</a>
-                            <form action="{{route('role.destroy', 1)}}" method="POST">
+                            <a class="form_functions btn btn-info" href="{{route('user.edit', 1)}}">Edit</a>
+                            <form action="{{route('user.destroy', 1)}}" method="POST">
                                 @csrf
                                 @method('POST')
                                 <button class="form_functions btn btn-danger">Delete</button>
@@ -53,8 +53,8 @@
                     <td>2023-06-06 12:14:14</td>
                     <td>
                         <div class="d-flex justify-content-around">
-                            <a class="form_functions btn btn-info" href="{{route('role.edit', 1)}}">Edit</a>
-                            <form action="{{route('role.destroy', 1)}}" method="POST">
+                            <a class="form_functions btn btn-info" href="{{route('user.edit', 1)}}">Edit</a>
+                            <form action="{{route('user.destroy', 1)}}" method="POST">
                                 @csrf
                                 @method('POST')
                                 <button class="form_functions btn btn-danger">Delete</button>
@@ -71,8 +71,8 @@
                     <td>2023-06-06 12:14:14</td>
                     <td>
                         <div class="d-flex justify-content-around">
-                            <a class="form_functions btn btn-info" href="{{route('role.edit', 1)}}">Edit</a>
-                            <form action="{{route('role.destroy', 1)}}" method="POST">
+                            <a class="form_functions btn btn-info" href="{{route('user.edit', 1)}}">Edit</a>
+                            <form action="{{route('user.destroy', 1)}}" method="POST">
                                 @csrf
                                 @method('POST')
                                 <button class="form_functions btn btn-danger">Delete</button>
@@ -89,8 +89,8 @@
                     <td>2023-06-06 12:14:14</td>
                     <td>
                         <div class="d-flex justify-content-around">
-                            <a class="form_functions btn btn-info" href="{{route('role.edit', 1)}}">Edit</a>
-                            <form action="{{route('role.destroy', 1)}}" method="POST">
+                            <a class="form_functions btn btn-info" href="{{route('user.edit', 1)}}">Edit</a>
+                            <form action="{{route('user.destroy', 1)}}" method="POST">
                                 @csrf
                                 @method('POST')
                                 <button class="form_functions btn btn-danger">Delete</button>
@@ -107,8 +107,8 @@
                     <td>2023-06-06 12:14:14</td>
                     <td>
                         <div class="d-flex justify-content-around">
-                            <a class="form_functions btn btn-info" href="{{route('role.edit', 1)}}">Edit</a>
-                            <form action="{{route('role.destroy', 1)}}" method="POST">
+                            <a class="form_functions btn btn-info" href="{{route('user.edit', 1)}}">Edit</a>
+                            <form action="{{route('user.destroy', 1)}}" method="POST">
                                 @csrf
                                 @method('POST')
                                 <button class="form_functions btn btn-danger">Delete</button>
@@ -125,8 +125,8 @@
                     <td>2023-06-06 12:14:14</td>
                     <td>
                         <div class="d-flex justify-content-around">
-                            <a class="form_functions btn btn-info" href="{{route('role.edit', 1)}}">Edit</a>
-                            <form action="{{route('role.destroy', 1)}}" method="POST">
+                            <a class="form_functions btn btn-info" href="{{route('user.edit', 1)}}">Edit</a>
+                            <form action="{{route('user.destroy', 1)}}" method="POST">
                                 @csrf
                                 @method('POST')
                                 <button class="form_functions btn btn-danger">Delete</button>
@@ -143,8 +143,8 @@
                     <td>2023-06-06 12:14:14</td>
                     <td>
                         <div class="d-flex justify-content-around">
-                            <a class="form_functions btn btn-info" href="{{route('role.edit', 1)}}">Edit</a>
-                            <form action="{{route('role.destroy', 1)}}" method="POST">
+                            <a class="form_functions btn btn-info" href="{{route('user.edit', 1)}}">Edit</a>
+                            <form action="{{route('user.destroy', 1)}}" method="POST">
                                 @csrf
                                 @method('POST')
                                 <button class="form_functions btn btn-danger">Delete</button>
@@ -161,8 +161,8 @@
                     <td>2023-06-06 12:14:14</td>
                     <td>
                         <div class="d-flex justify-content-around">
-                            <a class="form_functions btn btn-info" href="{{route('role.edit', 1)}}">Edit</a>
-                            <form action="{{route('role.destroy', 1)}}" method="POST">
+                            <a class="form_functions btn btn-info" href="{{route('user.edit', 1)}}">Edit</a>
+                            <form action="{{route('user.destroy', 1)}}" method="POST">
                                 @csrf
                                 @method('POST')
                                 <button class="form_functions btn btn-danger">Delete</button>
@@ -179,8 +179,8 @@
                     <td>2023-06-06 12:14:14</td>
                     <td>
                         <div class="d-flex justify-content-around">
-                            <a class="form_functions btn btn-info" href="{{route('role.edit', 1)}}">Edit</a>
-                            <form action="{{route('role.destroy', 1)}}" method="POST">
+                            <a class="form_functions btn btn-info" href="{{route('user.edit', 1)}}">Edit</a>
+                            <form action="{{route('user.destroy', 1)}}" method="POST">
                                 @csrf
                                 @method('POST')
                                 <button class="form_functions btn btn-danger">Delete</button>
@@ -197,8 +197,8 @@
                     <td>2023-06-06 12:14:14</td>
                     <td>
                         <div class="d-flex justify-content-around">
-                            <a class="form_functions btn btn-info" href="{{route('role.edit', 1)}}">Edit</a>
-                            <form action="{{route('role.destroy', 1)}}" method="POST">
+                            <a class="form_functions btn btn-info" href="{{route('user.edit', 1)}}">Edit</a>
+                            <form action="{{route('user.destroy', 1)}}" method="POST">
                                 @csrf
                                 @method('POST')
                                 <button class="form_functions btn btn-danger">Delete</button>
@@ -215,8 +215,8 @@
                     <td>2023-06-06 12:14:14</td>
                     <td>
                         <div class="d-flex justify-content-around">
-                            <a class="form_functions btn btn-info" href="{{route('role.edit', 1)}}">Edit</a>
-                            <form action="{{route('role.destroy', 1)}}" method="POST">
+                            <a class="form_functions btn btn-info" href="{{route('user.edit', 1)}}">Edit</a>
+                            <form action="{{route('user.destroy', 1)}}" method="POST">
                                 @csrf
                                 @method('POST')
                                 <button class="form_functions btn btn-danger">Delete</button>
@@ -228,5 +228,4 @@
             </table>
         </div>
     </div>
-
 @endsection
