@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Stuff extends Model
+class Staff extends Model
 {
     use HasFactory;
 
@@ -20,7 +20,7 @@ class Stuff extends Model
       'password',
       'role_id',
       'token',
-      'status',
+      'status_id',
       'company_id',
       'personal_info_id'
     ];

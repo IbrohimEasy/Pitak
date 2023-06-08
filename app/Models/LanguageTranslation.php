@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ClassList extends Model
+class LanguageTranslation extends Model
 {
     use HasFactory;
+    protected $table = 'yy_language_translations';
 
-    protected $table = 'yy_class_list';
-
-    protected $fillable = [
+     protected $fillable = [
         'name',
-        'status_id'
+        'language_id',
+        'lang',
+
     ];
 }

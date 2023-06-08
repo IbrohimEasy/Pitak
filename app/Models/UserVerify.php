@@ -22,7 +22,7 @@ class UserVerify extends Authenticatable
         'phone_number',
         'verify_code',
         'verify_date',
-        'status',
+        'status_id',
     ];
 
 

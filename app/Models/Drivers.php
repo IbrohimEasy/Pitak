@@ -20,6 +20,6 @@ class Drivers extends Model
         'license_number',
         'license_expired_date',
         'license_image',
-        'status'
+        'status_id'
     ];
 }
