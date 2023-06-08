@@ -681,6 +681,33 @@
     </div>
     <!-- /Right-bar -->
 
+
+    <!-- Warning Alert Modal FOR DELETE -->
+    <div id="warning-alert-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-center">
+                        <i class="dripicons-warning h1 text-warning"></i>
+                        <h4 class="mt-2">Are you sure delete this data</h4>
+                        {{-- <h4 class="mt-2">{{ translate('Are you sure delete this data') }}</h4> --}}
+                        {{-- <p class="mt-3">Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p> --}}
+                        <form style="display: inline-block;" action="" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="button" class="btn btn-danger my-2" data-bs-dismiss="modal"> No </button>
+                            {{-- <button type="button" class="btn btn-danger my-2" data-bs-dismiss="modal">{{ translate('No') }}</button> --}}
+                            <button type="submit" class="btn btn-success my-2"> Yes </button>
+                            {{-- <button type="submit" class="btn btn-warning my-2">{{ translate('Yes') }}</button> --}}
+                        </form>
+                        {{-- <button type="button" class="btn btn-warning my-2" data-bs-dismiss="modal">Continue</button> --}}
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
     <!-- Right bar overlay-->
     <div class="rightbar-overlay"></div>
 
@@ -710,6 +737,11 @@
     <script src="{{ asset('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
     <script src="{{ asset('assets/js/pages/form-pickers.init.js') }}"></script>
 
+    <script src="{{ asset('assets/libs/selectize/js/standalone/selectize.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/select2/js/select2.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/form-advanced.init.js') }}"></script>
+
     <!-- knob plugin -->
     <script src="{{ asset('assets/libs/jquery-knob/jquery.knob.min.js') }}"></script>
 
@@ -726,6 +758,12 @@
     <!-- App js-->
     <script src="{{ asset('assets/js/app.min.js') }}"></script>
 
+    <script>
+        $(document).on('click', '.delete-order', function(e) {
+            var url = $(this).attr('data-url')
+            $('#warning-alert-modal').find('form').attr('action', url)
+        })
+    </script>
 </body>
 
 </html>
