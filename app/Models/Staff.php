@@ -9,7 +9,7 @@ class Staff extends Model
 {
     use HasFactory;
 
-    protected $table = 'yy_staff';
+    protected $table = 'yy_staffs';
     /**
      * The attributes that should be hidden for serialization.
      *

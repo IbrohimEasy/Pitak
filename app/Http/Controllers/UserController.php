@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Staff;
+use App\Models\PersonalInfo;
+use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -31,6 +35,32 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $personal_info = new PersonalInfo();
+        $personal_info->first_name = $request->first_name;
+        $personal_info->last_name = $request->last_name;
+        $personal_info->middle_name = $request->middle_name;
+        $personal_info->phone_number = $request->phone_number;
+        $letters = range('a', 'z');
+        $random_array = [$letters[rand(0,25)], $letters[rand(0,25)], $letters[rand(0,25)], $letters[rand(0,25)], $letters[rand(0,25)]];
+        $random = implode("", $random_array);
+        $file = $request->file('avatar');
+        $image_name = $random.''.date('Y-m-dh-i-s').'.'.$file->extension();
+        $file->storeAs('public/user/', $image_name);
+        $personal_info->avatar = $image_name;
+        $personal_info->gender = $request->gender;
+        $personal_info->birth_date = $request->birth_date;
+        $personal_info->save();
+        $model = new Staff();
+        $model->login = $request->email;
+        $model->password = Hash::make($request->password);
+        if($request->role_id =! ""){
+            $model->role_id = (int)$request->role_id;
+        }
+        if($request->company_id =! ""){
+            $model->company_id = (int)$request->company_id;
+        }
+        $model->personal_info_id = $personal_info->id;
+        $model->save();
         return redirect()->route('user.index');
     }
 
