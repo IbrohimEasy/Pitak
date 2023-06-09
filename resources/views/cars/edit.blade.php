@@ -1,70 +1,74 @@
 @extends('layout.layout')
 
 @section('title')
-    {{-- Your page title --}}
+
 @endsection
 @section('content')
     <div class="card">
         <div class="card-body">
-            <h4 class="header-title">Validation type</h4>
             <p class="text-muted font-14">
-                Parsley is a javascript form validation library. It helps you provide your users with feedback on their form submission before sending it to your server.
+                {{translate('Car create')}}
             </p>
-
-            <form action="#" class="parsley-examples">
+            <form action="{{route('cars.store')}}" class="parsley-examples" method="POST">
+                @csrf
+                @method('POST')
                 <div class="mb-3">
-                    <label for="heard" class="form-label">Heard about us via *:</label>
-                    <select id="heard" class="form-select" required="">
-                        <option value="">Choose..</option>
-                        <option value="press">Press</option>
-                        <option value="net">Internet</option>
-                        <option value="mouth">Word of mouth</option>
-                        <option value="other">Other..</option>
+                    <label for="car_list_id" class="form-label">{{translate('Car list')}}</label>
+                    <select id="status" class="form-select" name="car_list_id">
+                        <option value="">{{translate('Choose..')}}</option>
+                        <option value="0">{{translate('SUV')}}</option>
+                        <option value="1">{{translate('Coupe')}}</option>
+                        <option value="2">{{translate('Convertable')}}</option>
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Required</label>
-                    <input type="text" class="form-control" required placeholder="Type something" />
+                    <label for="type" class="form-label">{{translate('Driver')}}</label>
+                    <select id="type" class="form-select" name="driver_id">
+                        <option value="">{{translate('Choose..')}}</option>
+                        <option value="0">Alijon</option>
+                        <option value="1">Elyor</option>
+                        <option value="2">Rasul</option>
+                    </select>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">E-Mail</label>
-                    <div>
-                        <input type="email" class="form-control" required parsley-type="email" placeholder="Enter a valid e-mail" />
-                    </div>
+                    <label for="status" class="form-label">{{translate('Status')}}</label>
+                    <select id="status" class="form-select" name="status_id">
+                        <option value="">{{translate('Choose..')}}</option>
+                        <option value="0">{{translate('active')}}</option>
+                        <option value="1">{{translate('inactive')}}</option>
+                    </select>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">URL</label>
-                    <div>
-                        <input parsley-type="url" type="url" class="form-control" required placeholder="URL" />
-                    </div>
+                    <label for="color" class="form-label">{{translate('Color')}}</label>
+                    <select id="color" class="form-select" name="color_list_id">
+                        <option value="">{{translate('Choose..')}}</option>
+                        <option value="0">{{translate('active')}}</option>
+                        <option value="1">{{translate('inactive')}}</option>
+                    </select>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Digits</label>
-                    <div>
-                        <input data-parsley-type="digits" type="text" class="form-control" required placeholder="Enter only digits" />
-                    </div>
+                    <label for="class" class="form-label">{{translate('Class list')}}</label>
+                    <select id="class" class="form-select" name="class_list_id">
+                        <option value="">{{translate('Choose..')}}</option>
+                        <option value="0">{{translate('Chevrolet')}}</option>
+                        <option value="1">{{translate('Toyota')}}</option>
+                    </select>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Number</label>
-                    <div>
-                        <input data-parsley-type="number" type="text" class="form-control" required placeholder="Enter only numbers" />
-                    </div>
+                    <label class="form-label">{{translate('Registration certificate')}}</label>
+                    <input type="text" name="reg_certificate" class="form-control" required />
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Alphanumeric</label>
-                    <div>
-                        <input data-parsley-type="alphanum" type="text" class="form-control" required placeholder="Enter alphanumeric value" />
-                    </div>
+                    <label class="form-label">{{translate('Registration certificate image')}}</label>
+                    <input type="text" name="reg_certificate_image" class="form-control" required />
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Textarea</label>
-                    <div>
-                        <textarea required class="form-control"></textarea>
-                    </div>
+                    <label class="form-label">{{translate('Image')}}</label>
+                    <input type="text" name="image" class="form-control" />
                 </div>
                 <div>
-                    <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
-                    <button type="reset" class="btn btn-secondary waves-effect">Cancel</button>
+                    <button type="submit" class="btn btn-primary waves-effect waves-light">{{translate('Create')}}</button>
+                    <button type="reset" class="btn btn-secondary waves-effect">{{translate('Cancel')}}</button>
                 </div>
             </form>
         </div>

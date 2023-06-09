@@ -5,16 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Company extends Model
+class Country extends Model
 {
     use HasFactory;
 
-    protected $table = 'yy_companies';
+    protected $table = 'yy_countries';
 
     protected $fillable = [
+        'code',
         'name',
-        'status_id',
-        'address',
-        'info'
+        'status'
     ];
 }

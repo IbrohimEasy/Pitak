@@ -11,7 +11,7 @@ class CarListController extends Controller
      */
     public function index()
     {
-        return view('car-list.index');
+        return view('car-lists.index');
     }
 
     /**
@@ -19,7 +19,7 @@ class CarListController extends Controller
      */
     public function create()
     {
-        return view('car-list.create');
+        return view('car-lists.create');
     }
 
     /**
@@ -35,7 +35,7 @@ class CarListController extends Controller
      */
     public function show(string $id)
     {
-        return view('car-list.show');
+        return view('car-lists.show');
     }
 
     /**
@@ -43,7 +43,7 @@ class CarListController extends Controller
      */
     public function edit(string $id)
     {
-        return view('car-list.edit');
+        return view('car-lists.edit');
     }
 
     /**

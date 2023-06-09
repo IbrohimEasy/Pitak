@@ -9,11 +9,11 @@ class CarList extends Model
 {
     use HasFactory;
 
-    protected $table = 'yy_car_list';
+    protected $table = 'yy_car_lists';
 
     protected $fillable = [
         'name',
-        'status',
-        'model_id'
+        'status_id',
+        'car_type_id'
     ];
 }
