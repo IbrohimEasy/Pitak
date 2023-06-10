@@ -19,7 +19,6 @@ class PersonalInfo extends Model
         'middle_name',
         'phone_number',
         'avatar',
-        'status_id',
         'gender',
         'birth_date'
     ];

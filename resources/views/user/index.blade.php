@@ -36,6 +36,7 @@
                     <td>
                         <div class="d-flex justify-content-around">
                             <a class="form_functions btn btn-info" href="{{route('user.edit', 1)}}">Edit</a>
+                            <a class="form_functions btn btn-info" href="{{route('user.show', 1)}}">{{translate('Show')}}</a>
                             <form action="{{route('user.destroy', 1)}}" method="POST">
                                 @csrf
                                 @method('POST')
@@ -54,6 +55,7 @@
                     <td>
                         <div class="d-flex justify-content-around">
                             <a class="form_functions btn btn-info" href="{{route('user.edit', 1)}}">Edit</a>
+                            <a class="form_functions btn btn-info" href="{{route('user.show', 1)}}">{{translate('Show')}}</a>
                             <form action="{{route('user.destroy', 1)}}" method="POST">
                                 @csrf
                                 @method('POST')
@@ -72,6 +74,7 @@
                     <td>
                         <div class="d-flex justify-content-around">
                             <a class="form_functions btn btn-info" href="{{route('user.edit', 1)}}">Edit</a>
+                            <a class="form_functions btn btn-info" href="{{route('user.show', 1)}}">{{translate('Show')}}</a>
                             <form action="{{route('user.destroy', 1)}}" method="POST">
                                 @csrf
                                 @method('POST')
@@ -90,6 +93,7 @@
                     <td>
                         <div class="d-flex justify-content-around">
                             <a class="form_functions btn btn-info" href="{{route('user.edit', 1)}}">Edit</a>
+                            <a class="form_functions btn btn-info" href="{{route('user.show', 1)}}">{{translate('Show')}}</a>
                             <form action="{{route('user.destroy', 1)}}" method="POST">
                                 @csrf
                                 @method('POST')
@@ -108,6 +112,7 @@
                     <td>
                         <div class="d-flex justify-content-around">
                             <a class="form_functions btn btn-info" href="{{route('user.edit', 1)}}">Edit</a>
+                            <a class="form_functions btn btn-info" href="{{route('user.show', 1)}}">{{translate('Show')}}</a>
                             <form action="{{route('user.destroy', 1)}}" method="POST">
                                 @csrf
                                 @method('POST')
@@ -126,6 +131,7 @@
                     <td>
                         <div class="d-flex justify-content-around">
                             <a class="form_functions btn btn-info" href="{{route('user.edit', 1)}}">Edit</a>
+                            <a class="form_functions btn btn-info" href="{{route('user.show', 1)}}">{{translate('Show')}}</a>
                             <form action="{{route('user.destroy', 1)}}" method="POST">
                                 @csrf
                                 @method('POST')
@@ -144,6 +150,7 @@
                     <td>
                         <div class="d-flex justify-content-around">
                             <a class="form_functions btn btn-info" href="{{route('user.edit', 1)}}">Edit</a>
+                            <a class="form_functions btn btn-info" href="{{route('user.show', 1)}}">{{translate('Show')}}</a>
                             <form action="{{route('user.destroy', 1)}}" method="POST">
                                 @csrf
                                 @method('POST')
@@ -162,6 +169,7 @@
                     <td>
                         <div class="d-flex justify-content-around">
                             <a class="form_functions btn btn-info" href="{{route('user.edit', 1)}}">Edit</a>
+                            <a class="form_functions btn btn-info" href="{{route('user.show', 1)}}">{{translate('Show')}}</a>
                             <form action="{{route('user.destroy', 1)}}" method="POST">
                                 @csrf
                                 @method('POST')
@@ -180,6 +188,7 @@
                     <td>
                         <div class="d-flex justify-content-around">
                             <a class="form_functions btn btn-info" href="{{route('user.edit', 1)}}">Edit</a>
+                            <a class="form_functions btn btn-info" href="{{route('user.show', 1)}}">{{translate('Show')}}</a>
                             <form action="{{route('user.destroy', 1)}}" method="POST">
                                 @csrf
                                 @method('POST')
@@ -198,6 +207,7 @@
                     <td>
                         <div class="d-flex justify-content-around">
                             <a class="form_functions btn btn-info" href="{{route('user.edit', 1)}}">Edit</a>
+                            <a class="form_functions btn btn-info" href="{{route('user.show', 1)}}">{{translate('Show')}}</a>
                             <form action="{{route('user.destroy', 1)}}" method="POST">
                                 @csrf
                                 @method('POST')
@@ -216,6 +226,7 @@
                     <td>
                         <div class="d-flex justify-content-around">
                             <a class="form_functions btn btn-info" href="{{route('user.edit', 1)}}">Edit</a>
+                            <a class="form_functions btn btn-info" href="{{route('user.show', 1)}}">{{translate('Show')}}</a>
                             <form action="{{route('user.destroy', 1)}}" method="POST">
                                 @csrf
                                 @method('POST')

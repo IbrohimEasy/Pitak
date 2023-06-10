@@ -6,7 +6,7 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <h4 class="mt-0 header-title">Buttons example</h4>
+            <h4 class="mt-0 header-title">{{translate('Class lists')}}</h4>
             <div class="dropdown float-end">
                 <a class="form_functions btn btn-success" href="{{route('class-list.create')}}">{{translate('Create')}}</a>
             </div>
@@ -17,10 +17,10 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Name</th>
-                        <th>Status</th>
-                        <th>Updated_at</th>
-                        <th>Functions</th>
+                        <th>{{translate('Name')}}</th>
+                        <th>{{translate('Status')}}</th>
+                        <th>{{translate('Updated_at')}}</th>
+                        <th>{{translate('Functions')}}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,6 +32,7 @@
                         <td>
                             <div class="d-flex justify-content-around">
                                 <a class="form_functions btn btn-info" href="{{route('class-list.edit', 1)}}">Edit</a>
+                                <a class="form_functions btn btn-info" href="{{route('class-list.show', 1)}}">{{translate('Show')}}</a>
                                 <form action="{{route('class-list.destroy', 1)}}" method="POST">
                                     @csrf
                                     @method('POST')
@@ -48,6 +49,7 @@
                         <td>
                             <div class="d-flex justify-content-around">
                                 <a class="form_functions btn btn-info" href="{{route('class-list.edit', 1)}}">Edit</a>
+                                <a class="form_functions btn btn-info" href="{{route('class-list.show', 1)}}">{{translate('Show')}}</a>
                                 <form action="{{route('class-list.destroy', 1)}}" method="POST">
                                     @csrf
                                     @method('POST')
@@ -64,6 +66,7 @@
                         <td>
                             <div class="d-flex justify-content-around">
                                 <a class="form_functions btn btn-info" href="{{route('class-list.edit', 1)}}">Edit</a>
+                                <a class="form_functions btn btn-info" href="{{route('class-list.show', 1)}}">{{translate('Show')}}</a>
                                 <form action="{{route('class-list.destroy', 1)}}" method="POST">
                                     @csrf
                                     @method('POST')
