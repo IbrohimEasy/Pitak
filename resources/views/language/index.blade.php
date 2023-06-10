@@ -7,7 +7,7 @@
     
 
 
-    <a href="{{ route('settings.index') }}"></a>
+    <a href="{{ route('settings.index') }}" class="fe-edit fa-2x"></a>
 
     
     <form class="form-horizontal" action="{{ route('env_key_update.update') }}" method="POST">
