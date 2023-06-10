@@ -29,8 +29,8 @@
                     </li>
 
                     <li class="list-group-item">
-                        {{-- {{ route('coupon.index') }} --}}
-                        <a href="" class="user-list-item">
+                        
+                        <a href="{{ route('coupon.index') }}" class="user-list-item">
                             <div class="user avatar-sm float-start me-2">
                                 <img src="assets/images/users/user-5.jpg" alt="" class="img-fluid rounded-circle">
                             </div>
@@ -41,8 +41,8 @@
                     </li>
 
                     <li class="list-group-item">
-                        {{-- {{ route('role.index') }} --}}
-                        <a href="" class="user-list-item">
+                        
+                        <a href="{{ route('role.index') }}" class="user-list-item">
                             <div class="user avatar-sm float-start me-2">
                                 <img src="assets/images/users/user-6.jpg" alt="" class="img-fluid rounded-circle">
                             </div>

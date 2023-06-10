@@ -10,6 +10,8 @@ use App\Http\Controllers\ClassListController;
 use App\Http\Controllers\CarTypesController;
 use App\Http\Controllers\CarListController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\CouponContoller;
+
 
 
 /*
@@ -43,7 +45,7 @@ Route::controller(OrderController::class)->group(function () {
 Route::get('/register', [AuthController::class, 'registerPage'])->name('register');
 Route::get('/login', [AuthController::class, 'loginPage'])->name('login');
 Route::resource('user', UserController::class);
-Route::resource('role', RoleController::class);
+// Route::resource('role', RoleController::class);
 Route::resource('cars', CarsController::class);
 Route::resource('car-types', CarTypesController::class);
 Route::resource('class-list', ClassListController::class);
@@ -68,4 +70,23 @@ Route::group(['prefix' => 'language'], function () {
     Route::post('/language/update/value', [LanguageController::class, 'updateValue'])->name('languages.update_value');
 });
 
+
+Route::group(['prefix' => 'coupon'], function () {
+    Route::get('/', [CouponContoller::class, 'index'])->name('coupon.index');
+    Route::get('create', [CouponContoller::class, 'create'])->name('coupon.create');
+    Route::get('/edit/{id}', [CouponContoller::class, 'edit'])->name('coupon.edit');
+    Route::put('/update/{id}', [CouponContoller::class, 'update'])->name('coupon.update');
+    Route::delete('/destroy/{id}', [CouponContoller::class, 'destroy'])->name('coupon.destroy');
+    Route::post('/store', [CouponContoller::class, 'store'])->name('coupon.store');
+    // Route::get('/', [CouponContoller::class, 'index'])->name('coupon.create');
+});
+Route::group(['prefix' => 'role'], function () {
+    Route::get('/', [RoleController::class, 'index'])->name('role.index');
+    Route::get('create', [RoleController::class, 'create'])->name('role.create');
+    Route::get('/edit/{id}', [RoleController::class, 'edit'])->name('role.edit');
+    Route::put('/update/{id}', [RoleController::class, 'update'])->name('role.update');
+    Route::delete('/destroy/{id}', [RoleController::class, 'destroy'])->name('role.destroy');
+    Route::post('/store', [RoleController::class, 'store'])->name('role.store');
+    // Route::get('/', [RoleController::class, 'index'])->name('coupon.create');
+});
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
