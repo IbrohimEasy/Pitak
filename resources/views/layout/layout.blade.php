@@ -380,14 +380,30 @@
                                 <span> Dashboard </span>
                             </a>
                         </li>
-{{--                        <li>--}}
-{{--                            <a href="{{ route('order.index') }}">--}}
-{{--                                <i class="mdi mdi-view-dashboard-outline"></i>--}}
-{{--                                 <span class="badge bg-success rounded-pill float-end">9+</span>--}}
-{{--                                <span> Order </span>--}}
-{{--                                 <span> {{ translate('Order') }} </span>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
+                        <li>
+                            <a href="{{ route('order.index') }}">
+                                <i class="mdi mdi-view-dashboard-outline"></i>
+                                <!-- <span class="badge bg-success rounded-pill float-end">9+</span> -->
+                                <span> Order </span>
+                                <!-- <span> {{ translate('Order') }} </span> -->
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('offer.index') }}">
+                                <i class="mdi mdi-view-dashboard-outline"></i>
+                                <!-- <span class="badge bg-success rounded-pill float-end">9+</span> -->
+                                <span> Offer </span>
+                                <!-- <span> {{ translate('Offer') }} </span> -->
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('client.index') }}">
+                                <i class="mdi mdi-view-dashboard-outline"></i>
+                                <!-- <span class="badge bg-success rounded-pill float-end">9+</span> -->
+                                <span> Client </span>
+                                <!-- <span> {{ translate('Client') }} </span> -->
+                            </a>
+                        </li>
                         <li>
                             <a href="{{route('user.index')}}">
                                 <i class="mdi mdi-account-multiple-plus-outline"></i>
@@ -490,7 +506,13 @@
             <div class="content">
                 <!-- Start Content-->
                 <div class="container-fluid">
-                    @yield('content')
+                    <div class="card">
+                        <div class="card-body">
+                            
+                            @yield('content')
+                            
+                        </div>
+                    </div>
                 </div>
                 <!-- container-fluid -->
             </div>

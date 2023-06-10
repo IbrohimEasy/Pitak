@@ -9,6 +9,8 @@ use App\Http\Controllers\CarsController;
 use App\Http\Controllers\ClassListController;
 use App\Http\Controllers\CarTypesController;
 use App\Http\Controllers\CarListController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\OfferController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,13 +31,37 @@ Route::group(['prefix' => 'user'], function () {
     Route::get('/settings', [UserController::class, 'settings'])->name('settings.index');
 });
 
-Route::controller(OrderController::class)->group(function () {
-    // Route::get('/', [OrderController, 'index'])->name('order.index');
-    Route::get('/order/', 'index')->name('order.index');
-    Route::get('/order/edit/{id}', 'edit')->name('order.edit');
-    Route::delete('/order/destroy/{id}', 'destroy')->name('order.destroy');
-    Route::put('/order/update/{id}', 'update')->name('order.update');
-    // Route::post('/orders', 'store');
+// Route::controller(OrderController::class)->group(function () {
+//     // Route::get('/', [OrderController, 'index'])->name('order.index');
+//     Route::get('/order/', 'index')->name('order.index');
+//     Route::get('/order/edit/{id}', 'edit')->name('order.edit');
+//     Route::delete('/order/destroy/{id}', 'destroy')->name('order.destroy');
+//     Route::put('/order/update/{id}', 'update')->name('order.update');
+//     // Route::post('/orders', 'store');
+// });
+
+Route::group(['prefix' => 'order'], function () {
+    Route::get('/', [OrderController::class, 'index'])->name('order.index');
+    Route::get('/edit/{id}', [OrderController::class, 'edit'])->name('order.edit');
+    Route::get('/show/{id}', [OrderController::class, 'show'])->name('order.show');
+    Route::delete('/destroy/{id}', [OrderController::class, 'destroy'])->name('order.destroy');
+    Route::put('/update/{id}', [OrderController::class, 'update'])->name('order.update');
+});
+
+Route::group(['prefix' => 'offer'], function () {
+    Route::get('/', [OfferController::class, 'index'])->name('offer.index');
+    Route::get('/edit/{id}', [OfferController::class, 'edit'])->name('offer.edit');
+    Route::get('/show/{id}', [OfferController::class, 'show'])->name('offer.show');
+    Route::delete('/destroy/{id}', [OfferController::class, 'destroy'])->name('offer.destroy');
+    Route::put('/update/{id}', [OfferController::class, 'update'])->name('offer.update');
+});
+
+Route::group(['prefix' => 'clients'], function () {
+    Route::get('/', [ClientController::class, 'index'])->name('client.index');
+    Route::get('/edit/{id}', [ClientController::class, 'edit'])->name('client.edit');
+    Route::get('/show/{id}', [ClientController::class, 'show'])->name('client.show');
+    Route::delete('/destroy/{id}', [ClientController::class, 'destroy'])->name('client.destroy');
+    Route::put('/update/{id}', [ClientController::class, 'update'])->name('client.update');
 });
 
 Route::get('/register', [AuthController::class, 'registerPage'])->name('register');
