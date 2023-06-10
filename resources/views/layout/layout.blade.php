@@ -397,13 +397,12 @@
                                 <span> Users </span>
                             </a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="{{route('role.index')}}">
                                 <i class="mdi mdi-account-multiple-plus-outline"></i>
-                                {{-- <span class="badge bg-success rounded-pill float-end">9+</span> --}}
                                 <span> Role </span>
                             </a>
-                        </li>
+                        </li> --}}
                         <li>
                             <a href="#cars" data-bs-toggle="collapse">
                                 <i class="mdi mdi-car-outline"></i>
