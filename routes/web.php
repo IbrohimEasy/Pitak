@@ -108,6 +108,7 @@ Route::group(['prefix' => 'coupon'], function () {
 Route::group(['prefix' => 'role'], function () {
     Route::get('/', [RoleController::class, 'index'])->name('role.index');
     Route::get('create', [RoleController::class, 'create'])->name('role.create');
+    Route::get('/show/{id}', [RoleController::class, 'show'])->name('role.show');
     Route::get('/edit/{id}', [RoleController::class, 'edit'])->name('role.edit');
     Route::put('/update/{id}', [RoleController::class, 'update'])->name('role.update');
     Route::delete('/destroy/{id}', [RoleController::class, 'destroy'])->name('role.destroy');

@@ -18,188 +18,32 @@
                     <tr>
                         <th>#</th>
                         <th>Name</th>
-                        <th>Status</th>
-                        <th>Updated_at</th>
+                        <th>status</th>
+                        <th>date</th>
                         <th>Functions</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($roles as $role)
                     <tr>
                         <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Active</td>
-                        <td>2023-06-06 12:14:14</td>
+                        <td>{{$role->name}}</td>
+                        <td>{{$role->name}}</td>
+                        <td>{{$role->created_at}}</td>
                         <td>
-                            <div class="d-flex justify-content-around">
-                                <a class="form_functions btn btn-info" href="{{route('role.edit', 1)}}">Edit</a>
-                                <form action="{{route('role.destroy', 1)}}" method="POST">
-                                    @csrf
-                                    @method('POST')
-                                    <button class="form_functions btn btn-danger">Delete</button>
-                                </form>
-                            </div>
+                            <a href="{{ route('role.show', $role->id) }}">
+                                <button type="button" class="btn btn-success waves-effect waves-light"><i class="fe-eye"></i></button>
+                            </a>
+                            <a href="{{ route('role.edit', $role->id) }}">
+                                <button type="button" class="btn btn-primary waves-effect waves-light"><i class="fe-edit"></i></button>
+                            </a>
+                            {{-- <a href="{{ route('role.destroy', $role->id) }}"> --}}
+                                {{-- <button type="button" class="btn btn-danger waves-effect waves-light"><i class="fe-trash-2"></i></button> --}}
+                                <button type="button" class="btn btn-danger delete-role" data-bs-toggle="modal" data-bs-target="#warning-alert-modal" data-url="{{ route('role.destroy', $role->id) }}"><i class="fe-trash-2"></i></button>
+                            {{-- </a> --}}
                         </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Active</td>
-                        <td>2023-08-06 02:14:14</td>
-                        <td>
-                            <div class="d-flex justify-content-around">
-                                <a class="form_functions btn btn-info" href="{{route('role.edit', 1)}}">Edit</a>
-                                <form action="{{route('role.destroy', 1)}}" method="POST">
-                                    @csrf
-                                    @method('POST')
-                                    <button class="form_functions btn btn-danger">Delete</button>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>No active</td>
-                        <td>2023-07-06 14:14:14</td>
-                        <td>
-                            <div class="d-flex justify-content-around">
-                                <a class="form_functions btn btn-info" href="{{route('role.edit', 1)}}">Edit</a>
-                                <form action="{{route('role.destroy', 1)}}" method="POST">
-                                    @csrf
-                                    @method('POST')
-                                    <button class="form_functions btn btn-danger">Delete</button>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">4</th>
-                        <td>Mark</td>
-                        <td>Active</td>
-                        <td>2023-06-06 12:14:14</td>
-                        <td>
-                            <div class="d-flex justify-content-around">
-                                <a class="form_functions btn btn-info" href="{{route('role.edit', 1)}}">Edit</a>
-                                <form action="{{route('role.destroy', 1)}}" method="POST">
-                                    @csrf
-                                    @method('POST')
-                                    <button class="form_functions btn btn-danger">Delete</button>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">5</th>
-                        <td>Jacob</td>
-                        <td>Active</td>
-                        <td>2023-08-06 02:14:14</td>
-                        <td>
-                            <div class="d-flex justify-content-around">
-                                <a class="form_functions btn btn-info" href="{{route('role.edit', 1)}}">Edit</a>
-                                <form action="{{route('role.destroy', 1)}}" method="POST">
-                                    @csrf
-                                    @method('POST')
-                                    <button class="form_functions btn btn-danger">Delete</button>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">6</th>
-                        <td>Larry</td>
-                        <td>No active</td>
-                        <td>2023-07-06 14:14:14</td>
-                        <td>
-                            <div class="d-flex justify-content-around">
-                                <a class="form_functions btn btn-info" href="{{route('role.edit', 1)}}">Edit</a>
-                                <form action="{{route('role.destroy', 1)}}" method="POST">
-                                    @csrf
-                                    @method('POST')
-                                    <button class="form_functions btn btn-danger">Delete</button>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">7</th>
-                        <td>Mark</td>
-                        <td>Active</td>
-                        <td>2023-06-06 12:14:14</td>
-                        <td>
-                            <div class="d-flex justify-content-around">
-                                <a class="form_functions btn btn-info" href="{{route('role.edit', 1)}}">Edit</a>
-                                <form action="{{route('role.destroy', 1)}}" method="POST">
-                                    @csrf
-                                    @method('POST')
-                                    <button class="form_functions btn btn-danger">Delete</button>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">8</th>
-                        <td>Jacob</td>
-                        <td>Active</td>
-                        <td>2023-08-06 02:14:14</td>
-                        <td>
-                            <div class="d-flex justify-content-around">
-                                <a class="form_functions btn btn-info" href="{{route('role.edit', 1)}}">Edit</a>
-                                <form action="{{route('role.destroy', 1)}}" method="POST">
-                                    @csrf
-                                    @method('POST')
-                                    <button class="form_functions btn btn-danger">Delete</button>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">9</th>
-                        <td>Larry</td>
-                        <td>No active</td>
-                        <td>2023-07-06 14:14:14</td>
-                        <td>
-                            <div class="d-flex justify-content-around">
-                                <a class="form_functions btn btn-info" href="{{route('role.edit', 1)}}">Edit</a>
-                                <form action="{{route('role.destroy', 1)}}" method="POST">
-                                    @csrf
-                                    @method('POST')
-                                    <button class="form_functions btn btn-danger">Delete</button>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">10</th>
-                        <td>Jacob</td>
-                        <td>Active</td>
-                        <td>2023-08-06 02:14:14</td>
-                        <td>
-                            <div class="d-flex justify-content-around">
-                                <a class="form_functions btn btn-info" href="{{route('role.edit', 1)}}">Edit</a>
-                                <form action="{{route('role.destroy', 1)}}" method="POST">
-                                    @csrf
-                                    @method('POST')
-                                    <button class="form_functions btn btn-danger">Delete</button>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">11</th>
-                        <td>Larry</td>
-                        <td>No active</td>
-                        <td>2023-07-06 14:14:14</td>
-                        <td>
-                            <div class="d-flex justify-content-around">
-                                <a class="form_functions btn btn-info" href="{{route('role.edit', 1)}}">Edit</a>
-                                <form action="{{route('role.destroy', 1)}}" method="POST">
-                                    @csrf
-                                    @method('POST')
-                                    <button class="form_functions btn btn-danger">Delete</button>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
+                    </tr>   
+                    @endforeach
                 </tbody>
             </table>
         </div>
