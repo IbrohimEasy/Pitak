@@ -15,7 +15,7 @@ class CouponRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'percent'  => 'required|integer',
+            'percent'  => 'required',
         ];
     }
 
@@ -23,7 +23,7 @@ class CouponRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'percent'  => 'required|integer',
+            'percent'  => 'required',
         ];
     }
 }

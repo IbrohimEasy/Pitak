@@ -453,11 +453,32 @@
                             </a>
                         </li> --}}
 
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('settings.index') }}">
                                 <i class="mdi mdi-calendar-blank-outline"></i>
                                 <span> Settings </span>
                             </a>
+                        </li> --}}
+                        <li>
+                            <a href="#settings" data-bs-toggle="collapse">
+                                <i class="fe-settings noti-icon"></i>
+                                
+                                <span> {{translate('Settings')}} </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="settings">
+                                <ul class="nav-second-level">
+                                    <li>
+                                        <a href="{{route('language.index')}}"> {{translate('Language')}}  </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('coupon.index')}}">{{translate('Coupon')}}</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('role.index')}}">{{translate('Role')}}</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         {{-- <li class="menu-title mt-2">Apps</li>
 

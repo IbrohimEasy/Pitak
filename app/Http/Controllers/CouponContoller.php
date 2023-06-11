@@ -31,9 +31,9 @@ class CouponContoller extends Controller
 
     public function index()
     {
-        $model = Coupon::orderBy('id', 'desc')->paginate(config('params.pagination'));
+        $coupons = Coupon::orderBy('id', 'desc')->get();
         return view('coupon.index')->with([
-            'model' => $model,
+            'coupons' => $coupons,
         ]);
     }
 
@@ -43,9 +43,7 @@ class CouponContoller extends Controller
      */
     public function create()
     {
-        return view('forthebuilder::coupon.create', [
-            'all_notifications' => $this->getNotification()
-        ]);
+        return view('coupon.create');
     }
 
     /**
@@ -53,17 +51,22 @@ class CouponContoller extends Controller
      * @param Request $request
      * @return Renderable
      */
+    // CouponRequest
     public function store(CouponRequest $request)
     {
-        $data = $request->validated();
+        // dd($request->all());
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'percent'  => 'required |integer',
+        ]);
+        //  dd($data['percent']);
+        $coupon= Coupon::updateOrCreate(
+            ['percent'=>$data['percent']],
+            ['name'=>$data['name']]
+        );
+        // dd($coupon);
 
-        $model = new Coupon();
-        $model->name = $data['name'];
-        $model->percent = $data['percent'];
-        if ($model->save())
-            return true;
-
-        // return redirect()->route('forthebuilder.coupon.index')->with('success', __('locale.successfully'));
+        return redirect()->route('coupon.index')->with('success', translate('locale.successfully'));
     }
 
     /**
@@ -73,10 +76,9 @@ class CouponContoller extends Controller
      */
     public function edit($id)
     {
-        $model = Coupon::find($id);
-        return view('forthebuilder::coupon.edit')->with([
-            'model' => $model,
-            'all_notifications' => $this->getNotification()
+        $coupon = Coupon::find($id);
+        return view('coupon.edit')->with([
+            'coupon' => $coupon,
         ]);
     }
 
@@ -88,15 +90,22 @@ class CouponContoller extends Controller
      */
     public function update(CouponRequest $request, $id)
     {
-        $data = $request->validated();
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'percent'  => 'required |integer',
+        ]);
+        // dd($request->all());
 
         $model = Coupon::find($id);
         $model->name = $data['name'];
         $model->percent = $data['percent'];
-        if ($model->save())
-            return true;
+        if ($model->save()){
 
-        // return redirect()->route('forthebuilder.coupon.index')->with('success', __('locale.successfully'));
+            return redirect()->route('coupon.index')->with('success', translate('locale.successfully'));
+        }
+            
+
+
     }
 
     /**
@@ -108,6 +117,6 @@ class CouponContoller extends Controller
     {
         $model = Coupon::find($id);
         $model->delete();
-        return redirect()->route('forthebuilder.coupon.index')->with('deleted', translate('Data deleted successfuly'));
+        return redirect()->route('coupon.index')->with('success', translate('locale.successfully'));
     }
 }
