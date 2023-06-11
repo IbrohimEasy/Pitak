@@ -115,6 +115,68 @@
                         </div>
                     </form>
                 </li>
+                <li class="">
+                    <div>
+                        @php
+                            if (session()->has('locale')) {
+                                $locale = session('locale');
+                            } else {
+                                $locale = env('DEFAULT_LANGUAGE', 'ru');
+                            }
+                            // $locale=app()->getLocale()?? env('DEFAULT_LANGUAGE');
+                        @endphp
+                        <div class="align-items-stretch d-flex dropdown" id="lang-change">
+                            <a class="buttonUzbDropDownHeader dropdown-toggle" type="button" id="dropdownMenuButton" role="button"
+                                data-toggle="dropdown" aria-haspopup="false" aria-expanded="false" href="javascript:void(0);">
+                                @switch($locale)
+                                    @case('uz')
+                                        <img class="notifRegion2" id="selected_language"
+                                            src="{{ asset('/assets/images/germany.jpg') }}" alt="region">
+                                    @break
+            
+                                    @case('en')
+                                        <img class="notifRegion2" id="selected_language"
+                                            src="{{ asset('/assets/images/us.jpg') }}" alt="region">
+                                    @break
+            
+                                    @case('ru')
+                                        <img class="notifRegion2" id="selected_language"
+                                            src="{{ asset('/assets/images/russia.jpg') }}" alt="region">
+                                    @break
+                                @endswitch
+                            </a>
+                            <div id="language_flag" class="language_flag display-none"
+                                style="border: none; background-color: transparent;" aria-labelledby="dropdownMenuButton">
+                                <div class="up-arrow"></div>
+                                <div class="dropdownMenyApplyUzbFlag">
+                                    @foreach (\App\Models\Language::all() as $key => $language)
+                                    <a href="javascript:void(0)" data-flag="{{ $language->code }}"
+                                       class="dropdown-item dropdown-item dropdownLanguageItem @if ($locale == $language->code) active @endif" >
+                                        @switch($language->code)
+                                            @case('uz')
+                                                <img class="dropdownRegionBayroq" id="lang_uz" style="margin-right: 8px;" src="{{asset('/assets/images/germany.jpg')}}" alt="region">
+                                                {{ $language->name }}
+                                                @break
+            
+                                                @case('ru')
+                                                    <img class="dropdownRegionBayroq" id="lang_ru" style="margin-right: 8px;"
+                                                        src="{{ asset('/assets/images/russia.jpg') }}" alt="region">
+                                                    {{ $language->name }}
+                                                @break
+            
+                                                @case('en') 
+                                                    <img class="dropdownRegionBayroq" id="lang_en" style="margin-right: 8px;"
+                                                        src="{{ asset('/assets/images/us.jpg') }}" alt="region">
+                                                    {{ $language->name }}
+                                                @break
+                                            @endswitch
+                                        </a>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
 
                 <li class="dropdown d-inline-block d-lg-none">
                     <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-bs-toggle="dropdown"

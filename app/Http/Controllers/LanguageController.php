@@ -129,7 +129,6 @@ class LanguageController extends Controller
         }
         // $lang_keys = $lang_keys->paginate(10);
         // $lang_keys = $lang_keys->orderByDesc()->paginate(10);
-        $lang_keys =$this->Paginate($lang_keys,10);
         // dd($lang_keys);
 
 
@@ -225,17 +224,21 @@ class LanguageController extends Controller
      */
     public function languageEdit($id)
     {
+
+
+
+
         // return 'came';
         // dd()
 
         // $languages = Language::get();
-        // $first_language = Language::findOrFail(decrypt($id));
-        // // dd($first_language);
-        // return view('forthebuilder::language.edit', [
-        //     'languages'=>$languages,
-        //     'first_language'=>$first_language,
-        //     // 'all_notifications' => $this->getNotification()
-        // ]);
+        $language = Language::findOrFail(decrypt($id));
+        // dd($language);
+        return view('language.edit', [
+            // 'languages'=>$languages,
+            'language'=>$language,
+            // 'all_notifications' => $this->getNotification()
+        ]);
 
 
 
@@ -248,16 +251,15 @@ class LanguageController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request)
+    public function update(Request $request ,$id)
     {
 
 
 
         // dd($request->all());
 
-        $language = Language::where('id', $request->language_id)->first();
+        $language = Language::where('id', $id)->first();
         $language->name = $request->name;
-        $language->code = $request->code;
         if ($language->save()) {
 
 
@@ -269,7 +271,7 @@ class LanguageController extends Controller
                     $language_translations->save();
                 }
             }
-            return redirect()->route('forthebuilder.language.index');
+            return redirect()->route('language.index');
         }
     }
 
@@ -285,7 +287,7 @@ class LanguageController extends Controller
             $language->delete();
             // flash(translate('Language has been deleted successfully'))->success();
         }
-        return redirect()->route('forthebuilder.language.index');
+        return redirect()->route('language.index');
     }
 
 

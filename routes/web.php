@@ -90,8 +90,8 @@ Route::group(['prefix' => 'language'], function () {
     Route::get('/language/create/', [LanguageController::class, 'create'])->name('languages.create');
     Route::post('/language/added/', [LanguageController::class, 'store'])->name('languages.store');
     Route::get('/language/edit/{id}', [LanguageController::class, 'languageEdit'])->name('language.edit');
-    Route::post('/language/update/', [LanguageController::class, 'update'])->name('languages.update');
-    Route::get('/language/delete/{id}', [LanguageController::class, 'languageDestroy'])->name('language.destroy');
+    Route::put('/language/update/{id}', [LanguageController::class, 'update'])->name('language.update');
+    Route::delete('/language/delete/{id}', [LanguageController::class, 'languageDestroy'])->name('language.destroy');
     Route::post('/language/update/value', [LanguageController::class, 'updateValue'])->name('languages.update_value');
 });
 

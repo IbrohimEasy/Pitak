@@ -57,7 +57,6 @@ class RoleController extends Controller
         return view('role.edit',[
             'role' => $role
         ] );
-        return view('role.edit');
     }
 
     /**
