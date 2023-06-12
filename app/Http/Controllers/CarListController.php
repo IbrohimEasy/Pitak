@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CarListRequest;
+use App\Models\Carlist;
+use App\Models\CarTypes;
 
 class CarListController extends Controller
 {
@@ -11,7 +14,9 @@ class CarListController extends Controller
      */
     public function index()
     {
-        return view('car-lists.index');
+        $carLists = CarList::all();
+        $carTypes = CarTypes::all();
+        return view('car-lists.index', ['carLists'=>$carLists, 'carTypes'=>$carTypes]);
     }
 
     /**
@@ -19,15 +24,16 @@ class CarListController extends Controller
      */
     public function create()
     {
-        return view('car-lists.create');
+        $statuses = Status::all();
+        return view('car-lists.create', ['statuses'=>$statuses]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CarListRequest $request)
     {
-        return redirect()->route('car-list.index');
+        return redirect()->route('carList.index');
     }
 
     /**
@@ -43,15 +49,16 @@ class CarListController extends Controller
      */
     public function edit(string $id)
     {
-        return view('car-lists.edit');
+        $statuses = Status::all();
+        return view('car-lists.edit', ['statuses'=>$statuses]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CarListRequest $request, string $id)
     {
-        return redirect()->route('car-list.index');
+        return redirect()->route('carList.index');
     }
 
     /**
@@ -59,6 +66,6 @@ class CarListController extends Controller
      */
     public function destroy(string $id)
     {
-        return redirect()->route('car-list.index');
+        return redirect()->route('carList.index');
     }
 }

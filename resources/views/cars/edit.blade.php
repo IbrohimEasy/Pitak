@@ -9,6 +9,15 @@
             <p class="text-muted font-14">
                 {{translate('Car create')}}
             </p>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <form action="{{route('cars.store')}}" class="parsley-examples" method="POST">
                 @csrf
                 @method('POST')

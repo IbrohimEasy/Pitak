@@ -6,20 +6,32 @@
 @section('content')
     <div class="card">
         <div class="card-body">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <p class="text-muted font-14">
                 {{translate('Car class list edit')}}
             </p>
-            <form action="{{route('class-list.update', 1)}}" class="parsley-examples">
+            <form action="{{route('classList.update', $classList->id)}}" class="parsley-examples" method="POST">
+                @csrf
+                @method("PUT")
                 <div class="mb-3">
                     <label class="form-label">{{translate('Name')}}</label>
-                    <input type="text" class="form-control" required />
+                    <input type="text" name="name" class="form-control" required value="{{$classList->name??''}}"/>
                 </div>
                 <div class="mb-3">
-                    <label for="gender" class="form-label">{{translate('Status')}}</label>
-                    <select id="gender" class="form-select">
+                    <label for="status_id" class="form-label">{{translate('Status')}}</label>
+                    <select id="status_id" class="form-select" name="status_id" required>
                         <option value="">{{translate('Choose..')}}</option>
-                        <option value="0">{{translate('active')}}</option>
-                        <option value="1">{{translate('inactive')}}</option>
+                        @foreach($statuses as $status)
+                            <option value="{{$status->id??''}}" {{$classList->status->id == $status->id?'selected':''}}>{{$status->name??''}}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div>

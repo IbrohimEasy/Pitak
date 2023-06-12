@@ -55,23 +55,5 @@ class UserRequest extends BaseFormRequest
             'avatar' => 'nullable|mimes:jpeg,jpg,png|max:10240',
         ];
     }
-//
-//    public function rules(): array
-//    {
-//        return [
-//            'first_name' => 'nullable|string',
-//            'last_name' => 'nullable|string',
-//            'middle_name' => 'nullable|string',
-//            'phone_number' => 'nullable|string',
-//            'avatar' => 'nullable|mimes:jpeg,jpg,png|max:10240',
-//            'status_id' => 'nullable|integer',
-//            'gender' => 'nullable|integer',
-//            'birth_date' => 'nullable|date',
-//            'login' => ['required', 'string', 'login', Rule::unique('yy_staffs', 'login')->ignore($this->id)],
-//            'password' => 'required|string|min:8|confirmed',
-//            'role_id' => 'required|integer',
-//            'company_id' => 'nullable|integer'
-//        ];
-//
-//    }
+
 }

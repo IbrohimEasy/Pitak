@@ -12,6 +12,7 @@
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
 
+    <link href="{{ asset('assets/libs/toastr/build/toastr.min.css') }}" type="text/css" rel="stylesheet"/>
     <!-- third party css -->
     <link href="{{ asset('assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css') }}" rel="stylesheet" type="text/css" />
@@ -21,7 +22,7 @@
     <link href="{{ asset('assets/libs/selectize/css/selectize.bootstrap3.css') }}" rel="stylesheet" type="text/css" />
     <!-- third party css end -->
     <!-- App css -->
-    <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style" />
+    <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style"/>
       {{-- Main css --}}
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet" type="text/css" id="app-style" />
 
@@ -30,45 +31,7 @@
 
 </head>
 <style>
-    .display-none {
-        display: none;
-    }
 
-    .language_flag {
-        position: absolute;
-        z-index: 1;
-        margin-top: 70px;
-    }
-    .dropdownMenyApplyUzbFlag {
-        background-color: #F9FBFF;
-        width: 135px;
-        margin-left: -43px !important;
-        margin-top: 7px;
-        height: 120px;
-        border-radius: 20px;
-        padding-top: 5px;
-        box-shadow: 2px 4px 14px silver;
-    }
-    .dropdownRegionBayroq {
-        width: 40px;
-        height: 27px;
-    }
-
-    .dropdownLanguageItem {
-        transition: all 0.3s ease;
-        font-size: 14px;
-        padding-left: 17px;
-    }
-
-    .dropdownLanguageItem:hover {
-        background-color: #E8F0FF !important;
-        border-radius: 20px;
-        transition: all 0.3s ease;
-    }
-
-    .dropdownLanguageItem:active {
-        background-color: transparent !important;
-    }
 
 </style>
 <!-- body start -->
@@ -173,7 +136,7 @@
                                             src="{{ asset('/assets/images/language/region.png') }}" alt="region">
                                     @break
             
-                                    @case('us')
+                                    @case('en')
                                         <img class="notifRegion2" id="selected_language"
                                             src="{{ asset('/assets/images/language/GB.png') }}" alt="region">
                                     @break
@@ -203,7 +166,7 @@
                                                     {{ $language->name }}
                                                 @break
             
-                                                @case('us')
+                                                @case('en')
                                                     <img class="dropdownRegionBayroq" id="lang_en" style="margin-right: 8px;"
                                                         src="{{ asset('/assets/images/language/GB.png') }}" alt="region">
                                                     {{ $language->name }}
@@ -538,13 +501,13 @@
                                         <a href="{{route('cars.index')}}">Cars</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('car-list.index')}}">Cars list</a>
+                                        <a href="{{route('carList.index')}}">Cars list</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('car-types.index')}}">Car Types</a>
+                                        <a href="{{route('carTypes.index')}}">Car Types</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('class-list.index')}}">Class list</a>
+                                        <a href="{{route('classList.index')}}">Class list</a>
                                     </li>
                                 </ul>
                             </div>
@@ -870,7 +833,7 @@
     <script src="{{ asset('assets/libs/waypoints/lib/jquery.waypoints.min.js') }}"></script>
     <script src="{{ asset('assets/libs/jquery.counterup/jquery.counterup.min.js') }}"></script>
     <script src="{{ asset('assets/libs/feather-icons/feather.min.js') }}"></script>
-
+    <script src="{{ asset('assets/libs/toastr/build/toastr.min.js') }}"></script>
     <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
     <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
@@ -911,6 +874,10 @@
 
     <script defer>
         $(document).ready(function() {
+            let sessionSuccess ="{{session('status')}}";
+            if(sessionSuccess){
+                toastr.success(sessionSuccess)
+            }
             let language = '{{ $locale }}'
             let uz = `{{ asset('/backend-assets/forthebuilders/images/region.png') }}`
             let ru = `{{ asset('/backend-assets/forthebuilders/images/RU.png') }}`

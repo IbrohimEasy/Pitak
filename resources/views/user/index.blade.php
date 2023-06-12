@@ -22,7 +22,7 @@
                         <th>Phone number</th>
                         <th>Avatar</th>
                         <th>Updated at</th>
-                        <th>Functions</th>
+                        <th class="text-center">Functions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,7 +52,7 @@
                         </td>
                         <td>{{$staff->updated_at}}</td>
                         <td>
-                            <div class="d-flex justify-content-around">
+                            <div class="d-flex justify-content-center">
                                 <a class="form_functions btn btn-info" href="{{route('user.edit', $staff->id)}}"><i class="fe-edit-2"></i></a>
                                 <a class="form_functions btn btn-info" href="{{route('user.show', $staff->id)}}"><i class="fe-eye"></i></a>
                                 <form action="{{route('user.destroy', $staff->id)}}" method="POST">

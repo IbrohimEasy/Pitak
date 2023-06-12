@@ -9,7 +9,16 @@
             <p class="text-muted font-14">
                 {{translate('Car type edit')}}
             </p>
-            <form action="{{route('car-list.store')}}" class="parsley-examples" method="POST">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            <form action="{{route('carList.update', 1)}}" class="parsley-examples" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="mb-3">

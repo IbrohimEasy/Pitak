@@ -66,9 +66,9 @@ Route::group(['middleware'=>'auth'], function(){
 
     Route::resource('user', UserController::class);
     Route::resource('cars', CarsController::class);
-    Route::resource('car-types', CarTypesController::class);
-    Route::resource('class-list', ClassListController::class);
-    Route::resource('car-list', CarListController::class);
+    Route::resource('carTypes', CarTypesController::class);
+    Route::resource('classList', ClassListController::class);
+    Route::resource('carList', CarListController::class);
 
     Route::group(['prefix' => 'language'], function () {
 

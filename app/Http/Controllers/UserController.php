@@ -72,7 +72,7 @@ class UserController extends Controller
         }
         $model->personal_info_id = $personal_info->id;
         $model->save();
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('status', translate('Successfully created'));
     }
 
     /**
@@ -136,7 +136,7 @@ class UserController extends Controller
         }
         $model->personal_info_id = $personal_info->id;
         $model->save();
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('status', translate('Successfully updated'));
     }
 
     /**
@@ -151,6 +151,6 @@ class UserController extends Controller
         }
         $model->personalInfo->delete();
         $model->delete();
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('status', translate('Successfully deleted'));
     }
 }

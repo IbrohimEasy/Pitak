@@ -9675,5 +9675,44 @@ a:hover {
     border-radius: 15px;
   }
 }
+.display-none {
+  display: none;
+}
+
+.language_flag {
+  position: absolute;
+  z-index: 1;
+  margin-top: 70px;
+}
+.dropdownMenyApplyUzbFlag {
+  background-color: #F9FBFF;
+  width: 135px;
+  margin-left: -43px !important;
+  margin-top: 7px;
+  height: 120px;
+  border-radius: 20px;
+  padding-top: 5px;
+  box-shadow: 2px 4px 14px silver;
+}
+.dropdownRegionBayroq {
+  width: 40px;
+  height: 27px;
+}
+
+.dropdownLanguageItem {
+  transition: all 0.3s ease;
+  font-size: 14px;
+  padding-left: 17px;
+}
+
+.dropdownLanguageItem:hover {
+  background-color: #E8F0FF !important;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.dropdownLanguageItem:active {
+  background-color: transparent !important;
+}
 
 /* -------------- */
