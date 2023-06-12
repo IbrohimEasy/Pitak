@@ -31,12 +31,12 @@
                         <td>2023-06-06 12:14:14</td>
                         <td>
                             <div class="d-flex justify-content-around">
-                                <a class="form_functions btn btn-info" href="{{route('class-list.edit', 1)}}">Edit</a>
-                                <a class="form_functions btn btn-info" href="{{route('class-list.show', 1)}}">{{translate('Show')}}</a>
+                                <a class="form_functions btn btn-info" href="{{route('class-list.edit', 1)}}"><i class="fe-edit-2"></i></a>
+                                <a class="form_functions btn btn-info" href="{{route('class-list.show', 1)}}"><i class="fe-eye"></i></a>
                                 <form action="{{route('class-list.destroy', 1)}}" method="POST">
                                     @csrf
                                     @method('POST')
-                                    <button class="form_functions btn btn-danger">Delete</button>
+                                    <button class="form_functions btn btn-danger"><i class="fe-trash-2"></i></button>
                                 </form>
                             </div>
                         </td>
@@ -48,12 +48,12 @@
                         <td>2023-08-06 02:14:14</td>
                         <td>
                             <div class="d-flex justify-content-around">
-                                <a class="form_functions btn btn-info" href="{{route('class-list.edit', 1)}}">Edit</a>
-                                <a class="form_functions btn btn-info" href="{{route('class-list.show', 1)}}">{{translate('Show')}}</a>
+                                <a class="form_functions btn btn-info" href="{{route('class-list.edit', 1)}}"><i class="fe-edit-2"></i></a>
+                                <a class="form_functions btn btn-info" href="{{route('class-list.show', 1)}}"><i class="fe-eye"></i></a>
                                 <form action="{{route('class-list.destroy', 1)}}" method="POST">
                                     @csrf
                                     @method('POST')
-                                    <button class="form_functions btn btn-danger">Delete</button>
+                                    <button class="form_functions btn btn-danger"><i class="fe-trash-2"></i></button>
                                 </form>
                             </div>
                         </td>
@@ -65,12 +65,12 @@
                         <td>2023-07-06 14:14:14</td>
                         <td>
                             <div class="d-flex justify-content-around">
-                                <a class="form_functions btn btn-info" href="{{route('class-list.edit', 1)}}">Edit</a>
-                                <a class="form_functions btn btn-info" href="{{route('class-list.show', 1)}}">{{translate('Show')}}</a>
+                                <a class="form_functions btn btn-info" href="{{route('class-list.edit', 1)}}"><i class="fe-edit-2"></i></a>
+                                <a class="form_functions btn btn-info" href="{{route('class-list.show', 1)}}"><i class="fe-eye"></i></a>
                                 <form action="{{route('class-list.destroy', 1)}}" method="POST">
                                     @csrf
                                     @method('POST')
-                                    <button class="form_functions btn btn-danger">Delete</button>
+                                    <button class="form_functions btn btn-danger"><i class="fe-trash-2"></i></button>
                                 </form>
                             </div>
                         </td>

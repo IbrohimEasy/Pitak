@@ -254,11 +254,14 @@
                         <div class="dropdown-divider"></div>
 
                         <!-- item-->
-                        <a href="auth-logout.html" class="dropdown-item notify-item">
-                            <i class="fe-log-out"></i>
-                            <span>Logout</span>
-                        </a>
-
+                        <form action="{{route('logout')}}" method="POST">
+                            @csrf
+                            @method("POST")
+                            <button class="dropdown-item notify-item" type="submit">
+                                <i class="fe-log-out"></i>
+                                <span>{{translate('Logout')}}</span>
+                            </button>
+                        </form>
                     </div>
                 </li>
 

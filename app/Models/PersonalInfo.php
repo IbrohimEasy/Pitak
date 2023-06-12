@@ -20,4 +20,6 @@ class PersonalInfo extends Model
         'gender',
         'birth_date'
     ];
+
+
 }

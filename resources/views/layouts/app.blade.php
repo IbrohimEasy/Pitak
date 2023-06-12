@@ -8,30 +8,30 @@
     <meta content="Coderthemes" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{asset('public/assets/images/favicon.ico')}}">
+    <link rel="shortcut icon" href="{{asset('assets/images/favicon.ico')}}">
 
     <!-- App css -->
 
-    <link href="{{asset('public/assets/css/app.min.css')}}" rel="stylesheet" type="text/css" id="app-style" />
+    <link href="{{asset('assets/css/app.min.css')}}" rel="stylesheet" type="text/css" id="app-style" />
 
     <!-- icons -->
-    <link href="{{asset('public/assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
 
 </head>
 
 <body class="loading authentication-bg authentication-bg-pattern">
 
     @yield('content')
-<script src="{{asset('public/assets/libs/jquery/jquery.min.js')}}"></script>
-<script src="{{asset('public/assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<script src="{{asset('public/assets/libs/simplebar/simplebar.min.js')}}"></script>
-<script src="{{asset('public/assets/libs/node-waves/waves.min.js')}}"></script>
-<script src="{{asset('public/assets/libs/waypoints/lib/jquery.waypoints.min.js')}}"></script>
-<script src="{{asset('public/assets/libs/jquery.counterup/jquery.counterup.min.js')}}"></script>
-<script src="{{asset('public/assets/libs/feather-icons/feather.min.js')}}"></script>
+<script src="{{asset('assets/libs/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('assets/libs/simplebar/simplebar.min.js')}}"></script>
+<script src="{{asset('assets/libs/node-waves/waves.min.js')}}"></script>
+<script src="{{asset('assets/libs/waypoints/lib/jquery.waypoints.min.js')}}"></script>
+<script src="{{asset('assets/libs/jquery.counterup/jquery.counterup.min.js')}}"></script>
+<script src="{{asset('assets/libs/feather-icons/feather.min.js')}}"></script>
 
 <!-- App js -->
-<script src="{{asset('public/assets/js/app.min.js')}}"></script>
+<script src="{{asset('assets/js/app.min.js')}}"></script>
 
 </body>
 </html>
