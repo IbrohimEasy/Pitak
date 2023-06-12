@@ -173,7 +173,7 @@
                                             src="{{ asset('/assets/images/language/region.png') }}" alt="region">
                                     @break
             
-                                    @case('en')
+                                    @case('us')
                                         <img class="notifRegion2" id="selected_language"
                                             src="{{ asset('/assets/images/language/GB.png') }}" alt="region">
                                     @break
@@ -203,7 +203,7 @@
                                                     {{ $language->name }}
                                                 @break
             
-                                                @case('en') 
+                                                @case('us')
                                                     <img class="dropdownRegionBayroq" id="lang_en" style="margin-right: 8px;"
                                                         src="{{ asset('/assets/images/language/GB.png') }}" alt="region">
                                                     {{ $language->name }}
@@ -909,7 +909,41 @@
     <!-- App js-->
     <script src="{{ asset('assets/js/app.min.js') }}"></script>
 
-    <script>
+    <script defer>
+        $(document).ready(function() {
+            let language = '{{ $locale }}'
+            let uz = `{{ asset('/backend-assets/forthebuilders/images/region.png') }}`
+            let ru = `{{ asset('/backend-assets/forthebuilders/images/RU.png') }}`
+            let en = `{{ asset('/backend-assets/forthebuilders/images/GB.png') }}`
+
+            if ($('#lang-change').length > 0) {
+                $('#lang-change .dropdownMenyApplyUzbFlag a').each(function() {
+                    $(this).on('click', function(e) {
+                        e.preventDefault();
+                        var $this = $(this);
+                        var locale = $this.data('flag');
+                        switch (locale) {
+                            case 'uz':
+                                $('#selected_language').attr('src', uz)
+                                break;
+                            case 'en':
+                                $('#selected_language').attr('src', en)
+                                break;
+                            case 'ru':
+                                $('#selected_language').attr('src', ru)
+                                break;
+                        }
+                        $.post('{{ route('language.change') }}', {
+                            _token: '{{ csrf_token() }}',
+                            locale: locale
+                        }, function(data) {
+                            location.reload();
+                        });
+
+                    });
+                });
+            }
+        })
         $(document).on('click', '.delete-order', function(e) {
             var url = $(this).attr('data-url')
             $('#warning-alert-modal').find('form').attr('action', url)
