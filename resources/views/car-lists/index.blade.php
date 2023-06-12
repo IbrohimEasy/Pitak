@@ -21,7 +21,7 @@
                         <th class="text-center">{{translate('Functions')}}</th>
                     </tr>
                 </thead>
-                <tbody>$carLists
+                <tbody>
                 @php
                     $i = 0
                 @endphp
@@ -41,7 +41,7 @@
                                 <a class="form_functions btn btn-info" href="{{route('carList.show', $carList->id)}}"><i class="fe-eye"></i></a>
                                 <form action="{{route('carList.destroy', $carList->id)}}" method="POST">
                                     @csrf
-                                    @method('POST')
+                                    @method('DELETE')
                                     <button class="form_functions btn btn-danger"><i class="fe-trash-2"></i></button>
                                 </form>
                             </div>

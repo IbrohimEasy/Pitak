@@ -34,9 +34,9 @@
                     <label for="type" class="form-label">{{translate('Car type')}}</label>
                     <select id="type" class="form-select" name="car_type_id">
                         <option value="">{{translate('Choose..')}}</option>
-                        <option value="0">{{translate('SUV')}}</option>
-                        <option value="1">{{translate('Coupe')}}</option>
-                        <option value="2">{{translate('Convertable')}}</option>
+                        @foreach($carTypes as $carType)
+                            <option value="{{$carType->id??''}}">{{$carType->name??''}}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="mb-3">

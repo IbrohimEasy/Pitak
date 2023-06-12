@@ -23,6 +23,6 @@ class CarList extends Model
     }
 
     public function type(){
-        return $this->hasOne(Type::class, 'id', 'status_id');
+        return $this->hasOne(CarTypes::class, 'id', 'car_type_id');
     }
 }

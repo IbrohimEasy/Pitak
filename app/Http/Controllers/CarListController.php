@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\CarListRequest;
 use App\Models\Carlist;
+use App\Models\Status;
 use App\Models\CarTypes;
 
 class CarListController extends Controller
@@ -15,8 +16,7 @@ class CarListController extends Controller
     public function index()
     {
         $carLists = CarList::all();
-        $carTypes = CarTypes::all();
-        return view('car-lists.index', ['carLists'=>$carLists, 'carTypes'=>$carTypes]);
+        return view('car-lists.index', ['carLists'=>$carLists]);
     }
 
     /**
@@ -24,8 +24,9 @@ class CarListController extends Controller
      */
     public function create()
     {
+        $carTypes = CarTypes::all();
         $statuses = Status::all();
-        return view('car-lists.create', ['statuses'=>$statuses]);
+        return view('car-lists.create', ['statuses'=>$statuses, 'carTypes'=>$carTypes]);
     }
 
     /**
@@ -33,6 +34,11 @@ class CarListController extends Controller
      */
     public function store(CarListRequest $request)
     {
+        $model = new Carlist();
+        $model->status_id = $request->status_id;
+        $model->car_type_id = $request->car_type_id;
+        $model->name = $request->name;
+        $model->save();
         return redirect()->route('carList.index');
     }
 
@@ -41,7 +47,8 @@ class CarListController extends Controller
      */
     public function show(string $id)
     {
-        return view('car-lists.show');
+        $model = Carlist::find($id);
+        return view('car-lists.show', ['model'=>$model]);
     }
 
     /**
@@ -49,8 +56,10 @@ class CarListController extends Controller
      */
     public function edit(string $id)
     {
+        $model = Carlist::find($id);
         $statuses = Status::all();
-        return view('car-lists.edit', ['statuses'=>$statuses]);
+        $carTypes = CarTypes::all();
+        return view('car-lists.edit', ['statuses'=>$statuses, 'carTypes'=>$carTypes, 'model'=>$model]);
     }
 
     /**
@@ -58,6 +67,11 @@ class CarListController extends Controller
      */
     public function update(CarListRequest $request, string $id)
     {
+        $model = Carlist::find($id);
+        $model->status_id = $request->status_id;
+        $model->car_type_id = $request->car_type_id;
+        $model->name = $request->name;
+        $model->save();
         return redirect()->route('carList.index');
     }
 
@@ -66,6 +80,8 @@ class CarListController extends Controller
      */
     public function destroy(string $id)
     {
+        $model = Carlist::find($id);
+        $model->delete();
         return redirect()->route('carList.index');
     }
 }
