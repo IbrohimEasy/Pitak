@@ -42,7 +42,7 @@
                             </a>
                             {{-- <a href="{{ route('coupon.destroy', $coupon->id) }}"> --}}
                                 {{-- <button type="button" class="btn btn-danger waves-effect waves-light"><i class="fe-trash-2"></i></button> --}}
-                                <button type="button" class="btn btn-danger delete-coupon" data-bs-toggle="modal" data-bs-target="#warning-alert-modal" data-url="{{ route('coupon.destroy', $coupon->id) }}"><i class="fe-trash-2"></i></button>
+                                <button type="button" class="btn btn-danger delete-datas" data-bs-toggle="modal" data-bs-target="#warning-alert-modal" data-url="{{ route('coupon.destroy', $coupon->id) }}"><i class="fe-trash-2"></i></button>
                             {{-- </a> --}}
                         </td>
                     </tr>   

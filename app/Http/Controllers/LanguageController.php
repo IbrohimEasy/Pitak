@@ -104,7 +104,7 @@ class LanguageController extends Controller
     public function index()
     {
 
-        $languages = Language::get();
+        $languages = Language::orderBy('id', 'ASC')->get();
         // dd($languages);
         return view('language.index', [
             'languages' => $languages,
@@ -117,8 +117,8 @@ class LanguageController extends Controller
     public function show(Request $request, $id)
     {
         $sort_search = null;
-        $language = Language::findOrFail(decrypt($id));
-        // dd();
+        // dd($id);
+        $language = Language::findOrFail($id);
         $lang_keys = Translation::where('lang', env('DEFAULT_LANGUAGE', 'en'))->get();
         if ($request->has('search')) {
             $sort_search = $request->search;
@@ -277,7 +277,8 @@ class LanguageController extends Controller
 
     public function languageDestroy($id)
     {
-        $language = Language::findOrFail(decrypt($id));
+        // dd($id);
+        $language = Language::findOrFail($id);
         // dd(env('DEFAULT_LANGUAGE','ru'));
         // dd($language);
         if (env('DEFAULT_LANGUAGE', 'ru') == $language->code) {

@@ -7,6 +7,7 @@
 @section('content')
 <form class="form-horizontal" action="{{ route('translation.save') }}" method="POST">
     @csrf
+    <input type="hidden" id="language_code" value="{{ $language->code }}">
     <input type="hidden" name="id" value="{{ $language->id }}">
     <h5 class="mb-md-0 h6">{{ $language->name }}</h5>
     <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap">
@@ -31,8 +32,8 @@
                 {{-- @dd($val->carList); --}}
                     <tr>
                         <td>{{ $n++ }}</td>
-                        <td>{{ $translation->lang_key }}</td>
-                        <td>
+                        <td class="lang_key">{{ $translation->lang_key }}</td>
+                        <td class="lang_value">
                             <input type="text" class="checkboxDivPerewvod value" id="input"
                         style="width:100%" name="values[{{ $translation->lang_key }}]"
                         @if (($traslate_lang = \App\Models\Translation::where('lang', $language->code)->where('lang_key', $translation->lang_key)->first()) != null) value="{{ $traslate_lang->lang_value }}" @endif>
@@ -56,37 +57,6 @@
     </div>
 </form>
 
+<script src="{{ asset('assets/js/other/language.js') }}"></script>
 
-<script type="text/javascript">
-    function copyTranslation() {    
-        $('.key').each(function(index) {
-            console.log($(this).text());
-            // var key=document.getElementsByClassName("checkboxDivPerewvod").inner;
-            // console.log(key);
-            // console.log();
-
-            // $(tr).find('.value').val($(tr).find('.key').text());
-            var _this = $(this)
-
-            $.post('{{ route('languages.update_value') }}', {
-                _token: '{{ csrf_token() }}',
-                id: index,
-                code: document.getElementById("language_code").value,
-                status: $(this).text()
-            }, function(data) {
-                console.log(data);
-                const tsestQ = document.getElementsByClassName("value");
-                // tsestQ.value=data;
-                // console.log(tsestQ);
-                _this.siblings('.value').val(data);
-                // $('.value').val(data);
-
-            });
-        });
-    }
-
-    function sort_keys(el) {
-        $('#sort_keys').submit();
-    }
-</script>
 @endsection

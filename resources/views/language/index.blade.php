@@ -58,7 +58,7 @@
                                         <td> {{ $value->name }}</td>
                                         <td>{{ $value->code }}</td>
                                         <td>
-                                            <a href="{{ route('language.show', encrypt($value->id)) }}"
+                                            <a href="{{ route('language.show', $value->id) }}"
                                                 title="{{ translate('Translation') }}"  >
                                                 <button type="button" class="btn btn-primary waves-effect waves-light"><i class="fa fa-language"></i></button>
 
@@ -72,7 +72,7 @@
                                                 <button type="button" class="btn btn-primary waves-effect waves-light"><i class="fe-edit"></i></button>
                                             </a>
                                             @if ($value->code != 'en')
-                                            <button type="button" class="btn btn-danger delete-order" data-bs-toggle="modal" data-bs-target="#warning-alert-modal" data-url="{{ route('language.destroy', $language->id) }}"><i class="fe-trash-2"></i></button>
+                                            <button type="button" class="btn btn-danger delete-datas" data-bs-toggle="modal" data-bs-target="#warning-alert-modal" data-url="{{ route('language.destroy', $language->id) }}"><i class="fe-trash-2"></i></button>
                                             @endif
                                         </td>
                                     </tr>   

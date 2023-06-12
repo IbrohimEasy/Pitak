@@ -42,7 +42,7 @@
                             </a>
                             {{-- <a href="{{ route('role.destroy', $role->id) }}"> --}}
                                 {{-- <button type="button" class="btn btn-danger waves-effect waves-light"><i class="fe-trash-2"></i></button> --}}
-                                <button type="button" class="btn btn-danger delete-role" data-bs-toggle="modal" data-bs-target="#warning-alert-modal" data-url="{{ route('role.destroy', $role->id) }}"><i class="fe-trash-2"></i></button>
+                                <button type="button" class="btn btn-danger delete-datas" data-bs-toggle="modal" data-bs-target="#warning-alert-modal" data-url="{{ route('role.destroy', $role->id) }}"><i class="fe-trash-2"></i></button>
                             {{-- </a> --}}
                         </td>
                     </tr>   
