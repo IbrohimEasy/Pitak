@@ -2,14 +2,13 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8" />
     {{-- <title>{{ $title ?? translate('Pitac') }}</title> --}}
     <title>{{ $title ?? 'Pitac' }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
 
@@ -21,7 +20,6 @@
     <link href="{{ asset('assets/libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/libs/selectize/css/selectize.bootstrap3.css') }}" rel="stylesheet" type="text/css" />
     <!-- third party css end -->
-
     <!-- App css -->
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style" />
       {{-- Main css --}}
@@ -31,7 +29,48 @@
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
 
 </head>
+<style>
+    .display-none {
+        display: none;
+    }
 
+    .language_flag {
+        position: absolute;
+        z-index: 1;
+        margin-top: 70px;
+    }
+    .dropdownMenyApplyUzbFlag {
+        background-color: #F9FBFF;
+        width: 135px;
+        margin-left: -43px !important;
+        margin-top: 7px;
+        height: 120px;
+        border-radius: 20px;
+        padding-top: 5px;
+        box-shadow: 2px 4px 14px silver;
+    }
+    .dropdownRegionBayroq {
+        width: 40px;
+        height: 27px;
+    }
+
+    .dropdownLanguageItem {
+        transition: all 0.3s ease;
+        font-size: 14px;
+        padding-left: 17px;
+    }
+
+    .dropdownLanguageItem:hover {
+        background-color: #E8F0FF !important;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+    }
+
+    .dropdownLanguageItem:active {
+        background-color: transparent !important;
+    }
+
+</style>
 <!-- body start -->
 
 <body class="loading" data-layout-color="light" data-layout-mode="default" data-layout-size="fluid"
@@ -131,17 +170,17 @@
                                 @switch($locale)
                                     @case('uz')
                                         <img class="notifRegion2" id="selected_language"
-                                            src="{{ asset('/assets/images/germany.jpg') }}" alt="region">
+                                            src="{{ asset('/assets/images/language/region.png') }}" alt="region">
                                     @break
             
-                                    @case('en')
+                                    @case('us')
                                         <img class="notifRegion2" id="selected_language"
-                                            src="{{ asset('/assets/images/us.jpg') }}" alt="region">
+                                            src="{{ asset('/assets/images/language/GB.png') }}" alt="region">
                                     @break
             
                                     @case('ru')
                                         <img class="notifRegion2" id="selected_language"
-                                            src="{{ asset('/assets/images/russia.jpg') }}" alt="region">
+                                            src="{{ asset('/assets/images/language/RU.png') }}" alt="region">
                                     @break
                                 @endswitch
                             </a>
@@ -154,19 +193,19 @@
                                        class="dropdown-item dropdown-item dropdownLanguageItem @if ($locale == $language->code) active @endif" >
                                         @switch($language->code)
                                             @case('uz')
-                                                <img class="dropdownRegionBayroq" id="lang_uz" style="margin-right: 8px;" src="{{asset('/assets/images/germany.jpg')}}" alt="region">
+                                                <img class="dropdownRegionBayroq" id="lang_uz" style="margin-right: 8px;" src="{{asset('/assets/images/language/region.png')}}" alt="region">
                                                 {{ $language->name }}
                                                 @break
             
                                                 @case('ru')
                                                     <img class="dropdownRegionBayroq" id="lang_ru" style="margin-right: 8px;"
-                                                        src="{{ asset('/assets/images/russia.jpg') }}" alt="region">
+                                                        src="{{ asset('/assets/images/language/RU.png') }}" alt="region">
                                                     {{ $language->name }}
                                                 @break
             
-                                                @case('en') 
+                                                @case('us')
                                                     <img class="dropdownRegionBayroq" id="lang_en" style="margin-right: 8px;"
-                                                        src="{{ asset('/assets/images/us.jpg') }}" alt="region">
+                                                        src="{{ asset('/assets/images/language/GB.png') }}" alt="region">
                                                     {{ $language->name }}
                                                 @break
                                             @endswitch
@@ -318,11 +357,14 @@
                         <div class="dropdown-divider"></div>
 
                         <!-- item-->
-                        <a href="auth-logout.html" class="dropdown-item notify-item">
-                            <i class="fe-log-out"></i>
-                            <span>Logout</span>
-                        </a>
-
+                        <form action="{{route('logout')}}" method="POST">
+                            @csrf
+                            @method("POST")
+                            <button class="dropdown-item notify-item" type="submit">
+                                <i class="fe-log-out"></i>
+                                <span>{{translate('Logout')}}</span>
+                            </button>
+                        </form>
                     </div>
                 </li>
 
@@ -405,11 +447,14 @@
                             </a>
 
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <i class="fe-log-out me-1"></i>
-                                <span>Logout</span>
-                            </a>
-
+                            <form action="{{route('logout')}}" method="POST">
+                                @csrf
+                                @method("POST")
+                                <button class="dropdown-item notify-item" type="submit">
+                                    <i class="fe-log-out me-1"></i>
+                                    <span>{{translate('Logout')}}</span>
+                                </button>
+                            </form>
                         </div>
                     </div>
 
@@ -864,11 +909,54 @@
     <!-- App js-->
     <script src="{{ asset('assets/js/app.min.js') }}"></script>
 
-    <script>
+    <script defer>
+        $(document).ready(function() {
+            let language = '{{ $locale }}'
+            let uz = `{{ asset('/backend-assets/forthebuilders/images/region.png') }}`
+            let ru = `{{ asset('/backend-assets/forthebuilders/images/RU.png') }}`
+            let en = `{{ asset('/backend-assets/forthebuilders/images/GB.png') }}`
+
+            if ($('#lang-change').length > 0) {
+                $('#lang-change .dropdownMenyApplyUzbFlag a').each(function() {
+                    $(this).on('click', function(e) {
+                        e.preventDefault();
+                        var $this = $(this);
+                        var locale = $this.data('flag');
+                        switch (locale) {
+                            case 'uz':
+                                $('#selected_language').attr('src', uz)
+                                break;
+                            case 'en':
+                                $('#selected_language').attr('src', en)
+                                break;
+                            case 'ru':
+                                $('#selected_language').attr('src', ru)
+                                break;
+                        }
+                        $.post('{{ route('language.change') }}', {
+                            _token: '{{ csrf_token() }}',
+                            locale: locale
+                        }, function(data) {
+                            location.reload();
+                        });
+
+                    });
+                });
+            }
+        })
         $(document).on('click', '.delete-order', function(e) {
             var url = $(this).attr('data-url')
             $('#warning-alert-modal').find('form').attr('action', url)
         })
+        let dropdownMenuButton = document.getElementById('dropdownMenuButton')
+        let language_flag = document.getElementById('language_flag')
+        dropdownMenuButton.addEventListener('click', function() {
+            if (language_flag.classList.contains('display-none')) {
+                language_flag.classList.remove('display-none')
+            } else {
+                language_flag.classList.add('display-none')
+            }
+        });
     </script>
 </body>
 

@@ -16,7 +16,8 @@ return new class extends Migration
             $table->integer('role_id')->nullable();
             $table->integer('company_id')->nullable();
             $table->integer('personal_info_id')->nullable();
-            $table->string('login')->unique();
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('token')->unique()->nullable();
             $table->timestamps();
