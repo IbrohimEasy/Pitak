@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('status_id')->nullable();
             $table->integer('car_type_id')->nullable();
-            $table->integer('name')->nullable();
+            $table->varchar('name')->nullable();
             $table->timestamps();
             $table->softDeletes();
             // $table->foreign('model_id')->references('id')->on('model')

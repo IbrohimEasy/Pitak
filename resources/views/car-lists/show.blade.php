@@ -20,19 +20,19 @@
                 <tbody>
                     <tr>
                         <th>{{translate('Status')}}</th>
-                        <td>Active</td>
+                        <td>{{$model->status->name}}</td>
                     </tr>
                     <tr>
                         <th>{{translate('Car type')}}</th>
-                        <td>chevrolet</td>
+                        <td>{{$model->type->name}}</td>
                     </tr>
                     <tr>
                         <th>{{translate('Name')}}</th>
-                        <td>Malibu</td>
+                        <td>{{$model->name}}</td>
                     </tr>
                     <tr>
                         <th>{{translate('Updated at')}}</th>
-                        <td>2023-06-06 12:14:14</td>
+                        <td>{{$model->updated_at}}</td>
                     </tr>
                 </tbody>
             </table>
