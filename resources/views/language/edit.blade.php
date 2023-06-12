@@ -4,7 +4,7 @@
     {{-- Your page title --}}
 @endsection
 @section('content')
-            <form action="{{route('role.update',$role->id)}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('language.update',$language->id)}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="row">
@@ -12,7 +12,7 @@
                         <div class="">
                             <label class="form-label">{{translate('Name')}}</label>
         
-                            <input type="text" name="role_name" value="{{$role->name}}" class="form-control" required placeholder="Type something" />
+                            <input type="text" name="name" value="{{$language->name}}" class="form-control" required placeholder="Type something" />
                         </div>
                     </div>
                     <div class="col-md-2">

@@ -24,6 +24,8 @@
 
     <!-- App css -->
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style" />
+      {{-- Main css --}}
+    <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet" type="text/css" id="app-style" />
 
     <!-- icons -->
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
@@ -112,6 +114,68 @@
                             </div>
                         </div>
                     </form>
+                </li>
+                <li class="">
+                    <div>
+                        @php
+                            if (session()->has('locale')) {
+                                $locale = session('locale');
+                            } else {
+                                $locale = env('DEFAULT_LANGUAGE', 'ru');
+                            }
+                            // $locale=app()->getLocale()?? env('DEFAULT_LANGUAGE');
+                        @endphp
+                        <div class="align-items-stretch d-flex dropdown" id="lang-change">
+                            <a class="buttonUzbDropDownHeader dropdown-toggle" type="button" id="dropdownMenuButton" role="button"
+                                data-toggle="dropdown" aria-haspopup="false" aria-expanded="false" href="javascript:void(0);">
+                                @switch($locale)
+                                    @case('uz')
+                                        <img class="notifRegion2" id="selected_language"
+                                            src="{{ asset('/assets/images/germany.jpg') }}" alt="region">
+                                    @break
+            
+                                    @case('en')
+                                        <img class="notifRegion2" id="selected_language"
+                                            src="{{ asset('/assets/images/us.jpg') }}" alt="region">
+                                    @break
+            
+                                    @case('ru')
+                                        <img class="notifRegion2" id="selected_language"
+                                            src="{{ asset('/assets/images/russia.jpg') }}" alt="region">
+                                    @break
+                                @endswitch
+                            </a>
+                            <div id="language_flag" class="language_flag display-none"
+                                style="border: none; background-color: transparent;" aria-labelledby="dropdownMenuButton">
+                                <div class="up-arrow"></div>
+                                <div class="dropdownMenyApplyUzbFlag">
+                                    @foreach (\App\Models\Language::all() as $key => $language)
+                                    <a href="javascript:void(0)" data-flag="{{ $language->code }}"
+                                       class="dropdown-item dropdown-item dropdownLanguageItem @if ($locale == $language->code) active @endif" >
+                                        @switch($language->code)
+                                            @case('uz')
+                                                <img class="dropdownRegionBayroq" id="lang_uz" style="margin-right: 8px;" src="{{asset('/assets/images/germany.jpg')}}" alt="region">
+                                                {{ $language->name }}
+                                                @break
+            
+                                                @case('ru')
+                                                    <img class="dropdownRegionBayroq" id="lang_ru" style="margin-right: 8px;"
+                                                        src="{{ asset('/assets/images/russia.jpg') }}" alt="region">
+                                                    {{ $language->name }}
+                                                @break
+            
+                                                @case('en') 
+                                                    <img class="dropdownRegionBayroq" id="lang_en" style="margin-right: 8px;"
+                                                        src="{{ asset('/assets/images/us.jpg') }}" alt="region">
+                                                    {{ $language->name }}
+                                                @break
+                                            @endswitch
+                                        </a>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </li>
 
                 <li class="dropdown d-inline-block d-lg-none">
@@ -383,14 +447,30 @@
                                 <span> Dashboard </span>
                             </a>
                         </li>
-{{--                        <li>--}}
-{{--                            <a href="{{ route('order.index') }}">--}}
-{{--                                <i class="mdi mdi-view-dashboard-outline"></i>--}}
-{{--                                 <span class="badge bg-success rounded-pill float-end">9+</span>--}}
-{{--                                <span> Order </span>--}}
-{{--                                 <span> {{ translate('Order') }} </span>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
+                        <li>
+                            <a href="{{ route('order.index') }}">
+                                <i class="mdi mdi-view-dashboard-outline"></i>
+                                <!-- <span class="badge bg-success rounded-pill float-end">9+</span> -->
+                                <span> Order </span>
+                                <!-- <span> {{ translate('Order') }} </span> -->
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('offer.index') }}">
+                                <i class="mdi mdi-view-dashboard-outline"></i>
+                                <!-- <span class="badge bg-success rounded-pill float-end">9+</span> -->
+                                <span> Offer </span>
+                                <!-- <span> {{ translate('Offer') }} </span> -->
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('client.index') }}">
+                                <i class="mdi mdi-view-dashboard-outline"></i>
+                                <!-- <span class="badge bg-success rounded-pill float-end">9+</span> -->
+                                <span> Client </span>
+                                <!-- <span> {{ translate('Client') }} </span> -->
+                            </a>
+                        </li>
                         <li>
                             <a href="{{route('user.index')}}">
                                 <i class="mdi mdi-account-multiple-plus-outline"></i>
@@ -398,13 +478,12 @@
                                 <span> Users </span>
                             </a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="{{route('role.index')}}">
                                 <i class="mdi mdi-account-multiple-plus-outline"></i>
-                                {{-- <span class="badge bg-success rounded-pill float-end">9+</span> --}}
                                 <span> Role </span>
                             </a>
-                        </li>
+                        </li> --}}
                         <li>
                             <a href="#cars" data-bs-toggle="collapse">
                                 <i class="mdi mdi-car-outline"></i>
@@ -439,11 +518,32 @@
                             </a>
                         </li> --}}
 
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('settings.index') }}">
                                 <i class="mdi mdi-calendar-blank-outline"></i>
                                 <span> Settings </span>
                             </a>
+                        </li> --}}
+                        <li>
+                            <a href="#settings" data-bs-toggle="collapse">
+                                <i class="fe-settings noti-icon"></i>
+                                
+                                <span> {{translate('Settings')}} </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="settings">
+                                <ul class="nav-second-level">
+                                    <li>
+                                        <a href="{{route('language.index')}}"> {{translate('Language')}}  </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('coupon.index')}}">{{translate('Coupon')}}</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('role.index')}}">{{translate('Role')}}</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         {{-- <li class="menu-title mt-2">Apps</li>
 
@@ -493,7 +593,13 @@
             <div class="content">
                 <!-- Start Content-->
                 <div class="container-fluid">
-                    @yield('content')
+                    <div class="card">
+                        <div class="card-body">
+                            
+                            @yield('content')
+                            
+                        </div>
+                    </div>
                 </div>
                 <!-- container-fluid -->
             </div>

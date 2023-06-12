@@ -63,6 +63,9 @@
                             @endforeach
                         </td>
                         <td>
+                            <a href="{{ route('order.show', $val->id) }}">
+                                <button type="button" class="btn btn-success waves-effect waves-light"><i class="fe-eye"></i></button>
+                            </a>
                             <a href="{{ route('order.edit', $val->id) }}">
                                 <button type="button" class="btn btn-primary waves-effect waves-light"><i class="fe-edit"></i></button>
                             </a>

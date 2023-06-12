@@ -4,19 +4,21 @@
     {{-- Your page title --}}
 @endsection
 @section('content')
-            <form action="{{route('role.update',$role->id)}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('coupon.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
-                @method('PUT')
+                @method('POST')
                 <div class="row">
-                    <div class="col-md-7">
+                    <div class="col-md-5">
                         <div class="">
                             <label class="form-label">{{translate('Name')}}</label>
-        
-                            <input type="text" name="role_name" value="{{$role->name}}" class="form-control" required placeholder="Type something" />
+                            <input type="text" name="name"  class="form-control" required placeholder="Type something" />
                         </div>
                     </div>
-                    <div class="col-md-2">
-                        
+                    <div class="col-md-4">
+                        <div class="">
+                            <label class="form-label">{{translate('Percent')}}</label>
+                            <input type="number" name="percent"  class="form-control" required placeholder="Type something" />
+                        </div>
                     </div>
                     <div class="col-md-3">
                         <div style="margin-top: 30px;">
