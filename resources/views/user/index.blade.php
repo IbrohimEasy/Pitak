@@ -17,12 +17,12 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Firstname</th>
-                        <th>Lastname</th>
-                        <th>Phone number</th>
-                        <th>Avatar</th>
-                        <th>Updated at</th>
-                        <th class="text-center">Functions</th>
+                        <th>{{translate('Avatar')}}</th>
+                        <th>{{translate('Firstname')}}</th>
+                        <th>{{translate('Lastname')}}</th>
+                        <th>{{translate('Role')}}</th>
+                        <th>{{translate('Phone number')}}</th>
+                        <th class="text-center">{{translate('Functions')}}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,9 +35,6 @@
                     @endphp
                     <tr>
                         <th scope="row">{{$i}}</th>
-                        <td>{{$staff->personalInfo->first_name}}</td>
-                        <td>{{$staff->personalInfo->last_name}}</td>
-                        <td>{{$staff->personalInfo->phone_number}}</td>
                         <td class="text-center">
                             @if(isset($staff->id))
                                 @php
@@ -50,7 +47,10 @@
                                 @endif
                             @endif
                         </td>
-                        <td>{{$staff->updated_at}}</td>
+                        <td>{{$staff->personalInfo->first_name}}</td>
+                        <td>{{$staff->personalInfo->last_name}}</td>
+                        <td>{{$staff->role->name}}</td>
+                        <td>{{$staff->personalInfo->phone_number}}</td>
                         <td>
                             <div class="d-flex justify-content-center">
                                 <a class="form_functions btn btn-info" href="{{route('user.edit', $staff->id)}}"><i class="fe-edit-2"></i></a>

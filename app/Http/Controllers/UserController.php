@@ -80,7 +80,8 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        return view('user.show');
+        $model = User::find($id);
+        return view('user.show', ['model'=>$model]);
     }
 
     /**

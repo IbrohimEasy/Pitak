@@ -25,6 +25,8 @@
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style"/>
       {{-- Main css --}}
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet" type="text/css" id="app-style" />
+    <link href="{{ asset('assets/libs/dropzone/min/dropzone.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/libs/dropify/css/dropify.min.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- icons -->
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
@@ -856,6 +858,10 @@
     <script src="{{ asset('assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>
     <script src="{{ asset('assets/js/pages/form-advanced.init.js') }}"></script>
 
+    <script src="{{asset('assets/libs/dropzone/min/dropzone.min.js')}}"></script>
+    <script src="{{asset('assets/libs/dropify/js/dropify.min.js')}}"></script>
+    <!-- Init js-->
+    <script src="{{asset('assets/js/pages/form-fileuploads.init.js')}}"></script>
     <!-- knob plugin -->
     <script src="{{ asset('assets/libs/jquery-knob/jquery.knob.min.js') }}"></script>
 

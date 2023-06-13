@@ -82,7 +82,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">{{translate('Login')}}</label>
-                    <input type="email" class="form-control" name="email" required value="{{$staff->login??''}}"/>
+                    <input type="email" class="form-control" name="email" required value="{{$staff->email??''}}"/>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">{{translate('Current password')}}</label>
@@ -97,7 +97,7 @@
                     <input type="password" class="form-control" name="password_confirmation" value=""/>
                 </div>
                 <div>
-                    <button type="submit" class="btn btn-primary waves-effect waves-light">{{translate('Create')}}</button>
+                    <button type="submit" class="btn btn-primary waves-effect waves-light">{{translate('Update')}}</button>
                     <button type="reset" class="btn btn-secondary waves-effect">{{translate('Cancel')}}</button>
                 </div>
             </form>

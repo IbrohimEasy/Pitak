@@ -46,4 +46,10 @@ class User extends Authenticatable
     public function personalInfo(){
         return $this->hasOne(PersonalInfo::class, 'id', 'personal_info_id');
     }
+    public function role(){
+        return $this->hasOne(Role::class, 'id', 'role_id');
+    }
+    public function company(){
+        return $this->hasOne(Company::class, 'id', 'company_id');
+    }
 }

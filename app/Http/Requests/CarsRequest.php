@@ -22,8 +22,14 @@ class CarsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=>'required|string',
-            'status_id'=>'required|integer'
+            'car_list_id'=>'required|integer',
+            'driver_id'=>'required|integer',
+            'status_id'=>'required|integer',
+            'color_list_id'=>'required|integer',
+            'class_list_id'=>'required|integer',
+            'reg_certificate'=>'required|string',
+            'reg_certificate_image'=>'nullable|mimes:jpeg,jpg,png|max:10240',
+            'images'=>'nullable|array',
         ];
     }
 }

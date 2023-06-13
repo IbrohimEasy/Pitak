@@ -24,7 +24,7 @@ class UserRequest extends BaseFormRequest
     public function store()
     {
         return [
-            'first_name' => 'nullable|string',
+            'first_name' => 'required|string',
             'last_name' => 'nullable|string',
             'middle_name' => 'nullable|string',
             'phone_number' => 'nullable|string',
@@ -41,14 +41,14 @@ class UserRequest extends BaseFormRequest
     public function update()
     {
         return [
-            'first_name' => 'nullable|string',
+            'first_name' => 'required|string',
             'last_name' => 'nullable|string',
             'middle_name' => 'nullable|string',
             'phone_number' => 'nullable|string',
             'status_id' => 'nullable|integer',
             'gender' => 'nullable|integer',
             'birth_date' => 'nullable|date',
-            'email' => 'required|string',
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('yy_staffs')->ignore($this->user)],
             'password' => 'nullable|string|min:8|confirmed',
             'role_id' => 'required|integer',
             'company_id' => 'nullable|integer',

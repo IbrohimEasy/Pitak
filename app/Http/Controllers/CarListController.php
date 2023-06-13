@@ -39,7 +39,7 @@ class CarListController extends Controller
         $model->car_type_id = $request->car_type_id;
         $model->name = $request->name;
         $model->save();
-        return redirect()->route('carList.index');
+        return redirect()->route('carList.index')->with('status', translate('Successfully created'));
     }
 
     /**
@@ -72,7 +72,7 @@ class CarListController extends Controller
         $model->car_type_id = $request->car_type_id;
         $model->name = $request->name;
         $model->save();
-        return redirect()->route('carList.index');
+        return redirect()->route('carList.index')->with('status', translate('Successfully updated'));
     }
 
     /**
@@ -82,6 +82,6 @@ class CarListController extends Controller
     {
         $model = Carlist::find($id);
         $model->delete();
-        return redirect()->route('carList.index');
+        return redirect()->route('carList.index')->with('status', translate('Successfully deleted'));
     }
 }

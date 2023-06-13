@@ -14,200 +14,51 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>{{translate('Name')}}</th>
-                    <th>{{translate('Status')}}</th>
+                    <th>{{translate('Car list')}}</th>
+                    <th>{{translate('Driver')}}</th>
+                    <th>{{translate('Color')}}</th>
+                    <th>{{translate('Image')}}</th>
                     <th>{{translate('Updated at')}}</th>
                     <th class="text-center">{{translate('Functions')}}</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Active</td>
-                    <td>2023-06-06 12:14:14</td>
-                    <td>
-                        <div class="d-flex justify-content-center">
-                            <a class="form_functions btn btn-info" href="{{route('cars.edit', 1)}}"><i class="fe-edit-2"></i></a>
-                            <a class="form_functions btn btn-info" href="{{route('cars.show', 1)}}"><i class="fe-eye"></i></a>
-                            <form action="{{route('cars.destroy', 1)}}" method="POST">
-                                @csrf
-                                @method('POST')
-                                <button class="form_functions btn btn-danger"><i class="fe-trash-2"></i></button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Active</td>
-                    <td>2023-08-06 02:14:14</td>
-                    <td>
-                        <div class="d-flex justify-content-around">
-                            <a class="form_functions btn btn-info" href="{{route('cars.edit', 1)}}"><i class="fe-edit-2"></i></a>
-                            <a class="form_functions btn btn-info" href="{{route('cars.show', 1)}}"><i class="fe-eye"></i></a>
-                            <form action="{{route('cars.destroy', 1)}}" method="POST">
-                                @csrf
-                                @method('POST')
-                                <button class="form_functions btn btn-danger"><i class="fe-trash-2"></i></button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>No active</td>
-                    <td>2023-07-06 14:14:14</td>
-                    <td>
-                        <div class="d-flex justify-content-around">
-                            <a class="form_functions btn btn-info" href="{{route('cars.edit', 1)}}"><i class="fe-edit-2"></i></a>
-                            <a class="form_functions btn btn-info" href="{{route('cars.show', 1)}}"><i class="fe-eye"></i></a>
-                            <form action="{{route('cars.destroy', 1)}}" method="POST">
-                                @csrf
-                                @method('POST')
-                                <button class="form_functions btn btn-danger"><i class="fe-trash-2"></i></button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>Mark</td>
-                    <td>Active</td>
-                    <td>2023-06-06 12:14:14</td>
-                    <td>
-                        <div class="d-flex justify-content-around">
-                            <a class="form_functions btn btn-info" href="{{route('cars.edit', 1)}}"><i class="fe-edit-2"></i></a>
-                            <a class="form_functions btn btn-info" href="{{route('cars.show', 1)}}"><i class="fe-eye"></i></a>
-                            <form action="{{route('cars.destroy', 1)}}" method="POST">
-                                @csrf
-                                @method('POST')
-                                <button class="form_functions btn btn-danger"><i class="fe-trash-2"></i></button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">5</th>
-                    <td>Jacob</td>
-                    <td>Active</td>
-                    <td>2023-08-06 02:14:14</td>
-                    <td>
-                        <div class="d-flex justify-content-around">
-                            <a class="form_functions btn btn-info" href="{{route('cars.edit', 1)}}"><i class="fe-edit-2"></i></a>
-                            <a class="form_functions btn btn-info" href="{{route('cars.show', 1)}}"><i class="fe-eye"></i></a>
-                            <form action="{{route('cars.destroy', 1)}}" method="POST">
-                                @csrf
-                                @method('POST')
-                                <button class="form_functions btn btn-danger"><i class="fe-trash-2"></i></button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">6</th>
-                    <td>Larry</td>
-                    <td>No active</td>
-                    <td>2023-07-06 14:14:14</td>
-                    <td>
-                        <div class="d-flex justify-content-around">
-                            <a class="form_functions btn btn-info" href="{{route('cars.edit', 1)}}"><i class="fe-edit-2"></i></a>
-                            <a class="form_functions btn btn-info" href="{{route('cars.show', 1)}}"><i class="fe-eye"></i></a>
-                            <form action="{{route('cars.destroy', 1)}}" method="POST">
-                                @csrf
-                                @method('POST')
-                                <button class="form_functions btn btn-danger"><i class="fe-trash-2"></i></button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">7</th>
-                    <td>Mark</td>
-                    <td>Active</td>
-                    <td>2023-06-06 12:14:14</td>
-                    <td>
-                        <div class="d-flex justify-content-around">
-                            <a class="form_functions btn btn-info" href="{{route('cars.edit', 1)}}"><i class="fe-edit-2"></i></a>
-                            <a class="form_functions btn btn-info" href="{{route('cars.show', 1)}}"><i class="fe-eye"></i></a>
-                            <form action="{{route('cars.destroy', 1)}}" method="POST">
-                                @csrf
-                                @method('POST')
-                                <button class="form_functions btn btn-danger"><i class="fe-trash-2"></i></button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">8</th>
-                    <td>Jacob</td>
-                    <td>Active</td>
-                    <td>2023-08-06 02:14:14</td>
-                    <td>
-                        <div class="d-flex justify-content-around">
-                            <a class="form_functions btn btn-info" href="{{route('cars.edit', 1)}}"><i class="fe-edit-2"></i></a>
-                            <a class="form_functions btn btn-info" href="{{route('cars.show', 1)}}"><i class="fe-eye"></i></a>
-                            <form action="{{route('cars.destroy', 1)}}" method="POST">
-                                @csrf
-                                @method('POST')
-                                <button class="form_functions btn btn-danger"><i class="fe-trash-2"></i></button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">9</th>
-                    <td>Larry</td>
-                    <td>No active</td>
-                    <td>2023-07-06 14:14:14</td>
-                    <td>
-                        <div class="d-flex justify-content-around">
-                            <a class="form_functions btn btn-info" href="{{route('cars.edit', 1)}}"><i class="fe-edit-2"></i></a>
-                            <a class="form_functions btn btn-info" href="{{route('cars.show', 1)}}"><i class="fe-eye"></i></a>
-                            <form action="{{route('cars.destroy', 1)}}" method="POST">
-                                @csrf
-                                @method('POST')
-                                <button class="form_functions btn btn-danger"><i class="fe-trash-2"></i></button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">10</th>
-                    <td>Jacob</td>
-                    <td>Active</td>
-                    <td>2023-08-06 02:14:14</td>
-                    <td>
-                        <div class="d-flex justify-content-around">
-                            <a class="form_functions btn btn-info" href="{{route('cars.edit', 1)}}"><i class="fe-edit-2"></i></a>
-                            <a class="form_functions btn btn-info" href="{{route('cars.show', 1)}}"><i class="fe-eye"></i></a>
-                            <form action="{{route('cars.destroy', 1)}}" method="POST">
-                                @csrf
-                                @method('POST')
-                                <button class="form_functions btn btn-danger"><i class="fe-trash-2"></i></button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">11</th>
-                    <td>Larry</td>
-                    <td>No active</td>
-                    <td>2023-07-06 14:14:14</td>
-                    <td>
-                        <div class="d-flex justify-content-around">
-                            <a class="form_functions btn btn-info" href="{{route('cars.edit', 1)}}"><i class="fe-edit-2"></i></a>
-                            <a class="form_functions btn btn-info" href="{{route('cars.show', 1)}}"><i class="fe-eye"></i></a>
-                            <form action="{{route('cars.destroy', 1)}}" method="POST">
-                                @csrf
-                                @method('POST')
-                                <button class="form_functions btn btn-danger"><i class="fe-trash-2"></i></button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
+                @php
+                    $i = 0
+                @endphp
+                @foreach($cars as $car)
+                    @php
+                        $i++
+                    @endphp
+                    <tr>
+                        <th scope="row">{{$i}}</th>
+                        <td>{{$car->carList->name??''}}</td>
+                        <td>{{$car->driver->personalInfo->first_name??''}}</td>
+                        <td>{{$car->colorList->name??''}}</td>
+                        <td>
+                            @php
+                              $sms_image = storage_path('app/public/certificate/'.$car->reg_certificate_image);
+                            @endphp
+                            @if(file_exists($sms_image))
+                                <img class="user_photo" src="{{asset('storage/certificate/'.$car->reg_certificate_image)}}" alt="">
+                            @else
+                                <img class="user_photo" src="{{asset('storage/certificate/no_certificate.webp')}}" alt="">
+                            @endif
+                        </td>
+                        <td>{{$car->updated_at??''}}</td>
+                        <td>
+                            <div class="d-flex justify-content-center">
+                                <a class="form_functions btn btn-info" href="{{route('cars.edit', $car->id)}}"><i class="fe-edit-2"></i></a>
+                                <a class="form_functions btn btn-info" href="{{route('cars.show', $car->id)}}"><i class="fe-eye"></i></a>
+                                <form action="{{route('cars.destroy', $car->id)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="form_functions btn btn-danger"><i class="fe-trash-2"></i></button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>
