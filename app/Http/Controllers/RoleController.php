@@ -34,10 +34,10 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         // dd(Constants::ACTIVE);
-        $coupon= Role::updateOrCreate(
-            ['status_id'=>Constants::ACTIVE],
-            ['name'=>$request->role_name]
-        );
+        $coupon= Role::create([
+            'name'=>$request->role_name,
+            'status_id'=>Constants::ACTIVE
+        ]);
         // Role::create(
         //     ['name'=>$request->role_name]
 
