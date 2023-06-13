@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Role;
+use App\Constants;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller
@@ -13,6 +14,7 @@ class RoleController extends Controller
     {
         $roles=Role::get();
         // dd($roles);
+        // dd(Constants::MYCONST);
         return view('role.index',[
             'roles' => $roles
         ] );
@@ -31,7 +33,15 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        Role::create(['name'=>$request->role_name]);
+        // dd(Constants::ACTIVE);
+        $coupon= Role::updateOrCreate(
+            ['status_id'=>Constants::ACTIVE],
+            ['name'=>$request->role_name]
+        );
+        // Role::create(
+        //     ['name'=>$request->role_name]
+
+        // );
 
         return redirect()->route('role.index');
     }

@@ -33,11 +33,13 @@
                     @foreach ($roles as $role)
                     <tr>
                         <td>{{ $i++ }}</td>
-                        <td>{{$role->name}}</td>
+                        <td>{{translate($role->name)}}</td>
                         <td>
                             @php
-                               echo Status::where('id',$role->status_id)->first()->name;
+                            //   $constants=Constants::MYCONST;
+                               $status = Status::where('id',$role->status_id)->first()->name;
                             @endphp
+                            {{translate($status)}}
                         </td>
                         <td>{{$role->created_at}}</td>
                         <td>
