@@ -1,5 +1,8 @@
 @extends('layout.layout')
+@php
+    use App\Models\Status; 
 
+@endphp
 @section('title')
     {{-- Your page title --}}
 @endsection
@@ -30,8 +33,14 @@
                     @foreach ($roles as $role)
                     <tr>
                         <td>{{ $i++ }}</td>
-                        <td>{{$role->name}}</td>
-                        <td>{{$role->name}}</td>
+                        <td>{{translate($role->name)}}</td>
+                        <td>
+                            @php
+                            //   $constants=Constants::MYCONST;
+                               $status = Status::where('id',$role->status_id)->first()->name;
+                            @endphp
+                            {{translate($status)}}
+                        </td>
                         <td>{{$role->created_at}}</td>
                         <td>
                             {{-- <a href="{{ route('role.show', $role->id) }}">

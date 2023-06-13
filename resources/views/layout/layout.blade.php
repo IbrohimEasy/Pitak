@@ -402,7 +402,7 @@
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item notify-item">
                                 <i class="fe-settings me-1"></i>
-                                <span>Settings</span>
+                                <span>{{translate('Settings')}}</span>
                             </a>
 
                             <!-- item-->

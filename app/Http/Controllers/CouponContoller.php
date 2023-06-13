@@ -60,10 +60,10 @@ class CouponContoller extends Controller
             'percent'  => 'required |integer',
         ]);
         //  dd($data['percent']);
-        $coupon= Coupon::updateOrCreate(
-            ['percent'=>$data['percent']],
-            ['name'=>$data['name']]
-        );
+        $coupon= Coupon::create([
+            'percent'=>$data['percent'],
+            'name'=>$data['name']
+        ]);
         // dd($coupon);
 
         return redirect()->route('coupon.index')->with('success', translate('locale.successfully'));
