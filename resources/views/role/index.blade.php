@@ -1,5 +1,8 @@
 @extends('layout.layout')
+@php
+    use App\Models\Status; 
 
+@endphp
 @section('title')
     {{-- Your page title --}}
 @endsection
@@ -31,7 +34,11 @@
                     <tr>
                         <td>{{ $i++ }}</td>
                         <td>{{$role->name}}</td>
-                        <td>{{$role->name}}</td>
+                        <td>
+                            @php
+                               echo Status::where('id',$role->status_id)->first()->name;
+                            @endphp
+                        </td>
                         <td>{{$role->created_at}}</td>
                         <td>
                             {{-- <a href="{{ route('role.show', $role->id) }}">
