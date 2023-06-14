@@ -36,7 +36,6 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            \App\Http\Middleware\Language::class,
         ],
 
         'api' => [
@@ -54,6 +53,7 @@ class Kernel extends HttpKernel
      * @var array<string, class-string|string>
      */
     protected $middlewareAliases = [
+        'language'=> \App\Http\Middleware\Language::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'is_auth' => \App\Http\Middleware\IsAuthController::class,
         'is_admin' => \App\Http\Middleware\IsAdminMiddleware::class,
