@@ -4,57 +4,6 @@
     {{-- Your page title --}}
 @endsection
 @section('content')
-    <style>
-        .profile_box {
-            width: auto;
-            height: auto;
-            background: #FFFFFF;
-            border-radius: 10px;
-            padding: 22px;
-        }
-        @media screen and (max-width: 1180px) {
-            .profile_box_content {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-            }
-            .profile_box_content>div{
-                margin-bottom: 18px;
-            }
-        }
-        @media screen and (min-width: 1181px) {
-            .profile_box_content {
-                display: flex;
-                justify-content: space-between;
-            }
-        }
-        .text_value {
-            width: 262px;
-            padding: 20px;
-            background: #EBEFF2;
-            border-radius: 20px;
-            font-family: "Times New Roman";
-            font-style: normal;
-            font-weight: 700;
-            font-size: 18px;
-            line-height: 22px;
-            color: #000000;
-            white-space: nowrap;
-            overflow: hidden !important;
-            text-overflow: ellipsis;
-        }
-        .color_black{
-            color: black;
-        }
-        .text_name {
-            font-family: inter;
-            font-style: normal;
-            font-weight: 700;
-            font-size: 20px;
-            line-height: 24px;
-            color: #000000;
-        }
-    </style>
     <div class="card">
         <div class="card-body">
             <h4 class="mt-0 header-title">{{translate('User informations')}}</h4>
@@ -106,21 +55,21 @@
 
                     <div class="profile_box_content">
                         <div style="width: auto;">
-                            <div class="d-flex justify-content-between">
+                            <div class="d-flex justify-content-between" style="align-items: center">
                                 <h3 class="text_name">{{translate('Email')}}:</h3>
                                 <div class="text_value">
                                     {{$model->email??''}}
                                 </div>
                             </div>
 
-                            <div class="d-flex justify-content-between" style="margin-top: 20px;">
+                            <div class="d-flex justify-content-between" style="margin-top: 20px; align-items: center">
                                 <h3 class="text_name">{{translate('Company')}}:</h3>
                                 <div class="text_value">
                                     {{$model->company->name??''}}
                                 </div>
                             </div>
 
-                            <div class="d-flex justify-content-between" style="margin-top: 20px;">
+                            <div class="d-flex justify-content-between" style="margin-top: 20px; align-items: center">
                                 <h3 class="text_name">{{translate('Gender')}}:</h3>
                                 <div class="text_value">
                                     {{$model->personalInfo->gender==2?translate('female'):translate('male')}}
@@ -129,13 +78,13 @@
                         </div>
 
                         <div style="width: auto;">
-                            <div class="d-flex justify-content-between">
+                            <div class="d-flex justify-content-between" style="align-items: center">
                                 <h3 class="text_name">{{translate('Full Name')}}:</h3>
                                 <div class="text_value">
                                     {{$model->personalInfo->first_name.' '.$model->personalInfo->last_name.' '.$model->personalInfo->middle_name}}
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-between" style="margin-top: 20px;">
+                            <div class="d-flex justify-content-between" style="margin-top: 20px; align-items: center">
                                 <h3 class="text_name">{{translate('Birth date')}}:</h3>
                                 @php
                                     if(isset($model->personalInfo->birth_date)){
@@ -148,7 +97,7 @@
                                     {{$birth_date_arr[0]}}
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-between" style="margin-top: 20px;">
+                            <div class="d-flex justify-content-between" style="margin-top: 20px; align-items: center">
                                 <h3 class="text_name">{{translate('Update-at')}}:</h3>
                                 <div class="text_value">
                                     {{$model->updated_at??''}}
