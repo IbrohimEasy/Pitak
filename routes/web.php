@@ -46,6 +46,9 @@ Route::group(['middleware'=>'auth'], function(){
         Route::get('/show/{id}', [OrderController::class, 'show'])->name('order.show');
         Route::delete('/destroy/{id}', [OrderController::class, 'destroy'])->name('order.destroy');
         Route::put('/update/{id}', [OrderController::class, 'update'])->name('order.update');
+
+        // for api 
+        Route::get('/search/taxi', [OrderController::class, 'searchTaxi']);
     });
 
     Route::group(['prefix' => 'offer'], function () {
