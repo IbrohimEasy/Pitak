@@ -35,7 +35,7 @@ class UserRequest extends BaseFormRequest
             'password' => 'required|string|min:8|confirmed',
             'role_id' => 'required|integer',
             'company_id' => 'nullable|integer',
-            'avatar' => 'nullable|mimes:jpeg,jpg,png|max:10240',
+            'avatar' => 'nullable|mimes:jpeg,jpg,png,webp|max:10240',
         ];
     }
     public function update()
@@ -52,7 +52,7 @@ class UserRequest extends BaseFormRequest
             'password' => 'nullable|string|min:8|confirmed',
             'role_id' => 'required|integer',
             'company_id' => 'nullable|integer',
-            'avatar' => 'nullable|mimes:jpeg,jpg,png|max:10240',
+            'avatar' => 'nullable|mimes:jpeg,jpg,png,webp|max:10240',
         ];
     }
 

@@ -514,6 +514,13 @@
                                 </ul>
                             </div>
                         </li>
+                        <li>
+                            <a href="{{route('option.index')}}">
+                                <i class="mdi mdi-account-multiple-plus-outline"></i>
+                                {{-- <span class="badge bg-success rounded-pill float-end">9+</span> --}}
+                                <span> Option </span>
+                            </a>
+                        </li>
                         {{-- <li class="menu-title mt-2">Apps</li>
 
                         <li>

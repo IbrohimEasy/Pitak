@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\OptionsController;
 use App\Http\Controllers\CarsController;
 use App\Http\Controllers\ClassListController;
 use App\Http\Controllers\CarTypesController;
@@ -66,6 +67,7 @@ Route::group(['middleware'=>['auth', 'language']], function(){
 
     Route::resource('user', UserController::class);
     Route::resource('cars', CarsController::class);
+    Route::resource('option', OptionsController::class);
     Route::resource('carTypes', CarTypesController::class);
     Route::resource('classList', ClassListController::class);
     Route::resource('carList', CarListController::class);
