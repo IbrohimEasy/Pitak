@@ -1,142 +1,55 @@
-
 @extends('layout.layout')
 
 @section('title')
     {{-- Your page title --}}
 @endsection
-
-
 @section('content')
-    <div class="d-flex aad">
-        <div class="mainMargin" style="margin-left:0px">
-
-            <div class="d-flex justify-content-between">
-                <div class="d-flex">
-                    <a href="{{ route('settings.index') }}"
-                        class="plus2 profileMaxNazadInformatsiyaKlient"><img
-                            src="{{ asset('/backend-assets/forthebuilders/images/icons/arrow-left.png') }}"
-                            alt=""></a>
-                    <h2 class="panelUprText">{{ translate('Coupon') }}</h2>
-                    <a href="#" class="plus2 addNewCoupon">+</a>
-                </div>
+    {{-- <div class="card"> --}}
+        {{-- <div class="card-body"> --}}
+            <h3 class="mt-0 header-title">{{translate('Coupons')}}</h3>
+            <div class="dropdown float-end">
+                <a class="form_functions btn btn-success" href="{{route('coupon.create')}}">{{translate('Create')}}</a>
             </div>
-
-            <div class="kuponData">
-                <div class="sozdatKupon">
-                    <div class="checkboxDivInput">
-                        №
-                    </div>
-                    <div class="checkboxDivTextInput3565">
-                        {{ translate('Coupon name') }}
-                    </div>
-                    <div class="checkboxDivTextInput3565">
-                        {{ translate('Percentage discount %') }}
-                    </div>
-                    <div class="checkboxDivTextInput3565">
-                        {{ translate('Date of creation') }}
-                    </div>
-                    <div class="checkboxDivTextInput35652">
-                        {{ translate('Action') }}
-                    </div>
-                </div>
-
-                @if (!empty($model))
-                    @foreach ($model as $key => $value)
-                        <div class="sozdatKupon2">
-                            <div class="checkboxDivInput">
-                                {{ $model->firstItem() + $key }}
-                                <input type="hidden" class="checkboxDivTextInput3565 couponId"
-                                    value="{{ $value->id }}">
-                            </div>
-                            <div class="checkboxDivTextInput3565">
-                                <span>{{ $value->name }}</span>
-                                <input type="hidden" class="checkboxDivTextInput3565 couponName"
-                                    value="{{ $value->name }}">
-                            </div>
-                            <div class="checkboxDivTextInput3565">
-                                <span>{{ $value->percent }}</span>
-                                <input type="hidden" class="checkboxDivTextInput3565 couponPercent"
-                                    value="{{ $value->percent }}">
-                            </div>
-                            <div class="checkboxDivTextInput3565">
-                                {{ date('d.m.Y', strtotime($value->created_at)) }}
-                            </div>
-                            <div class="checkboxDivTextInput35652">
-                                <div class="seaDiv couponUpdate d-none" style="cursor: pointer;">
-                                    <img class="mt-1" width="20" height="20"
-                                        src="{{ asset('/backend-assets/forthebuilders/images/verifed.png') }}"
-                                        alt="Trash">
-                                </div>
-                                <div class="seaDiv couponEdit" style="cursor: pointer;">
-                                    <img class="mt-1" width="20" height="20"
-                                        src="{{ asset('/backend-assets/forthebuilders/images/edit.png') }}" alt="Trash">
-                                </div>
-                                {{-- <div class="seaDiv couponDelete" style="cursor: pointer;">
-                                    <img class="mt-1" width="20" height="20"
-                                        src="{{ asset('/backend-assets/forthebuilders/images/trash.png') }}"
-                                        alt="Trash">
-                                </div> --}}
-                                <button type="button" style="border: none; cursor: pointer;"
-                                    class="seaDiv clientDelete model_delete"
-                                    data-url="{{ route('coupon.destroy', $value->id) }}">
-                                    <img data-toggle="modal" data-target="#exampleModalLong" class="mt-1" width="20"
-                                        height="20" src="{{ asset('backend-assets/forthebuilders/images/trash.png') }}"
-                                        alt="Trash">
-                                </button>
-                                {{-- <form style="display: none;"
-                                    action="{{ route('forthebuilder.coupon.destroy', $value->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="delete-data-item btn btn-danger" title="delete"><i
-                                            class="fas fa-trash"></i></button>
-                                </form> --}}
-                            </div>
-                        </div>
+            <p class="text-muted font-14 mb-3">
+                {{translate('Coupons list')}}
+            </p>
+            <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Percent</th>
+                        <th>date</th>
+                        <th>Functions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @php
+                       $i = 1;
+                    @endphp
+                    @foreach ($coupons as $coupon)
+                    <tr>
+                        <td>{{ $i++ }}</td>
+                        <td>{{$coupon->name}}</td>
+                        <td>{{$coupon->percent}}</td>
+                        <td>{{$coupon->created_at}}</td>
+                        <td>
+                            {{-- <a href="{{ route('coupon.show', $coupon->id) }}">
+                                <button type="button" class="btn btn-success waves-effect waves-light"><i class="fe-eye"></i></button>
+                            </a> --}}
+                            <a href="{{ route('coupon.edit', $coupon->id) }}">
+                                <button type="button" class="btn btn-primary waves-effect waves-light"><i class="fe-edit"></i></button>
+                            </a>
+                            {{-- <a href="{{ route('coupon.destroy', $coupon->id) }}"> --}}
+                                {{-- <button type="button" class="btn btn-danger waves-effect waves-light"><i class="fe-trash-2"></i></button> --}}
+                                <button type="button" class="btn btn-danger delete-datas" data-bs-toggle="modal" data-bs-target="#warning-alert-modal" data-url="{{ route('coupon.destroy', $coupon->id) }}"><i class="fe-trash-2"></i></button>
+                            {{-- </a> --}}
+                        </td>
+                    </tr>   
                     @endforeach
-                @endempty
+                </tbody>
+            </table>
+        {{-- </div> --}}
+    {{-- </div> --}}
 
-                <div class="sozdatKupon2 formNewCoupon d-none">
-                    <div class="checkboxDivInput">
-                        {{ $model->firstItem() + ($key ?? 0) + 1 }}
-                    </div>
-                    <input type="text" class="checkboxDivTextInput3565 couponCreateName">
-                    <input type="text" class="checkboxDivTextInput3565 couponCreatePercent">
-                    <div class="checkboxDivTextInput3565 checkboxDivTextInput3565none"></div>
-                    <div class="checkboxDivTextInput35652">
-                        <div class="seaDiv couponSave" style="cursor: pointer;">
-                            <img class="mt-1" width="20" height="20"
-                                src="{{ asset('/backend-assets/forthebuilders/images/Verifed.png') }}" alt="Trash">
-                        </div>
-                        <div class="seaDiv removeFormCoupon" style="cursor: pointer;">
-                            <img class="mt-1" width="20" height="20"
-                                src="{{ asset('/backend-assets/forthebuilders/images/trash.png') }}" alt="Trash">
-                        </div>
-                    </div>
-                </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content" style="border: none;">
-            <div class="modal-body">
-                <h2 class="modalVideystvitelno">{{ translate('Do you really want to delete') }}</h2>
-                <div class="d-flex justify-content-center mt-5">
-                    <form style="display: inline-block;" action="" method="POST" id="form_delete">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="modalVideystvitelnoDa">{{ translate('Yes') }}</button>
-                    </form>
-                    <button class="modalVideystvitelnoNet" data-dismiss="modal">{{ translate('No') }}</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    let page_name = 'settings';
-</script>
 @endsection

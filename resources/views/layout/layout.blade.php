@@ -2,17 +2,17 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8" />
     {{-- <title>{{ $title ?? translate('Pitac') }}</title> --}}
     <title>{{ $title ?? 'Pitac' }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
 
+    <link href="{{ asset('assets/libs/toastr/build/toastr.min.css') }}" type="text/css" rel="stylesheet"/>
     <!-- third party css -->
     <link href="{{ asset('assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css') }}" rel="stylesheet" type="text/css" />
@@ -21,17 +21,21 @@
     <link href="{{ asset('assets/libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/libs/selectize/css/selectize.bootstrap3.css') }}" rel="stylesheet" type="text/css" />
     <!-- third party css end -->
-
     <!-- App css -->
-    <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style" />
+    <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style"/>
       {{-- Main css --}}
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet" type="text/css" id="app-style" />
+    <link href="{{ asset('assets/libs/dropzone/min/dropzone.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/libs/dropify/css/dropify.min.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- icons -->
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
 
 </head>
+<style>
 
+
+</style>
 <!-- body start -->
 
 <body class="loading" data-layout-color="light" data-layout-mode="default" data-layout-size="fluid"
@@ -114,6 +118,68 @@
                             </div>
                         </div>
                     </form>
+                </li>
+                <li class="">
+                    <div>
+                        @php
+                            if (session()->has('locale')) {
+                                $locale = session('locale');
+                            } else {
+                                $locale = env('DEFAULT_LANGUAGE', 'ru');
+                            }
+                            // $locale=app()->getLocale()?? env('DEFAULT_LANGUAGE');
+                        @endphp
+                        <div class="align-items-stretch d-flex dropdown" id="lang-change">
+                            <a class="buttonUzbDropDownHeader dropdown-toggle" type="button" id="dropdownMenuButton" role="button"
+                                data-toggle="dropdown" aria-haspopup="false" aria-expanded="false" href="javascript:void(0);">
+                                @switch($locale)
+                                    @case('uz')
+                                        <img class="notifRegion2" id="selected_language"
+                                            src="{{ asset('/assets/images/language/region.png') }}" alt="region">
+                                    @break
+            
+                                    @case('en')
+                                        <img class="notifRegion2" id="selected_language"
+                                            src="{{ asset('/assets/images/language/GB.png') }}" alt="region">
+                                    @break
+            
+                                    @case('ru')
+                                        <img class="notifRegion2" id="selected_language"
+                                            src="{{ asset('/assets/images/language/RU.png') }}" alt="region">
+                                    @break
+                                @endswitch
+                            </a>
+                            <div id="language_flag" class="language_flag display-none"
+                                style="border: none; background-color: transparent;" aria-labelledby="dropdownMenuButton">
+                                <div class="up-arrow"></div>
+                                <div class="dropdownMenyApplyUzbFlag">
+                                    @foreach (\App\Models\Language::all() as $key => $language)
+                                    <a href="javascript:void(0)" data-flag="{{ $language->code }}"
+                                       class="dropdown-item dropdown-item dropdownLanguageItem @if ($locale == $language->code) active @endif" >
+                                        @switch($language->code)
+                                            @case('uz')
+                                                <img class="dropdownRegionBayroq" id="lang_uz" style="margin-right: 8px;" src="{{asset('/assets/images/language/region.png')}}" alt="region">
+                                                {{ $language->name }}
+                                                @break
+            
+                                                @case('ru')
+                                                    <img class="dropdownRegionBayroq" id="lang_ru" style="margin-right: 8px;"
+                                                        src="{{ asset('/assets/images/language/RU.png') }}" alt="region">
+                                                    {{ $language->name }}
+                                                @break
+            
+                                                @case('en')
+                                                    <img class="dropdownRegionBayroq" id="lang_en" style="margin-right: 8px;"
+                                                        src="{{ asset('/assets/images/language/GB.png') }}" alt="region">
+                                                    {{ $language->name }}
+                                                @break
+                                            @endswitch
+                                        </a>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </li>
 
                 <li class="dropdown d-inline-block d-lg-none">
@@ -256,11 +322,14 @@
                         <div class="dropdown-divider"></div>
 
                         <!-- item-->
-                        <a href="auth-logout.html" class="dropdown-item notify-item">
-                            <i class="fe-log-out"></i>
-                            <span>Logout</span>
-                        </a>
-
+                        <form action="{{route('logout')}}" method="POST">
+                            @csrf
+                            @method("POST")
+                            <button class="dropdown-item notify-item" type="submit">
+                                <i class="fe-log-out"></i>
+                                <span>{{translate('Logout')}}</span>
+                            </button>
+                        </form>
                     </div>
                 </li>
 
@@ -333,7 +402,7 @@
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item notify-item">
                                 <i class="fe-settings me-1"></i>
-                                <span>Settings</span>
+                                <span>{{translate('Settings')}}</span>
                             </a>
 
                             <!-- item-->
@@ -343,11 +412,14 @@
                             </a>
 
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <i class="fe-log-out me-1"></i>
-                                <span>Logout</span>
-                            </a>
-
+                            <form action="{{route('logout')}}" method="POST">
+                                @csrf
+                                @method("POST")
+                                <button class="dropdown-item notify-item" type="submit">
+                                    <i class="fe-log-out me-1"></i>
+                                    <span>{{translate('Logout')}}</span>
+                                </button>
+                            </form>
                         </div>
                     </div>
 
@@ -439,16 +511,23 @@
                                         <a href="{{route('cars.index')}}">Cars</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('car-list.index')}}">Cars list</a>
+                                        <a href="{{route('carList.index')}}">Cars list</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('car-types.index')}}">Car Types</a>
+                                        <a href="{{route('carTypes.index')}}">Car Types</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('class-list.index')}}">Class list</a>
+                                        <a href="{{route('classList.index')}}">Class list</a>
                                     </li>
                                 </ul>
                             </div>
+                        </li>
+                        <li>
+                            <a href="{{route('option.index')}}">
+                                <i class="mdi mdi-account-multiple-plus-outline"></i>
+                                {{-- <span class="badge bg-success rounded-pill float-end">9+</span> --}}
+                                <span> Option </span>
+                            </a>
                         </li>
                         {{-- <li class="menu-title mt-2">Apps</li>
 
@@ -461,11 +540,32 @@
                             </a>
                         </li> --}}
 
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('settings.index') }}">
                                 <i class="mdi mdi-calendar-blank-outline"></i>
                                 <span> Settings </span>
                             </a>
+                        </li> --}}
+                        <li>
+                            <a href="#settings" data-bs-toggle="collapse">
+                                <i class="fe-settings noti-icon"></i>
+                                
+                                <span> {{translate('Settings')}} </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="settings">
+                                <ul class="nav-second-level">
+                                    <li>
+                                        <a href="{{route('language.index')}}"> {{translate('Language')}}  </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('coupon.index')}}">{{translate('Coupon')}}</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('role.index')}}">{{translate('Role')}}</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         {{-- <li class="menu-title mt-2">Apps</li>
 
@@ -749,7 +849,7 @@
     <script src="{{ asset('assets/libs/waypoints/lib/jquery.waypoints.min.js') }}"></script>
     <script src="{{ asset('assets/libs/jquery.counterup/jquery.counterup.min.js') }}"></script>
     <script src="{{ asset('assets/libs/feather-icons/feather.min.js') }}"></script>
-
+    <script src="{{ asset('assets/libs/toastr/build/toastr.min.js') }}"></script>
     <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
     <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
@@ -772,6 +872,10 @@
     <script src="{{ asset('assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>
     <script src="{{ asset('assets/js/pages/form-advanced.init.js') }}"></script>
 
+    <script src="{{asset('assets/libs/dropzone/min/dropzone.min.js')}}"></script>
+    <script src="{{asset('assets/libs/dropify/js/dropify.min.js')}}"></script>
+    <!-- Init js-->
+    <script src="{{asset('assets/js/pages/form-fileuploads.init.js')}}"></script>
     <!-- knob plugin -->
     <script src="{{ asset('assets/libs/jquery-knob/jquery.knob.min.js') }}"></script>
 
@@ -788,7 +892,8 @@
     <!-- App js-->
     <script src="{{ asset('assets/js/app.min.js') }}"></script>
 
-    <script>
+    <script defer>
+
         $(document).on('click', '.delete-datas', function(e) {
             var url = $(this).attr('data-url')
             $('#warning-alert-modal').find('form').attr('action', url)
@@ -801,8 +906,59 @@
             //     format: 'yyyy-mm-dd',
             //     autoclose: true
             // });
+        })
+
+        $(document).ready(function() {
+            let sessionSuccess ="{{session('status')}}";
+            if(sessionSuccess){
+                toastr.success(sessionSuccess)
+            }
+            let language = '{{ $locale }}'
+            let uz = `{{ asset('/backend-assets/forthebuilders/images/region.png') }}`
+            let ru = `{{ asset('/backend-assets/forthebuilders/images/RU.png') }}`
+            let en = `{{ asset('/backend-assets/forthebuilders/images/GB.png') }}`
+
+            if ($('#lang-change').length > 0) {
+                $('#lang-change .dropdownMenyApplyUzbFlag a').each(function() {
+                    $(this).on('click', function(e) {
+                        e.preventDefault();
+                        var $this = $(this);
+                        var locale = $this.data('flag');
+                        switch (locale) {
+                            case 'uz':
+                                $('#selected_language').attr('src', uz)
+                                break;
+                            case 'en':
+                                $('#selected_language').attr('src', en)
+                                break;
+                            case 'ru':
+                                $('#selected_language').attr('src', ru)
+                                break;
+                        }
+                        $.post('{{ route('language.change') }}', {
+                            _token: '{{ csrf_token() }}',
+                            locale: locale
+                        }, function(data) {
+                            location.reload();
+                        });
+
+                    });
+                });
+            }
+        })
+        $(document).on('click', '.delete-order', function(e) {
+            var url = $(this).attr('data-url')
+            $('#warning-alert-modal').find('form').attr('action', url)
+        })
+        let dropdownMenuButton = document.getElementById('dropdownMenuButton')
+        let language_flag = document.getElementById('language_flag')
+        dropdownMenuButton.addEventListener('click', function() {
+            if (language_flag.classList.contains('display-none')) {
+                language_flag.classList.remove('display-none')
+            } else {
+                language_flag.classList.add('display-none')
+            }
         });
-    </script>
 </body>
 
 </html>

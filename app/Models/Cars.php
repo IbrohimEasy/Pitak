@@ -16,7 +16,7 @@ class Cars extends Model
     protected $fillable = [
         'car_list_id',
         'driver_id',
-        'status',
+        'status_id',
         'reg_certificate',
         'reg_certificate_image',
         'images',
@@ -37,5 +37,24 @@ class Cars extends Model
     public function class(): BelongsTo
     {
         return $this->belongsTo(ClassList::class, 'class_list_id', 'id');
+    }
+    
+    protected $casts = [
+      'images'=>'array'
+    ];
+    public function carList(){
+        return $this->hasOne(CarList::class, 'id', 'car_list_id');
+    }
+    public function driver(){
+        return $this->hasOne(Drivers::class, 'id', 'driver_id');
+    }
+    public function status(){
+        return $this->hasOne(Status::class, 'id', 'status_id');
+    }
+    public function colorList(){
+        return $this->hasOne(ColorList::class, 'id', 'color_list_id');
+    }
+    public function classList(){
+        return $this->hasOne(ClassList::class, 'id', 'class_list_id');
     }
 }

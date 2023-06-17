@@ -8,6 +8,10 @@ use App\Models\Status;
 use App\Models\CarList;
 use App\Models\Country;
 use App\Models\City;
+use App\Models\Drivers;
+use App\Models\PersonalInfo;
+use Carbon\Carbon;
+
 
 use App\Http\Requests\OrderRequest;
 
@@ -83,5 +87,45 @@ class OrderController extends Controller
         $order->delete();
         
         return redirect()->route('order.index'); // ->with('updated', translate('Data successfully updated'));
+    }
+
+
+    public function searchTaxi()
+    {
+        $datetime="03-06-2023";
+        $date=Carbon::parse($datetime)->addDays(-2)->format('Y-m-d');
+        $dates=[];
+        $aa=[];
+
+        for ($i=1; $i <= 5; $i++) {
+            $oncedate=Carbon::parse($date)->addDays($i)->format('Y-m-d');
+            // dd($oncedate);
+            $list=[];
+            $orders=Orders::where('start_date',$oncedate)->get();
+            // dd($orders);
+            foreach ($orders as $order) {
+                $personalInfo=PersonalInfo::where('id',Drivers::where('id',$order->driver_id)->first()->personal_info_id)->first();
+                // dd($personalInfo);
+                $options=[
+                    'adwadwadaw'=>true,
+                    'efsefsef'=>false,
+                    'fesfsefsef'=>true,                       
+                 ];
+                $data=[
+                    'start_date'=>$order->start_date ,
+                    'price'=>$order->price,
+                    'name'=>$personalInfo->first_name,
+                    'avatar'=>$personalInfo->avatar,
+                    'options'=>$options
+                ];
+                // dd($data);
+                array_push($list,$data);
+            }
+            $aa[$oncedate] = $list;
+            // $dates[$oncedate]=0;        
+        }
+       
+        dd($aa);
+
     }
 }

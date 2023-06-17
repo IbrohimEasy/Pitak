@@ -6,9 +6,9 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <h4 class="mt-0 header-title">{{translate('Car lists')}}</h4>
+            <h4 class="mt-0 header-title">{{translate('Car info')}}</h4>
             <div class="dropdown float-end">
-                <a class="form_functions btn btn-success" href="{{route('car-list.create')}}">{{translate('Create')}}</a>
+                <a class="form_functions btn btn-success" href="{{route('cars.create')}}">{{translate('Create')}}</a>
             </div>
             <table id="datatable-buttons" class="table dt-responsive nowrap table_show">
                 <thead>
@@ -20,39 +20,49 @@
                 <tbody>
                 <tr>
                     <th>{{translate('Car list')}}</th>
-                    <td>Active</td>
+                    <td>{{$model->carList->name}}</td>
                 </tr>
                 <tr>
                     <th>{{translate('Driver')}}</th>
-                    <td>Chevrolet</td>
+                    <td>{{$model->driver->personalInfo->first_name.' '.$model->driver->personalInfo->last_name.' '.$model->driver->personalInfo->middle_name}}</td>
                 </tr>
                 <tr>
                     <th>{{translate('Status')}}</th>
-                    <td>Malibu</td>
+                    <td>{{$model->status->name}}</td>
                 </tr>
                 <tr>
                     <th>{{translate('Color')}}</th>
-                    <td>Malibu</td>
+                    <td>{{$model->colorList->name}}</td>
                 </tr>
                 <tr>
                     <th>{{translate('Class')}}</th>
-                    <td>Malibu</td>
+                    <td>{{$model->classList->name}}</td>
                 </tr>
                 <tr>
                     <th>{{translate('Registration certificate')}}</th>
-                    <td>Malibu</td>
+                    <td>{{$model->reg_certificate}}</td>
                 </tr>
                 <tr>
                     <th>{{translate('Reg certificate image')}}</th>
-                    <td>Malibu</td>
+                    <td><img src="{{asset('storage/certificate/'.$model->reg_certificate_image)}}" alt=""></td>
                 </tr>
                 <tr>
                     <th>{{translate('Image')}}</th>
-                    <td>Malibu</td>
+                    <td>
+                        <div class="row">
+                            @php
+                                $images = json_decode($model->images);
+                            @endphp
+                            @foreach($images as $image)
+                                <img class="col-4 mb-2" src="{{asset('storage/cars/'.$image)}}" alt="">
+                            @endforeach
+                        </div>
+
+                    </td>
                 </tr>
                 <tr>
                     <th>{{translate('Updated at')}}</th>
-                    <td>2023-06-06 12:14:14</td>
+                    <td>{{$model->updated_at}}</td>
                 </tr>
                 </tbody>
             </table>

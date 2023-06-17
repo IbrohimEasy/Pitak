@@ -7,26 +7,36 @@
     <div class="card">
         <div class="card-body">
             <p class="text-muted font-14">
-                {{translate('Car class list create')}}
+                {{translate('Car list create')}}
             </p>
-            <form action="{{route('car-list.store')}}" class="parsley-examples" method="POST">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            <form action="{{route('carList.store')}}" class="parsley-examples" method="POST">
                 @csrf
                 @method('POST')
                 <div class="mb-3">
-                    <label for="status" class="form-label">{{translate('Status')}}</label>
-                    <select id="status" class="form-select" name="status_id">
+                    <label for="status_id" class="form-label">{{translate('Status')}}</label>
+                    <select id="status_id" class="form-select" name="status_id" required>
                         <option value="">{{translate('Choose..')}}</option>
-                        <option value="0">{{translate('active')}}</option>
-                        <option value="1">{{translate('inactive')}}</option>
+                        @foreach($statuses as $status)
+                            <option value="{{$status->id??''}}">{{$status->name??''}}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="mb-3">
                     <label for="type" class="form-label">{{translate('Car type')}}</label>
                     <select id="type" class="form-select" name="car_type_id">
                         <option value="">{{translate('Choose..')}}</option>
-                        <option value="0">{{translate('SUV')}}</option>
-                        <option value="1">{{translate('Coupe')}}</option>
-                        <option value="2">{{translate('Convertable')}}</option>
+                        @foreach($carTypes as $carType)
+                            <option value="{{$carType->id??''}}">{{$carType->name??''}}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="mb-3">

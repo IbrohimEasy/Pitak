@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\ClassList;
+use App\Models\Status;
+use App\Http\Requests\ClassListRequest;
 
 class ClassListController extends Controller
 {
@@ -11,7 +14,8 @@ class ClassListController extends Controller
      */
     public function index()
     {
-        return view('class-lists.index');
+        $classLists = ClassList::all();
+        return view('class-lists.index', ['classLists'=>$classLists]);
     }
 
     /**
@@ -19,15 +23,20 @@ class ClassListController extends Controller
      */
     public function create()
     {
-        return view('class-lists.create');
+        $statuses = Status::all();
+        return view('class-lists.create', ['statuses'=>$statuses]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ClassListRequest $request)
     {
-        return redirect()->route('class-lists.index');
+        $model = new ClassList();
+        $model->name = $request->name;
+        $model->status_id = $request->status_id;
+        $model->save();
+        return redirect()->route('classList.index')->with('status', translate('Successfully created'));
     }
 
     /**
@@ -35,7 +44,8 @@ class ClassListController extends Controller
      */
     public function show(string $id)
     {
-        return view('class-lists.show');
+        $model = ClassList::find($id);
+        return view('class-lists.show', ['model'=>$model]);
     }
 
     /**
@@ -43,7 +53,9 @@ class ClassListController extends Controller
      */
     public function edit(string $id)
     {
-        return view('class-lists.edit');
+        $statuses = Status::all();
+        $classList = ClassList::find($id);
+        return view('class-lists.edit', ['statuses'=>$statuses, 'classList'=>$classList]);
     }
 
     /**
@@ -51,7 +63,11 @@ class ClassListController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return redirect()->route('class-lists.index');
+        $model = ClassList::find($id);
+        $model->name = $request->name;
+        $model->status_id = $request->status_id;
+        $model->save();
+        return redirect()->route('classList.index')->with('status', translate('Successfully updated'));
     }
 
     /**
@@ -59,6 +75,8 @@ class ClassListController extends Controller
      */
     public function destroy(string $id)
     {
-        return redirect()->route('class-lists.index');
+        $model = ClassList::find($id);
+        $model->delete();
+        return redirect()->route('classList.index')->with('status', translate('Successfully deleted'));
     }
 }

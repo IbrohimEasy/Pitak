@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Sanctum\HasApiTokens;
 
-class Staff extends Model
+class User extends Authenticatable
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory, Notifiable;
 
     protected $table = 'yy_staffs';
     /**
@@ -39,4 +42,14 @@ class Staff extends Model
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function personalInfo(){
+        return $this->hasOne(PersonalInfo::class, 'id', 'personal_info_id');
+    }
+    public function role(){
+        return $this->hasOne(Role::class, 'id', 'role_id');
+    }
+    public function company(){
+        return $this->hasOne(Company::class, 'id', 'company_id');
+    }
 }

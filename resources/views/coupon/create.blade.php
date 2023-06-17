@@ -1,95 +1,71 @@
-@extends('forthebuilder::layouts.forthebuilder')
+@extends('layout.layout')
 
 @section('title')
-    {{ __('locale.create') }}
+    {{-- Your page title --}}
 @endsection
-
 @section('content')
-    <div class="page-header card">
-    </div>
-    <div class="card">
-        <div class="content-header">
-            <div class="container-fluid card-block">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0">{{ __('locale.Coupon') }} {{ __('locale.create') }}</h1>
-                    </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item">
-                                <a href="{{ route('forthebuilder.index') }}">{{ __('locale.home') }}</a>
-                            </li>
-                            <li class="breadcrumb-item">
-                                <a href="{{ route('forthebuilder.coupon.index') }}">{{ __('locale.Coupon') }}</a>
-                            </li>
-                            <li class="breadcrumb-item active">{{ __('locale.create') }}</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <form action="{{ route('forthebuilder.coupon.store') }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        <div class="card card-primary">
-            <div class="card-body">
+            <form action="{{route('coupon.store')}}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('POST')
                 <div class="row">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-2">
-                        <div class="form-group">
-                            <label for="coupon_name">{{ __('locale.coupon name') }}</label>
-                            <input type="text" name="name" id="coupon_name"
-                                class="form-control @error('name') error-data-input is-invalid @enderror"
-                                value="{{ old('name') ?? '' }}">
-                            <span class="error-data">
-                                @error('name')
-                                    {{ $message }}
-                                @enderror
-                            </span>
+                    <div class="col-md-5">
+                        <div class="">
+                            <label class="form-label">{{translate('Name')}}</label>
+                            <input type="text" name="name"  class="form-control" required placeholder="Type something" />
                         </div>
                     </div>
-                    <div class="col-md-1"></div>
-                    <div class="col-md-2">
-                        <div class="form-group">
-                            <label for="percent">{{ __('locale.percent') }} %</label>
-                            <input type="number" name="percent" id="percent"
-                                class="form-control @error('percent') error-data-input is-invalid @enderror"
-                                value="{{ old('percent') ?? '' }}" min="0" max="20">
-                            <span class="error-data">
-                                @error('percent')
-                                    {{ $message }}
-                                @enderror
-                            </span>
+                    <div class="col-md-4">
+                        <div class="">
+                            <label class="form-label">{{translate('Percent')}}</label>
+                            <input type="number" name="percent"  class="form-control" required placeholder="Type something" />
                         </div>
                     </div>
-                    <div class="col-md-1"></div>
                     <div class="col-md-3">
-                        <div class="form-group">
-                            <label>&nbsp;</label>
-                            <div>
-                                <button type="submit" class="btn btn-success">{{ __('locale.Confirm') }}</button>
-                            </div>
-                            <span></span>
+                        <div style="margin-top: 30px;">
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                            
+                            {{-- <button type="reset" class="btn btn-secondary waves-effect">Cancel</button> --}}
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </form>
-@endsection
-@section('scripts')
-    <script src="{{ asset('/backend-assets/plugins/select2/js/select2.full.min.js') }}"></script>
+                
+                {{-- <div class="mb-3">
+                    <label class="form-label">E-Mail</label>
+                    <div>
+                        <input type="email" class="form-control" required parsley-type="email" placeholder="Enter a valid e-mail" />
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">URL</label>
+                    <div>
+                        <input parsley-type="url" type="url" class="form-control" required placeholder="URL" />
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Digits</label>
+                    <div>
+                        <input data-parsley-type="digits" type="text" class="form-control" required placeholder="Enter only digits" />
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Number</label>
+                    <div>
+                        <input data-parsley-type="number" type="text" class="form-control" required placeholder="Enter only numbers" />
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Alphanumeric</label>
+                    <div>
+                        <input data-parsley-type="alphanum" type="text" class="form-control" required placeholder="Enter alphanumeric value" />
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Textarea</label>
+                    <div>
+                        <textarea required class="form-control"></textarea>
+                    </div>
+                </div> --}}
+                
+            </form>
 
-    <script src="{{ asset('/backend-assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('/backend-assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('/backend-assets/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('/backend-assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('/backend-assets/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('/backend-assets/plugins/toastr/toastr.min.js') }}"></script>
-
-    <script src="{{ asset('/backend-assets/plugins/ekko-lightbox/ekko-lightbox.min.js') }}"></script>
-    <script src="{{ asset('/backend-assets/plugins/owlcarousel/owl.carousel.min.js') }}"></script>
-    <script>
-        let page_name = 'coupon';
-    </script>
 @endsection

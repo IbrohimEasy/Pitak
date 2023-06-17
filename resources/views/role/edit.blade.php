@@ -4,29 +4,30 @@
     {{-- Your page title --}}
 @endsection
 @section('content')
-    <div class="card">
-        <div class="card-body">
-            <h4 class="header-title">Validation type</h4>
-            <p class="text-muted font-14">
-                Parsley is a javascript form validation library. It helps you provide your users with feedback on their form submission before sending it to your server.
-            </p>
-
-            <form action="#" class="parsley-examples">
-                <div class="mb-3">
-                    <label for="heard" class="form-label">Heard about us via *:</label>
-                    <select id="heard" class="form-select" required="">
-                        <option value="">Choose..</option>
-                        <option value="press">Press</option>
-                        <option value="net">Internet</option>
-                        <option value="mouth">Word of mouth</option>
-                        <option value="other">Other..</option>
-                    </select>
+            <form action="{{route('role.update',$role->id)}}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="">
+                            <label class="form-label">{{translate('Name')}}</label>
+        
+                            <input type="text" name="role_name" value="{{$role->name}}" class="form-control" required placeholder="Type something" />
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        
+                    </div>
+                    <div class="col-md-3">
+                        <div style="margin-top: 30px;">
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                            
+                            {{-- <button type="reset" class="btn btn-secondary waves-effect">Cancel</button> --}}
+                        </div>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label">Required</label>
-                    <input type="text" class="form-control" required placeholder="Type something" />
-                </div>
-                <div class="mb-3">
+                
+                {{-- <div class="mb-3">
                     <label class="form-label">E-Mail</label>
                     <div>
                         <input type="email" class="form-control" required parsley-type="email" placeholder="Enter a valid e-mail" />
@@ -61,12 +62,8 @@
                     <div>
                         <textarea required class="form-control"></textarea>
                     </div>
-                </div>
-                <div>
-                    <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
-                    <button type="reset" class="btn btn-secondary waves-effect">Cancel</button>
-                </div>
+                </div> --}}
+                
             </form>
-        </div>
-    </div>
+
 @endsection

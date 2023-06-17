@@ -17,224 +17,53 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Firstname</th>
-                        <th>Lastname</th>
-                        <th>Phone number</th>
-                        <th>Avatar</th>
-                        <th>Updated at</th>
-                        <th>Functions</th>
+                        <th>{{translate('Avatar')}}</th>
+                        <th>{{translate('Firstname')}}</th>
+                        <th>{{translate('Lastname')}}</th>
+                        <th>{{translate('Role')}}</th>
+                        <th>{{translate('Phone number')}}</th>
+                        <th class="text-center">{{translate('Functions')}}</th>
                     </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Twain</td>
-                    <td>+998904567834</td>
-                    <td class="text-center"><img class="user_photo" src="{{asset('assets/images/man.jpg')}}" alt=""></td>
-                    <td>2023-06-06 12:14:14</td>
-                    <td>
-                        <div class="d-flex justify-content-around">
-                            <a class="form_functions btn btn-info" href="{{route('user.edit', 1)}}">Edit</a>
-                            <a class="form_functions btn btn-info" href="{{route('user.show', 1)}}">{{translate('Show')}}</a>
-                            <form action="{{route('user.destroy', 1)}}" method="POST">
-                                @csrf
-                                @method('POST')
-                                <button class="form_functions btn btn-danger">Delete</button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Mark</td>
-                    <td>Twain</td>
-                    <td>+998904567834</td>
-                    <td class="text-center"><img class="user_photo" src="{{asset('assets/images/man.jpg')}}" alt=""></td>
-                    <td>2023-06-06 12:14:14</td>
-                    <td>
-                        <div class="d-flex justify-content-around">
-                            <a class="form_functions btn btn-info" href="{{route('user.edit', 1)}}">Edit</a>
-                            <a class="form_functions btn btn-info" href="{{route('user.show', 1)}}">{{translate('Show')}}</a>
-                            <form action="{{route('user.destroy', 1)}}" method="POST">
-                                @csrf
-                                @method('POST')
-                                <button class="form_functions btn btn-danger">Delete</button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Mark</td>
-                    <td>Twain</td>
-                    <td>+998904567834</td>
-                    <td class="text-center"><img class="user_photo" src="{{asset('assets/images/man.jpg')}}" alt=""></td>
-                    <td>2023-06-06 12:14:14</td>
-                    <td>
-                        <div class="d-flex justify-content-around">
-                            <a class="form_functions btn btn-info" href="{{route('user.edit', 1)}}">Edit</a>
-                            <a class="form_functions btn btn-info" href="{{route('user.show', 1)}}">{{translate('Show')}}</a>
-                            <form action="{{route('user.destroy', 1)}}" method="POST">
-                                @csrf
-                                @method('POST')
-                                <button class="form_functions btn btn-danger">Delete</button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>Mark</td>
-                    <td>Twain</td>
-                    <td>+998904567834</td>
-                    <td class="text-center"><img class="user_photo" src="{{asset('assets/images/man.jpg')}}" alt=""></td>
-                    <td>2023-06-06 12:14:14</td>
-                    <td>
-                        <div class="d-flex justify-content-around">
-                            <a class="form_functions btn btn-info" href="{{route('user.edit', 1)}}">Edit</a>
-                            <a class="form_functions btn btn-info" href="{{route('user.show', 1)}}">{{translate('Show')}}</a>
-                            <form action="{{route('user.destroy', 1)}}" method="POST">
-                                @csrf
-                                @method('POST')
-                                <button class="form_functions btn btn-danger">Delete</button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">5</th>
-                    <td>Mark</td>
-                    <td>Twain</td>
-                    <td>+998904567834</td>
-                    <td class="text-center"><img class="user_photo" src="{{asset('assets/images/man.jpg')}}" alt=""></td>
-                    <td>2023-06-06 12:14:14</td>
-                    <td>
-                        <div class="d-flex justify-content-around">
-                            <a class="form_functions btn btn-info" href="{{route('user.edit', 1)}}">Edit</a>
-                            <a class="form_functions btn btn-info" href="{{route('user.show', 1)}}">{{translate('Show')}}</a>
-                            <form action="{{route('user.destroy', 1)}}" method="POST">
-                                @csrf
-                                @method('POST')
-                                <button class="form_functions btn btn-danger">Delete</button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">6</th>
-                    <td>Mark</td>
-                    <td>Twain</td>
-                    <td>+998904567834</td>
-                    <td class="text-center"><img class="user_photo" src="{{asset('assets/images/man.jpg')}}" alt=""></td>
-                    <td>2023-06-06 12:14:14</td>
-                    <td>
-                        <div class="d-flex justify-content-around">
-                            <a class="form_functions btn btn-info" href="{{route('user.edit', 1)}}">Edit</a>
-                            <a class="form_functions btn btn-info" href="{{route('user.show', 1)}}">{{translate('Show')}}</a>
-                            <form action="{{route('user.destroy', 1)}}" method="POST">
-                                @csrf
-                                @method('POST')
-                                <button class="form_functions btn btn-danger">Delete</button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">7</th>
-                    <td>Mark</td>
-                    <td>Twain</td>
-                    <td>+998904567834</td>
-                    <td class="text-center"><img class="user_photo" src="{{asset('assets/images/man.jpg')}}" alt=""></td>
-                    <td>2023-06-06 12:14:14</td>
-                    <td>
-                        <div class="d-flex justify-content-around">
-                            <a class="form_functions btn btn-info" href="{{route('user.edit', 1)}}">Edit</a>
-                            <a class="form_functions btn btn-info" href="{{route('user.show', 1)}}">{{translate('Show')}}</a>
-                            <form action="{{route('user.destroy', 1)}}" method="POST">
-                                @csrf
-                                @method('POST')
-                                <button class="form_functions btn btn-danger">Delete</button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">8</th>
-                    <td>Mark</td>
-                    <td>Twain</td>
-                    <td>+998904567834</td>
-                    <td class="text-center"><img class="user_photo" src="{{asset('assets/images/man.jpg')}}" alt=""></td>
-                    <td>2023-06-06 12:14:14</td>
-                    <td>
-                        <div class="d-flex justify-content-around">
-                            <a class="form_functions btn btn-info" href="{{route('user.edit', 1)}}">Edit</a>
-                            <a class="form_functions btn btn-info" href="{{route('user.show', 1)}}">{{translate('Show')}}</a>
-                            <form action="{{route('user.destroy', 1)}}" method="POST">
-                                @csrf
-                                @method('POST')
-                                <button class="form_functions btn btn-danger">Delete</button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">9</th>
-                    <td>Mark</td>
-                    <td>Twain</td>
-                    <td>+998904567834</td>
-                    <td class="text-center"><img class="user_photo" src="{{asset('assets/images/man.jpg')}}" alt=""></td>
-                    <td>2023-06-06 12:14:14</td>
-                    <td>
-                        <div class="d-flex justify-content-around">
-                            <a class="form_functions btn btn-info" href="{{route('user.edit', 1)}}">Edit</a>
-                            <a class="form_functions btn btn-info" href="{{route('user.show', 1)}}">{{translate('Show')}}</a>
-                            <form action="{{route('user.destroy', 1)}}" method="POST">
-                                @csrf
-                                @method('POST')
-                                <button class="form_functions btn btn-danger">Delete</button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">10</th>
-                    <td>Mark</td>
-                    <td>Twain</td>
-                    <td>+998904567834</td>
-                    <td class="text-center"><img class="user_photo" src="{{asset('assets/images/man.jpg')}}" alt=""></td>
-                    <td>2023-06-06 12:14:14</td>
-                    <td>
-                        <div class="d-flex justify-content-around">
-                            <a class="form_functions btn btn-info" href="{{route('user.edit', 1)}}">Edit</a>
-                            <a class="form_functions btn btn-info" href="{{route('user.show', 1)}}">{{translate('Show')}}</a>
-                            <form action="{{route('user.destroy', 1)}}" method="POST">
-                                @csrf
-                                @method('POST')
-                                <button class="form_functions btn btn-danger">Delete</button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">11</th>
-                    <td>Mark</td>
-                    <td>Twain</td>
-                    <td>+998904567834</td>
-                    <td class="text-center"><img class="user_photo" src="{{asset('assets/images/man.jpg')}}" alt=""></td>
-                    <td>2023-06-06 12:14:14</td>
-                    <td>
-                        <div class="d-flex justify-content-around">
-                            <a class="form_functions btn btn-info" href="{{route('user.edit', 1)}}">Edit</a>
-                            <a class="form_functions btn btn-info" href="{{route('user.show', 1)}}">{{translate('Show')}}</a>
-                            <form action="{{route('user.destroy', 1)}}" method="POST">
-                                @csrf
-                                @method('POST')
-                                <button class="form_functions btn btn-danger">Delete</button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
+                @php
+                    $i = 0
+                @endphp
+                @foreach($staffs as $staff)
+                    @php
+                        $i++
+                    @endphp
+                    <tr>
+                        <th scope="row">{{$i}}</th>
+                        <td class="text-center">
+                            @if(isset($staff->id))
+                                @php
+                                    $sms_avatar = storage_path('app/public/user/'.$staff->personalInfo->avatar);
+                                @endphp
+                                @if(file_exists($sms_avatar))
+                                    <img class="user_photo" src="{{asset('storage/user/'.$staff->personalInfo->avatar)}}" alt="">
+                                @else
+                                    <img class="user_photo" src="{{asset('assets/images/man.jpg')}}" alt="">
+                                @endif
+                            @endif
+                        </td>
+                        <td>{{$staff->personalInfo->first_name}}</td>
+                        <td>{{$staff->personalInfo->last_name}}</td>
+                        <td>{{$staff->role->name}}</td>
+                        <td>{{$staff->personalInfo->phone_number}}</td>
+                        <td>
+                            <div class="d-flex justify-content-center">
+                                <a class="form_functions btn btn-info" href="{{route('user.edit', $staff->id)}}"><i class="fe-edit-2"></i></a>
+                                <a class="form_functions btn btn-info" href="{{route('user.show', $staff->id)}}"><i class="fe-eye"></i></a>
+                                <form action="{{route('user.destroy', $staff->id)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="form_functions btn btn-danger"><i class="fe-trash-2"></i></button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>

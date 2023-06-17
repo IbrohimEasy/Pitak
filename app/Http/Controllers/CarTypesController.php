@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\CarTypes;
+use App\Models\Status;
+use App\Http\Requests\CarTypesRequest;
 
 class CarTypesController extends Controller
 {
@@ -11,7 +14,8 @@ class CarTypesController extends Controller
      */
     public function index()
     {
-        return view('car-types.index');
+        $carTypes = CarTypes::all();
+        return view('car-types.index', ['carTypes'=>$carTypes]);
     }
 
     /**
@@ -19,15 +23,20 @@ class CarTypesController extends Controller
      */
     public function create()
     {
-        return view('car-types.create');
+        $statuses = Status::all();
+        return view('car-types.create', ['statuses'=>$statuses]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CarTypesRequest $request)
     {
-        return redirect()->route('car-types.index');
+        $model = new CarTypes();
+        $model->name = $request->name;
+        $model->status_id = $request->status_id;
+        $model->save();
+        return redirect()->route('carTypes.index')->with('status', translate('Successfully created'));
     }
 
     /**
@@ -35,7 +44,8 @@ class CarTypesController extends Controller
      */
     public function show(string $id)
     {
-        return view('car-types.show');
+        $model = CarTypes::find($id);
+        return view('car-types.show', ['model'=>$model]);
     }
 
     /**
@@ -43,15 +53,21 @@ class CarTypesController extends Controller
      */
     public function edit(string $id)
     {
-        return view('car-types.edit');
+        $statuses = Status::all();
+        $carType = CarTypes::find($id);
+        return view('car-types.edit', ['statuses'=>$statuses, 'carType'=>$carType]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CarTypesRequest $request, string $id)
     {
-        return redirect()->route('car-types.index');
+        $model = CarTypes::find($id);
+        $model->name = $request->name;
+        $model->status_id = $request->status_id;
+        $model->save();
+        return redirect()->route('carTypes.index')->with('status', translate('Successfully updated'));
     }
 
     /**
@@ -59,6 +75,8 @@ class CarTypesController extends Controller
      */
     public function destroy(string $id)
     {
-        return redirect()->route('car-types.index');
+        $model = CarTypes::find($id);
+        $model->delete();
+        return redirect()->route('carTypes.index')->with('status', translate('Successfully deleted'));
     }
 }
