@@ -9,7 +9,7 @@ class ClassList extends Model
 {
     use HasFactory;
 
-    protected $table = 'yy_class_list';
+    protected $table = 'yy_class_lists';
 
     protected $fillable = [
         'name',

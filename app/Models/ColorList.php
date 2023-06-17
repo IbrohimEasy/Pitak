@@ -9,7 +9,7 @@ class ColorList extends Model
 {
     use HasFactory;
 
-    protected $table = 'yy_colors_list';
+    protected $table = 'yy_color_lists';
 
     protected $fillable = [
         'name'

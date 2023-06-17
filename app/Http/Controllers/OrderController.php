@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Orders;
+use App\Models\Order;
 use App\Models\Status;
 use App\Models\CarList;
 use App\Models\Country;
@@ -18,7 +18,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $model = Orders::all();
+        $model = Order::all();
 
         return view('order.index', [
             'model' => $model
@@ -30,10 +30,12 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        $order = Orders::find($id);
-        
+        $order = Order::find($id);
+
         return view('order.show', [
-            'order' => $order
+            'order' => $order,
+            'offers' => $order->offers,
+            'commentScores' => $order->commentScores
         ]);
     }
 
@@ -42,7 +44,7 @@ class OrderController extends Controller
      */
     public function edit(string $id)
     {
-        $model = Orders::findOrfail($id);
+        $model = Order::findOrfail($id);
         $modelStatus = Status::all();
         $modelCarsList = CarList::all();
         $modelCity = City::where(['country_id' => 234, 'type' => 'city'])->get();
@@ -62,9 +64,11 @@ class OrderController extends Controller
     {
         $data = $request->validated();
 
-        $order = Orders::findOrFail($id);
+        $order = Order::findOrFail($id);
         $order->update($request->all());
-        $order->seats = json_encode($data['seats']);
+        if (isset($data['seats']))
+            $order->seats = json_encode($data['seats']);
+            
         $order->save();
         
         return redirect()->route('order.index'); // ->with('updated', translate('Data successfully updated'));
@@ -75,7 +79,7 @@ class OrderController extends Controller
      */
     public function destroy(string $id)
     {
-        $order = Orders::findOrFail($id);
+        $order = Order::findOrFail($id);
         $order->delete();
         
         return redirect()->route('order.index'); // ->with('updated', translate('Data successfully updated'));

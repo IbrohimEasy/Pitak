@@ -407,14 +407,6 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('driver.index') }}">
-                                <i class="mdi mdi-taxi"></i>
-                                <!-- <span class="badge bg-success rounded-pill float-end">9+</span> -->
-                                {{-- <span> Client </span> --}}
-                                <span> {{ translate('Driver') }} </span>
-                            </a>
-                        </li>
-                        <li>
                             <a href="{{route('user.index')}}">
                                 <i class="mdi mdi-account-multiple-plus-outline"></i>
                                 {{-- <span class="badge bg-success rounded-pill float-end">9+</span> --}}
@@ -515,13 +507,11 @@
             <div class="content">
                 <!-- Start Content-->
                 <div class="container-fluid">
-                    <div class="card">
-                        <div class="card-body">
+                    
+                    <br>
+                    @yield('content')
+                    <br>
                             
-                            @yield('content')
-                            
-                        </div>
-                    </div>
                 </div>
                 <!-- container-fluid -->
             </div>
@@ -795,13 +785,16 @@
         })
 
         $(document).ready(function() {
-            $('.basic-datepicker').flatpickr();
 
-            // $('#passport_expired_date').datepicker({
-            //     format: 'yyyy-mm-dd',
-            //     autoclose: true
-            // });
-        });
+            //Buttons examples
+            var table = $('.datatable-buttons').DataTable({
+                lengthChange: false,
+                buttons: ['copy', 'excel', 'pdf']
+            });
+
+            // table.buttons().container().appendTo('.dataTables_wrapper .col-md-6:eq(0)');
+        } );
+
     </script>
 </body>
 

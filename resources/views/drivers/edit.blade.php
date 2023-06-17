@@ -1,8 +1,8 @@
 @extends('layout.layout')
 
 @section('title')
-    {{-- Client Edit --}}
-    {{ translate("Client Edit") }}
+    {{-- Driver Edit --}}
+    {{ translate("Driver Edit") }}
 @endsection
 
 @section('styles')
@@ -13,7 +13,7 @@
 
 @section('content')
 
-    <form action="{{ route('client.update', $model->id) }}" method="post">
+    <form action="{{ route('driver.update', $model->id) }}" method="post">
         @csrf
         @method('PUT')
         <div class="row">
@@ -61,9 +61,9 @@
                 
                 
                 <div class="mb-3">
-                    <label for="simpleinput" class="form-label">{{ translate('Birth date') }}</label>
+                    <label for="birth_date" class="form-label">{{ translate('Birth date') }}</label>
                     {{-- <label for="basic-datepicker" class="form-label">Birth date</label> --}}
-                    <input type="text" id="basic-datepicker" class="form-control" value="{{ $modelPersonalInfo->birth_date }}" name="birth_date">
+                    <input type="text" id="birth_date" class="form-control basic-datepicker" value="{{ $modelPersonalInfo->birth_date }}" name="birth_date">
                     <span class="error-data">@error('birth_date'){{ $message }}@enderror</span>
                 </div>
                 
@@ -72,12 +72,12 @@
                     {{-- <label for="simpleinput" class="form-label">Gender</label> <br> --}}
                     
                     <input type="radio" id="c_male" class="" value="{{ $male }}" name="gender" {{ ($modelPersonalInfo->gender == $male) ? 'checked' : '' }}>
-                    <label for="c_male" class="form-label">{{ translate('Male') }}</label>
+                    <label for="simpleinput" class="form-label">{{ translate('Male') }}</label>
                     {{-- <label for="c_male" class="form-label">Male</label> --}}
                     
                     <br>
                     <input type="radio" id="c_female" class="" value="{{ $female }}" name="gender" {{ ($modelPersonalInfo->gender == $female) ? 'checked' : '' }}>
-                    <label for="c_female" class="form-label">{{ translate('Female') }}</label>
+                    <label for="simpleinput" class="form-label">{{ translate('Female') }}</label>
                     {{-- <label for="c_female" class="form-label">Female</label> --}}
                     
                     <span class="error-data">@error('gender'){{ $message }}@enderror</span>
@@ -100,6 +100,48 @@
                         @endif
                     </select>
                     <span class="error-data">@error('status_id'){{ $message }}@enderror</span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="serial_number" class="form-label">{{ translate('Serial number') }}</label>
+                    {{-- <label for="basic-datepicker" class="form-label">Birth date</label> --}}
+                    <input type="text" id="serial_number" class="form-control" value="{{ $model->serial_number }}" name="serial_number">
+                    <span class="error-data">@error('serial_number'){{ $message }}@enderror</span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="issued_by" class="form-label">{{ translate('Issued by') }}</label>
+                    {{-- <label for="basic-datepicker" class="form-label">Birth date</label> --}}
+                    <input type="text" id="issued_by" class="form-control" value="{{ $model->issued_by }}" name="issued_by">
+                    <span class="error-data">@error('issued_by'){{ $message }}@enderror</span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="passport_expired_date" class="form-label">{{ translate('Passport expired date') }}</label>
+                    {{-- <label for="basic-datepicker" class="form-label">Birth date</label> --}}
+                    <input type="text" id="passport_expired_date" class="form-control basic-datepicker" value="{{ $model->passport_expired_date }}" name="passport_expired_date">
+                    <span class="error-data">@error('passport_expired_date'){{ $message }}@enderror</span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="license_number" class="form-label">{{ translate('License number') }}</label>
+                    {{-- <label for="basic-datepicker" class="form-label">Birth date</label> --}}
+                    <input type="text" id="license_number" class="form-control" value="{{ $model->license_number }}" name="license_number">
+                    <span class="error-data">@error('license_number'){{ $message }}@enderror</span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="license_expired_date" class="form-label">{{ translate('License expired date') }}</label>
+                    {{-- <label for="basic-datepicker" class="form-label">Birth date</label> --}}
+                    <input type="text" id="license_expired_date" class="form-control basic-datepicker" value="{{ $model->license_expired_date }}" name="license_expired_date">
+                    <span class="error-data">@error('license_expired_date'){{ $message }}@enderror</span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="personal_account" class="form-label">{{ translate('Personal account') }}</label>
+                    {{-- <label for="basic-datepicker" class="form-label">Birth date</label> --}}
+                    <input type="text" id="personal_account" class="form-control" value="{{ $model->personal_account }}" name="personal_account">
+                    <span class="error-data">@error('personal_account'){{ $message }}@enderror</span>
                 </div>
 
                 <button class="btn btn-primary" type="submit">{{ translate('Submit') }}</button>

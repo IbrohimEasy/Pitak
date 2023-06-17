@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\DriverController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RoleController;
@@ -43,7 +44,7 @@ Route::group(['prefix' => 'user'], function () {
 //     // Route::post('/orders', 'store');
 // });
 
-Route::group(['prefix' => 'order'], function () {
+Route::group(['prefix' => 'orders'], function () {
     Route::get('/', [OrderController::class, 'index'])->name('order.index');
     Route::get('/edit/{id}', [OrderController::class, 'edit'])->name('order.edit');
     Route::get('/show/{id}', [OrderController::class, 'show'])->name('order.show');
@@ -51,7 +52,7 @@ Route::group(['prefix' => 'order'], function () {
     Route::put('/update/{id}', [OrderController::class, 'update'])->name('order.update');
 });
 
-Route::group(['prefix' => 'offer'], function () {
+Route::group(['prefix' => 'offers'], function () {
     Route::get('/', [OfferController::class, 'index'])->name('offer.index');
     Route::get('/edit/{id}', [OfferController::class, 'edit'])->name('offer.edit');
     Route::get('/show/{id}', [OfferController::class, 'show'])->name('offer.show');
@@ -65,6 +66,14 @@ Route::group(['prefix' => 'clients'], function () {
     Route::get('/show/{id}', [ClientController::class, 'show'])->name('client.show');
     Route::delete('/destroy/{id}', [ClientController::class, 'destroy'])->name('client.destroy');
     Route::put('/update/{id}', [ClientController::class, 'update'])->name('client.update');
+});
+
+Route::group(['prefix' => 'drivers'], function () {
+    Route::get('/', [DriverController::class, 'index'])->name('driver.index');
+    Route::get('/edit/{id}', [DriverController::class, 'edit'])->name('driver.edit');
+    Route::get('/show/{id}', [DriverController::class, 'show'])->name('driver.show');
+    Route::delete('/destroy/{id}', [DriverController::class, 'destroy'])->name('driver.destroy');
+    Route::put('/update/{id}', [DriverController::class, 'update'])->name('driver.update');
 });
 
 Route::get('/register', [AuthController::class, 'registerPage'])->name('register');

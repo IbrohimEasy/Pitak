@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Clients extends Model
+class Client extends Model
 {
     const MALE = 1;
     const FEMALE = 0;
@@ -35,5 +35,15 @@ class Clients extends Model
     public function personalInfo(): BelongsTo
     {
         return $this->belongsTo(PersonalInfo::class);
+    }
+
+    public function orderDetails()
+    {
+        return $this->hasMany(OrderDetail::class, 'client_id', 'id');
+    }
+
+    public function commentScores()
+    {
+        return $this->hasMany(CommentScore::class, 'client_id', 'id');
     }
 }
