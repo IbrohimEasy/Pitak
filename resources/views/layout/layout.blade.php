@@ -892,8 +892,7 @@
     <!-- App js-->
     <script src="{{ asset('assets/js/app.min.js') }}"></script>
 
-    <script defer>
-
+    <script>
         $(document).on('click', '.delete-datas', function(e) {
             var url = $(this).attr('data-url')
             $('#warning-alert-modal').find('form').attr('action', url)
@@ -959,6 +958,7 @@
                 language_flag.classList.add('display-none')
             }
         });
+    </script>
 </body>
 
 </html>
