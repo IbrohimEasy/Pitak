@@ -451,7 +451,7 @@
                             <a href="{{route('dashboard')}}">
                             <i class="mdi mdi-account-multiple-plus-outline"></i>
                                  <span class="badge bg-success rounded-pill float-end">9+</span>
-                                <span> Dashboard </span>
+                                <span> {{translate('Home')}} </span>
                             </a>
                         </li>
                         <li>
@@ -490,7 +490,7 @@
                             <a href="{{route('user.index')}}">
                                 <i class="mdi mdi-account-multiple-plus-outline"></i>
                                 {{-- <span class="badge bg-success rounded-pill float-end">9+</span> --}}
-                                <span> Users </span>
+                                <span> {{ translate('Users') }} </span>
                             </a>
                         </li>
                         {{-- <li>
@@ -508,16 +508,16 @@
                             <div class="collapse" id="cars">
                                 <ul class="nav-second-level">
                                     <li>
-                                        <a href="{{route('cars.index')}}">Cars</a>
+                                        <a href="{{route('cars.index')}}">{{translate('Cars')}}</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('carList.index')}}">Cars list</a>
+                                        <a href="{{route('carList.index')}}">{{translate('Cars list')}}</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('carTypes.index')}}">Car Types</a>
+                                        <a href="{{route('carTypes.index')}}">{{translate('Car Types')}}</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('classList.index')}}">Class list</a>
+                                        <a href="{{route('classList.index')}}">{{translate('Class list')}}</a>
                                     </li>
                                 </ul>
                             </div>
@@ -526,7 +526,7 @@
                             <a href="{{route('option.index')}}">
                                 <i class="mdi mdi-account-multiple-plus-outline"></i>
                                 {{-- <span class="badge bg-success rounded-pill float-end">9+</span> --}}
-                                <span> Option </span>
+                                <span> {{translate('Option') }} </span>
                             </a>
                         </li>
                         {{-- <li class="menu-title mt-2">Apps</li>
