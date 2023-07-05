@@ -11,15 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('yy_clients', function (Blueprint $table) {
+        Schema::create('yy_users', function (Blueprint $table) {
             $table->id();
             $table->integer('personal_info_id')->nullable();
-            $table->integer('status_id')->nullable();
+            $table->string('token')->unique()->nullable();
             $table->integer('company_id')->nullable();
+            $table->integer('balance')->nullable();
+            $table->integer('personal_account')->unique();
+            $table->integer('type')->nullable();
+            $table->text('about_me')->nullable();
             $table->timestamps();
             $table->softDeletes();
-            // $table->foreign('personal_info_id')->references('id')->on('personal_info')
-            //     ->onDelete('cascade');
         });
     }
 
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('yy_clients');
+        Schema::dropIfExists('yy_users');
     }
 };

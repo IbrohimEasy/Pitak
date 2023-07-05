@@ -27,10 +27,10 @@ return new class extends Migration
             $table->double('balance')->default(0);
         });
         
-        Schema::table('yy_clients', function (Blueprint $table) {
-            $table->integer('personal_account')->nullable();
-            $table->double('balance')->default(0);
-        });
+        // Schema::table('yy_clients', function (Blueprint $table) {
+        //     $table->integer('personal_account')->nullable();
+        //     $table->double('balance')->default(0);
+        // });
     }
 
     /**

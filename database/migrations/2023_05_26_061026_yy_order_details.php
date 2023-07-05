@@ -19,6 +19,9 @@ return new class extends Migration
             $table->integer('company_id')->nullable();
             $table->smallInteger('seats_type')->nullable();
             $table->integer('seats_count')->nullable();
+            $table->integer('from_id')->nullable();
+            $table->integer('to_id')->nullable();
+            $table->text('comment')->nullable();
             $table->double('price')->nullable();
             $table->timestamps();
             $table->softDeletes();

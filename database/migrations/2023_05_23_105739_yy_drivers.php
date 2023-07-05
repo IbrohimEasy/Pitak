@@ -13,13 +13,8 @@ return new class extends Migration
     {
         Schema::create('yy_drivers', function (Blueprint $table) {
             $table->id();
-            $table->integer('personal_info_id')->nullable();
+            $table->integer('user_id');
             $table->integer('status_id')->nullable();
-            $table->integer('company_id')->nullable();
-            $table->string('serial_number')->nullable();
-            $table->string('issued_by')->nullable();
-            $table->string('passport_image')->nullable();
-            $table->timestamp('passport_expired_date')->nullable();
             $table->string('license_number')->nullable();
             $table->timestamp('license_expired_date')->nullable();
             $table->string('license_image')->nullable();
