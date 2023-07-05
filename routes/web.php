@@ -49,6 +49,7 @@ Route::group(['middleware'=>['auth', 'language']], function(){
 
         // for api 
         Route::get('/search/taxi', [OrderController::class, 'searchTaxi']);
+        Route::get('/api/order/show', [OrderController::class, 'orderShow']);
     });
 
     Route::group(['prefix' => 'offer'], function () {
