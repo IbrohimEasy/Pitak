@@ -3,24 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Client;
+use App\Http\Requests\DriverRequest;
+use App\Models\Driver;
 use App\Models\Status;
 use App\Models\PersonalInfo;
 
-use App\Http\Requests\ClientRequest;
-
-class ClientController extends Controller
+class DriverController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $model = Client::all();
+        $model = Driver::all();
 
-        return view('client.index', [
-            'model' => $model
-        ]);
+        return view('drivers.index', ['model' => $model]);
     }
 
     /**
@@ -28,7 +25,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        dd('create');
     }
 
     /**
@@ -36,21 +33,23 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd('store');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(string $id)
     {
-        $model = Client::find($id);
-        // dd($model->commentScores);
+        $model = Driver::find($id);
+        // dd($model->balanceHistory);
 
-        return view('client.show', [
+        return view('drivers.show', [
             'model' => $model,
-            'orderDetails' => $model->orderDetails,
+            'orders' => $model->orders,
             'commentScores' => $model->commentScores,
+            'cars' => $model->cars,
+            'balanceHistory' => $model->balanceHistory,
         ]);
     }
 
@@ -59,31 +58,31 @@ class ClientController extends Controller
      */
     public function edit(string $id)
     {
-        $model = Client::findOrfail($id);
+        $model = Driver::findOrfail($id);
         $modelStatus = Status::all();
         $modelPersonalInfo = PersonalInfo::where(['id' => $model->personal_info_id])->first();
 
-        return view('client.edit', [
+        return view('drivers.edit', [
             'model' => $model,
             'modelStatus' => $modelStatus,
             'modelPersonalInfo' => $modelPersonalInfo,
-            'male' => Client::MALE,
-            'female' => Client::FEMALE,
+            'male' => Driver::MALE,
+            'female' => Driver::FEMALE,
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(ClientRequest $request, string $id)
+    public function update(DriverRequest $request, string $id)
     {
         $data = $request->validated();
 
-        $client = Client::findOrFail($id);
-        $client->update($request->all());
-        $client->save();
+        $driver = Driver::findOrFail($id);
+        $driver->update($request->all());
+        $driver->save();
 
-        $personalInfo = PersonalInfo::where(['id' => $client->personal_info_id])->first();
+        $personalInfo = PersonalInfo::where(['id' => $driver->personal_info_id])->first();
         $personalInfo->first_name = $data['first_name'];
         $personalInfo->last_name = $data['last_name'];
         $personalInfo->middle_name = $data['middle_name'];
@@ -92,7 +91,7 @@ class ClientController extends Controller
         $personalInfo->birth_date = $data['birth_date'];
         $personalInfo->save();
         
-        return redirect()->route('client.index'); // ->with('updated', translate('Data successfully updated'));
+        return redirect()->route('driver.index'); // ->with('updated', translate('Data successfully updated'));
     }
 
     /**
@@ -100,12 +99,12 @@ class ClientController extends Controller
      */
     public function destroy(string $id)
     {
-        $client = Client::findOrFail($id);
-        $client->delete();
+        $driver = Driver::findOrFail($id);
+        $driver->delete();
 
-        $personalInfo = PersonalInfo::where(['id' => $client->personal_info_id])->first();
+        $personalInfo = PersonalInfo::where(['id' => $driver->personal_info_id])->first();
         $personalInfo->delete();
         
-        return redirect()->route('client.index'); // ->with('updated', translate('Data successfully updated'));
+        return redirect()->route('driver.index'); // ->with('updated', translate('Data successfully updated'));
     }
 }

@@ -1,7 +1,7 @@
 @extends('layout.layout')
 
 @section('title')
-    {{ translate("Client Show") }}
+    {{ translate("Driver Show") }}
 @endsection
 
 @section('content')
@@ -84,8 +84,18 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="#carsTab" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                            {{ translate('Cars') }}
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="#commentScoreTab" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
                             {{ translate('Comment and scores') }}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#balanceHistoryScoreTab" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                            {{ translate('Balance history') }}
                         </a>
                     </li>
                 </ul>
@@ -124,7 +134,7 @@
                                     </tr>
                                     <tr>
                                         <th>{{ translate('Passport expired date') }}</th>
-                                        <td>{{ ($model->passport_expired_date) ? date('d.m.Y H:i', strtotime($model->passport_expired_date)) : '' }}</td>
+                                        <td>{{ date('d.m.Y H:i', strtotime($model->passport_expired_date)) ?? '' }}</td>
                                     </tr>
                                     <tr>
                                         <th>{{ translate('License number') }}</th>
@@ -132,7 +142,7 @@
                                     </tr>
                                     <tr>
                                         <th>{{ translate('License expired date') }}</th>
-                                        <td>{{ ($model->license_expired_date) ? date('d.m.Y H:i', strtotime($model->license_expired_date)) : '' }}</td>
+                                        <td>{{ date('d.m.Y H:i', strtotime($model->license_expired_date)) ?? '' }}</td>
                                     </tr>
                                     <tr>
                                         <th>{{ translate('License image') }}</th>
@@ -150,33 +160,35 @@
                                 <tr>
                                     <th>#</th>
                                     {{-- <th>{{ translate('Company') }}</th> --}}
+                                    <th>{{ translate('Cars list') }}</th>
                                     <th>{{ translate('From') }}</th>
                                     <th>{{ translate('To') }}</th>
                                     <th>{{ translate('Order title') }}</th>
-                                    <th>{{ translate('Seats type') }}</th>
-                                    <th>{{ translate('Seats count') }}</th>
                                     <th>{{ translate('Price') }}</th>
-                                    <th>{{ translate('Comment') }}</th>
+                                    <th>{{ translate('Price type') }}</th>
+                                    <th>{{ translate('Start date') }}</th>
+                                    <th>{{ translate('Seats') }}</th>
                                     <th>{{ translate('Status') }}</th>
                                 </tr>
                             </thead>
                     
                             <tbody>
-                                @if (count($orderDetails) > 0)
+                                @if (count($orders) > 0)
                                     @php
                                         $n = 1;
                                     @endphp
-                                    @foreach ($orderDetails as $valOD)
+                                    @foreach ($orders as $valOD)
                                         <tr>
                                             <td>{{ $n++ }}</td>
                                             {{-- <td><a href="">{{ $valOD->company ? $valOD->company->name : '' }}</a></td> --}}
+                                            <td>{{ ($valOD->carList) ? $valOD->carList->name : '' }}</td>
                                             <td>{{ ($valOD->from) ? $valOD->from->name : '' }}</td>
                                             <td>{{ ($valOD->to) ? $valOD->to->name : '' }}</td>
-                                            <td>{{ ($valOD->order) ? $valOD->order->title : '' }}</td>
-                                            <td>{{ $valOD->seats_type }}</td>
-                                            <td>{{ $valOD->seats_count }}</td>
+                                            <td>{{ ($valOD) ? $valOD->title : '' }}</td>
                                             <td>{{ $valOD->price }}</td>
-                                            <td>{{ $valOD->comment }}</td>
+                                            <td>{{ $valOD->price_type }}</td>
+                                            <td>{{ date('d.m.Y H:i', strtotime($valOD->start_date)) }}</td>
+                                            <td>{{ $valOD->seats }}</td>
                                             <td>{{ $valOD->status ? $valOD->status->name : '' }}</td>
                                         </tr>
                                     @endforeach
@@ -184,6 +196,46 @@
                             </tbody>
                         </table>
 
+                    </div>
+                    <div class="tab-pane overflow-scroll" id="carsTab">
+                        
+                        <table class="table table-striped table-bordered dt-responsive nowrap datatable-buttons">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>{{ translate('Car title') }}</th>
+                                    <th>{{ translate('Color') }}</th>
+                                    <th>{{ translate('Class') }}</th>
+                                    <th>{{ translate('Reg certificate') }}</th>
+                                    <th>{{ translate('Reg certificate image') }}</th>
+                                    <th>{{ translate('Images') }}</th>
+                                    <th>{{ translate('Status') }}</th>
+                                </tr>
+                            </thead>
+                    
+                            <tbody>
+                                @if (count($cars) > 0)
+                                    @php
+                                        $n = 1;
+                                    @endphp
+                                    @foreach ($cars as $valCar)
+                                    {{-- @dd($valCar->color) --}}
+                                        <tr>
+                                            <td>{{ $n++ }}</td>
+                                            {{-- <td><a href="">{{ $valOD->company ? $valOD->company->name : '' }}</a></td> --}}
+                                            <td>{{ ($valCar->car) ? $valCar->car->name : '' }}</td>
+                                            <td>{{ ($valCar->color) ? $valCar->color->name : '' }}</td>
+                                            <td>{{ ($valCar->class) ? $valCar->class->name : '' }}</td>
+                                            <td>{{ $valCar->reg_certificate }}</td>
+                                            <td>{{ $valCar->reg_certificate_image }}</td>
+                                            <td>{{ $valCar->images }}</td>
+                                            <td>{{ $valCar->status ? $valCar->status->name : '' }}</td>
+                                        </tr>
+                                    @endforeach
+                                @endif
+                            </tbody>
+                        </table>
+                        
                     </div>
                     <div class="tab-pane" id="commentScoreTab">
                         
@@ -193,7 +245,7 @@
                                     <th>#</th>
                                     <th>{{ translate('Driver') }}</th>
                                     <th>{{ translate('Order') }}</th>
-                                    <th>{{ translate('Date') }} date</th>
+                                    <th>{{ translate('Date') }}</th>
                                     <th>{{ translate('Text') }}</th>
                                     <th>{{ translate('Score') }}</th>
                                 </tr>
@@ -220,6 +272,36 @@
                                             <td>{{ date('d.m.Y H:i', strtotime($valCS->date)) }}</td>
                                             <td>{{ $valCS->text }}</td>
                                             <td>{{ $valCS->score }}</td>
+                                        </tr>
+                                    @endforeach
+                                @endif
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="tab-pane" id="balanceHistoryScoreTab">
+                        
+                        <h2 style="float: left">{{ translate('Balance') }}: {{ $model->balance }}</h2>
+                        <h2 style="float: right">{{ translate('Personal account') }}: {{ $model->personal_account }}</h2>
+                        <table class="table table-striped table-bordered dt-responsive nowrap datatable-buttons">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>{{ translate('Price') }}</th>
+                                    <th>{{ translate('Created at') }}</th>
+                                </tr>
+                            </thead>
+                    
+                            <tbody>
+                                @if (count($balanceHistory) > 0)
+                                    @php
+                                        $n = 1;
+                                    @endphp
+                                    @foreach ($balanceHistory as $valBH)
+                                        <tr>
+                                            <td>{{ $n++ }}</td>
+                                            <td>{{ $valBH->price }}</td>
+                                            <td>{{ date('d.m.Y H:i', strtotime($valBH->created_at)) }}</td>
                                         </tr>
                                     @endforeach
                                 @endif

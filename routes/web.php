@@ -2,10 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\DriverController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\OptionsController;
 use App\Http\Controllers\CarsController;
 use App\Http\Controllers\ClassListController;
 use App\Http\Controllers\CarTypesController;
@@ -52,7 +54,7 @@ Route::group(['middleware'=>['auth', 'language']], function(){
         Route::get('/api/order/show', [OrderController::class, 'orderShow']);
     });
 
-    Route::group(['prefix' => 'offer'], function () {
+    Route::group(['prefix' => 'offers'], function () {
         Route::get('/', [OfferController::class, 'index'])->name('offer.index');
         Route::get('/edit/{id}', [OfferController::class, 'edit'])->name('offer.edit');
         Route::get('/show/{id}', [OfferController::class, 'show'])->name('offer.show');
@@ -68,8 +70,17 @@ Route::group(['middleware'=>['auth', 'language']], function(){
         Route::put('/update/{id}', [ClientController::class, 'update'])->name('client.update');
     });
 
+    Route::group(['prefix' => 'drivers'], function () {
+        Route::get('/', [DriverController::class, 'index'])->name('driver.index');
+        Route::get('/edit/{id}', [DriverController::class, 'edit'])->name('driver.edit');
+        Route::get('/show/{id}', [DriverController::class, 'show'])->name('driver.show');
+        Route::delete('/destroy/{id}', [DriverController::class, 'destroy'])->name('driver.destroy');
+        Route::put('/update/{id}', [DriverController::class, 'update'])->name('driver.update');
+    });
+
     Route::resource('user', UserController::class);
     Route::resource('cars', CarsController::class);
+    Route::resource('option', OptionsController::class);
     Route::resource('carTypes', CarTypesController::class);
     Route::resource('classList', ClassListController::class);
     Route::resource('carList', CarListController::class);
@@ -98,6 +109,7 @@ Route::group(['middleware'=>['auth', 'language']], function(){
         Route::post('/store', [CouponContoller::class, 'store'])->name('coupon.store');
         // Route::get('/', [CouponContoller::class, 'index'])->name('coupon.create');
     });
+
     Route::group(['prefix' => 'role'], function () {
         Route::get('/', [RoleController::class, 'index'])->name('role.index');
         Route::get('create', [RoleController::class, 'create'])->name('role.create');
@@ -108,4 +120,6 @@ Route::group(['middleware'=>['auth', 'language']], function(){
         Route::post('/store', [RoleController::class, 'store'])->name('role.store');
         // Route::get('/', [RoleController::class, 'index'])->name('coupon.create');
     });
+
 });
+

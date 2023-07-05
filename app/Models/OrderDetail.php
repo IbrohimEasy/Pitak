@@ -26,6 +26,9 @@ class OrderDetail extends Model
         'order_id',
         'status_id',
         'client_id',
+        'from_id',
+        'to_id',
+        'comment',
         'company_id',
         'seats_type',
         'seats_count',
@@ -34,6 +37,21 @@ class OrderDetail extends Model
 
     public function order(): BelongsTo
     {
-        return $this->belongsTo(Orders::class);
+        return $this->belongsTo(Order::class);
+    }
+
+    public function from(): BelongsTo
+    {
+        return $this->belongsTo(City::class);
+    }
+
+    public function to(): BelongsTo
+    {   
+        return $this->belongsTo(City::class);
+    }
+
+    public function status(): BelongsTo
+    {
+        return $this->belongsTo(Status::class);
     }
 }

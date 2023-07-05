@@ -108,9 +108,6 @@
                 </div>
             </div>
         </div>
-        <div style="display: flex; justify-content: end; width: 100%;">
-            <div style="background-color: white; width: 50%; height: 76px; z-index: 4; position: absolute"></div>
-        </div>
         <table id="datatable-buttons" class="table dt-responsive nowrap table_show" style="display:none;">
             <thead>
             <tr>

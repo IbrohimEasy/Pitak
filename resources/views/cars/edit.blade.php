@@ -7,7 +7,7 @@
     <div class="card">
         <div class="card-body">
             <p class="text-muted font-14">
-                {{translate('Car create')}}
+                {{translate('Car edit')}}
             </p>
             @if ($errors->any())
                 <div class="alert alert-danger">

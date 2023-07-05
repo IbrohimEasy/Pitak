@@ -1,8 +1,8 @@
 @extends('layout.layout')
 
 @section('title')
-    {{-- Client Index --}}
-    {{ translate("Client Index") }}
+    {{-- Driver Index --}}
+    {{ translate("Driver Index") }}
 @endsection
 @section('content')
 
@@ -40,13 +40,13 @@
                         <td>{{ $val->company ? $val->company->name : '' }}</td>
                         <td>{{ $val->status ? $val->status->name : '' }}</td>
                         <td>
-                            <a href="{{ route('client.show', $val->id) }}">
+                            <a href="{{ route('driver.show', $val->id) }}">
                                 <button type="button" class="btn btn-success waves-effect waves-light"><i class="fe-eye"></i></button>
                             </a>
-                            <a href="{{ route('client.edit', $val->id) }}">
+                            <a href="{{ route('driver.edit', $val->id) }}">
                                 <button type="button" class="btn btn-primary waves-effect waves-light"><i class="fe-edit"></i></button>
                             </a>
-                            <button type="button" class="btn btn-danger delete-datas" data-bs-toggle="modal" data-bs-target="#warning-alert-modal" data-url="{{ route('client.destroy', $val->id) }}"><i class="fe-trash-2"></i></button>
+                            <button type="button" class="btn btn-danger delete-datas" data-bs-toggle="modal" data-bs-target="#warning-alert-modal" data-url="{{ route('driver.destroy', $val->id) }}"><i class="fe-trash-2"></i></button>
                         </td>
                     </tr>
                 @endforeach

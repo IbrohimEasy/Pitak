@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Orders extends Model
+class Order extends Model
 {
     use HasFactory, SoftDeletes;
     
@@ -37,9 +37,19 @@ class Orders extends Model
         return $this->belongsTo(Company::class);
     }
 
-    public function carList(): BelongsTo
+    public function driver(): BelongsTo
     {
-        return $this->belongsTo(CarList::class);
+        return $this->belongsTo(Driver::class);
+    }
+
+    // public function carList(): BelongsTo
+    // {
+    //     return $this->belongsTo(CarList::class);
+    // }
+
+    public function carList()
+    {
+        return $this->hasOne(CarList::class, 'id', 'cars_list_id');
     }
 
     public function from(): BelongsTo
@@ -48,8 +58,18 @@ class Orders extends Model
     }
 
     public function to(): BelongsTo
-    {
+    {   
         return $this->belongsTo(City::class);
+    }
+
+    public function offers()
+    {
+        return $this->hasMany(Offer::class, 'order_id', 'id');
+    }
+
+    public function commentScores()
+    {
+        return $this->hasMany(CommentScore::class, 'order_id', 'id');
     }
 
     // public function personalInfo(): BelongsTo
