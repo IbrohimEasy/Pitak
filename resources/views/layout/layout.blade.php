@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
+@php
+    $current_user = \Illuminate\Support\Facades\Auth::user();
+@endphp
 <head>
     <meta charset="utf-8" />
     {{-- <title>{{ $title ?? translate('Pitac') }}</title> --}}
@@ -137,12 +139,12 @@
                                         <img class="notifRegion2" id="selected_language"
                                             src="{{ asset('/assets/images/language/region.png') }}" alt="region">
                                     @break
-            
+
                                     @case('en')
                                         <img class="notifRegion2" id="selected_language"
                                             src="{{ asset('/assets/images/language/GB.png') }}" alt="region">
                                     @break
-            
+
                                     @case('ru')
                                         <img class="notifRegion2" id="selected_language"
                                             src="{{ asset('/assets/images/language/RU.png') }}" alt="region">
@@ -161,13 +163,13 @@
                                                 <img class="dropdownRegionBayroq" id="lang_uz" style="margin-right: 8px;" src="{{asset('/assets/images/language/region.png')}}" alt="region">
                                                 {{ $language->name }}
                                                 @break
-            
+
                                                 @case('ru')
                                                     <img class="dropdownRegionBayroq" id="lang_ru" style="margin-right: 8px;"
                                                         src="{{ asset('/assets/images/language/RU.png') }}" alt="region">
                                                     {{ $language->name }}
                                                 @break
-            
+
                                                 @case('en')
                                                     <img class="dropdownRegionBayroq" id="lang_en" style="margin-right: 8px;"
                                                         src="{{ asset('/assets/images/language/GB.png') }}" alt="region">
@@ -296,9 +298,16 @@
                     <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light"
                         data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false"
                         aria-expanded="false">
-                        <img src="{{ asset('assets/images/users/user-1.jpg') }}" alt="user-image" class="rounded-circle">
+                        @php
+                            $sms_avatar = storage_path('app/public/user/'.$current_user->personalInfo->avatar);
+                        @endphp
+                        @if(file_exists($sms_avatar))
+                            <img class="rounded-circle" src="{{asset('storage/user/'.$current_user->personalInfo->avatar)}}" alt="">
+                        @else
+                            <img class="rounded-circle" src="{{asset('assets/images/man.jpg')}}" alt="">
+                        @endif
                         <span class="pro-user-name ms-1">
-                            Nowak <i class="mdi mdi-chevron-down"></i>
+                            {{$current_user->personalInfo->first_name??''}} <i class="mdi mdi-chevron-down"></i>
                         </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
@@ -308,9 +317,9 @@
                         </div>
 
                         <!-- item-->
-                        <a href="contacts-profile.html" class="dropdown-item notify-item">
+                        <a href="{{route('account')}}" class="dropdown-item notify-item">
                             <i class="fe-user"></i>
-                            <span>My Account</span>
+                            <span>{{translate('My Account')}}</span>
                         </a>
 
                         <!-- item-->
@@ -377,7 +386,6 @@
 
         </div>
         <!-- end Topbar -->
-
         <!-- ========== Left Sidebar Start ========== -->
         <div class="left-side-menu">
 
@@ -386,11 +394,17 @@
                 <!-- User box -->
                 <div class="user-box text-center">
 
-                    <img src="{{ asset('assets/images/users/user-1.jpg') }}" alt="user-img" title="Mat Helme"
-                        class="rounded-circle img-thumbnail avatar-md">
+                    @php
+                        $sms_avatar = storage_path('app/public/user/'.$current_user->personalInfo->avatar);
+                    @endphp
+                    @if(file_exists($sms_avatar))
+                        <img class="rounded-circle img-thumbnail avatar-md" src="{{asset('storage/user/'.$current_user->personalInfo->avatar)}}" alt="">
+                    @else
+                        <img class="rounded-circle img-thumbnail avatar-md" src="{{asset('assets/images/man.jpg')}}" alt="">
+                    @endif
                     <div class="dropdown">
                         <a href="#" class="user-name dropdown-toggle h5 mt-2 mb-1 d-block"
-                            data-bs-toggle="dropdown" aria-expanded="false">Nowak Helme</a>
+                            data-bs-toggle="dropdown" aria-expanded="false">{{$current_user->personalInfo->first_name??''}} {{$current_user->personalInfo->last_name??''}}</a>
                         <div class="dropdown-menu user-pro-dropdown">
 
                             <!-- item-->
@@ -423,7 +437,7 @@
                         </div>
                     </div>
 
-                    <p class="text-muted left-user-info">Admin Head</p>
+                    <p class="text-muted left-user-info">{{$current_user->role->name??''}}</p>
 
                     <ul class="list-inline">
                         <li class="list-inline-item">
@@ -433,16 +447,19 @@
                         </li>
 
                         <li class="list-inline-item">
-                            <a href="#">
-                                <i class="mdi mdi-power"></i>
-                            </a>
+                            <form action="{{route('logout')}}" method="POST">
+                                @csrf
+                                @method("POST")
+                                <button type="submit" style="border: 0px; background-color: white; color: #98a6ad">
+                                    <i class="mdi mdi-power"></i>
+                                </button>
+                            </form>
                         </li>
                     </ul>
                 </div>
 
                 <!--- Sidemenu -->
                 <div id="sidebar-menu">
-
                     <ul id="side-menu">
 
                          <li class="menu-title">Navigation</li>
@@ -529,6 +546,13 @@
                                 <span> {{translate('Option') }} </span>
                             </a>
                         </li>
+                        <li>
+                            <a href="{{route('pagePhone')}}">
+                                <i class="mdi mdi-account-multiple-plus-outline"></i>
+                                {{-- <span class="badge bg-success rounded-pill float-end">9+</span> --}}
+                                <span> {{translate('Phone') }} </span>
+                            </a>
+                        </li>
                         {{-- <li class="menu-title mt-2">Apps</li>
 
                         <li>
@@ -549,7 +573,7 @@
                         <li>
                             <a href="#settings" data-bs-toggle="collapse">
                                 <i class="fe-settings noti-icon"></i>
-                                
+
                                 <span> {{translate('Settings')}} </span>
                                 <span class="menu-arrow"></span>
                             </a>
@@ -617,9 +641,9 @@
                 <div class="container-fluid">
                     <div class="card">
                         <div class="card-body">
-                            
+
                             @yield('content')
-                            
+
                         </div>
                     </div>
                 </div>
@@ -661,16 +685,13 @@
 
     <!-- Right Sidebar -->
     <div class="right-bar">
-
         <div data-simplebar class="h-100">
-
             <div class="rightbar-title">
                 <a href="javascript:void(0);" class="right-bar-toggle float-end">
                     <i class="mdi mdi-close"></i>
                 </a>
                 <h4 class="font-16 m-0 text-white">Theme Customizer</h4>
             </div>
-
             <!-- Tab panes -->
             <div class="tab-content pt-0">
 
@@ -678,9 +699,8 @@
 
                     <div class="p-3">
                         <div class="alert alert-warning" role="alert">
-                            <strong>Customize </strong> the overall color scheme, Layout, etc.
+                            <strong>Customize</strong>the overall color scheme, Layout, etc.
                         </div>
-
                         <h6 class="fw-medium font-14 mt-4 mb-2 pb-1">Color Scheme</h6>
                         <div class="form-check form-switch mb-1">
                             <input type="checkbox" class="form-check-input" name="layout-color" value="light"

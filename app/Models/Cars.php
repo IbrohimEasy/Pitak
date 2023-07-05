@@ -46,7 +46,7 @@ class Cars extends Model
         return $this->hasOne(CarList::class, 'id', 'car_list_id');
     }
     public function driver(){
-        return $this->hasOne(Drivers::class, 'id', 'driver_id');
+        return $this->hasOne(Driver::class, 'id', 'driver_id');
     }
     public function status(){
         return $this->hasOne(Status::class, 'id', 'status_id');

@@ -12,7 +12,7 @@ class UserVerify extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $table = 'yy_users_verify';
+    protected $table = 'yy_user_verifies';
     /**
      * The attributes that are mass assignable.
      *

@@ -150,5 +150,10 @@
             </tr>
             </tbody>
         </table>
+        <div class="d-flex justify-content-end">
+            <div style="position: absolute; z-index:4; background-color: white; width: 270px; height: 80px; margin-top: -80px">
+
+            </div>
+        </div>
     </div>
 @endsection

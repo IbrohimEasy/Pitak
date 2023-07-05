@@ -32,23 +32,31 @@
                                 @csrf
                                 <div class="mb-3">
                                     <label for="emailaddress" class="form-label">Email address</label>
-                                    <input class="form-control" type="email" id="emailaddress" name="email" required="" placeholder="Enter your email">
+                                    <input class="form-control @error('email') is-invalid @enderror" type="email" id="emailaddress" name="email" required="" placeholder="Enter your email">
                                 </div>
-
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password</label>
-                                    <input class="form-control" type="password" required="" name="password" id="password" placeholder="Enter your password">
+                                    <input class="form-control @error('password') is-invalid @enderror" type="password" required="" name="password" id="password" placeholder="Enter your password">
                                 </div>
-
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                                 <div class="mb-3">
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="checkbox-signin" checked>
-                                        <label class="form-check-label" for="checkbox-signin">Remember me</label>
+                                        <label class="form-check-label" for="checkbox-signin">{{translate('Remember me')}}</label>
                                     </div>
                                 </div>
 
                                 <div class="mb-3 d-grid text-center">
-                                    <button class="btn btn-primary" type="submit"> Log In </button>
+                                    <button class="btn btn-primary" type="submit"> {{translate('Log In')}} </button>
                                 </div>
                             </form>
 
