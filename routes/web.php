@@ -62,6 +62,7 @@ Route::group(['middleware'=>['auth', 'language']], function(){
         Route::put('/update/{id}', [OrderController::class, 'update'])->name('order.update');
         // for api 
         Route::get('/search/taxi', [OrderController::class, 'searchTaxi']);
+        Route::get('/api/order/show', [OrderController::class, 'orderShow']);
     });
 
     Route::group(['prefix' => 'offers'], function () {

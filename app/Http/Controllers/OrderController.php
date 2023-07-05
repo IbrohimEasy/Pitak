@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Status;
-use App\Models\CarList;
 use App\Models\Country;
 use App\Models\City;
 use App\Models\Drivers;
+use App\Models\CarList;
+use App\Models\Cars;
 use App\Models\PersonalInfo;
 use Carbon\Carbon;
 
@@ -126,6 +127,37 @@ class OrderController extends Controller
         }
        
         dd($aa);
+
+    }
+
+    public function orderShow(Request $request){
+        
+        // $order_id=$request->order_id;
+         $order_id=2;
+         $order=Orders::where('id',$order_id)->first();
+        //  dd($order);
+         $driver=Drivers::where('id',$order->driver_id)->first();
+         $car_list=CarList::where('id',$order->cars_list_id)->first();
+        //  dd($car_list);
+         $car=Cars::where('car_list_id',$car_list->id)->first();
+         $driver_information=[
+            'name'=>$driver->first_name,
+            'avatar'=>$driver->avatar
+         ];
+         $car_information=[
+            'name'=>$car_list->name,
+            'avater'=>$car->images
+
+             
+         ];
+         $list=[
+          'price'=>$order->price,
+          'price_type'=>$order->price_type,
+          'seats'=>$order->seats,
+          'driver_information'=>$driver_information,
+          'car_information'=>$car_information
+         ];
+         dd($list);
 
     }
 }

@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::table('yy_user_verifies', function (Blueprint $table) {
             $table->foreign('status_id')->references('id')->on('yy_statuses');
+            // $table->foreign('user_id')->references('id')->on('yy_statuses');
         });
 
         Schema::table('yy_staffs', function (Blueprint $table) {
@@ -26,9 +27,10 @@ return new class extends Migration
         });
 
         Schema::table('yy_drivers', function (Blueprint $table) {
-            $table->foreign('personal_info_id')->references('id')->on('yy_personal_infos');
+            // $table->foreign('personal_info_id')->references('id')->on('yy_personal_infos');
             $table->foreign('status_id')->references('id')->on('yy_statuses');
-            $table->foreign('company_id')->references('id')->on('yy_companies');
+            $table->foreign('user_id')->references('id')->on('yy_users');
+            // $table->foreign('company_id')->references('id')->on('yy_companies');
         });
 
         Schema::table('yy_cars', function (Blueprint $table) {
@@ -44,11 +46,11 @@ return new class extends Migration
             $table->foreign('car_type_id')->references('id')->on('yy_car_types');
         });
         
-        Schema::table('yy_clients', function (Blueprint $table) {
-            $table->foreign('personal_info_id')->references('id')->on('yy_personal_infos');
-            $table->foreign('status_id')->references('id')->on('yy_statuses');
-            $table->foreign('company_id')->references('id')->on('yy_companies');
-        });
+        // Schema::table('yy_clients', function (Blueprint $table) {
+        //     $table->foreign('personal_info_id')->references('id')->on('yy_personal_infos');
+        //     $table->foreign('status_id')->references('id')->on('yy_statuses');
+        //     $table->foreign('company_id')->references('id')->on('yy_companies');
+        // });
 
         Schema::table('yy_class_lists', function (Blueprint $table) {
             $table->foreign('status_id')->references('id')->on('yy_statuses');
@@ -64,7 +66,7 @@ return new class extends Migration
 
         Schema::table('yy_orders', function (Blueprint $table) {
             $table->foreign('status_id')->references('id')->on('yy_statuses');
-            $table->foreign('driver_id')->references('id')->on('yy_drivers');
+            $table->foreign('driver_id')->references('id')->on('yy_users');
             $table->foreign('cars_list_id')->references('id')->on('yy_car_lists');
             $table->foreign('company_id')->references('id')->on('yy_companies');
         });
@@ -72,7 +74,7 @@ return new class extends Migration
         Schema::table('yy_order_details', function (Blueprint $table) {
             $table->foreign('order_id')->references('id')->on('yy_orders');
             $table->foreign('status_id')->references('id')->on('yy_statuses');
-            $table->foreign('client_id')->references('id')->on('yy_clients');
+            $table->foreign('client_id')->references('id')->on('yy_users');
             $table->foreign('company_id')->references('id')->on('yy_companies');
         });
 
