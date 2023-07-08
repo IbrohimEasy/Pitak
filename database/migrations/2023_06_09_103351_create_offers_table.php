@@ -26,7 +26,7 @@ return new class extends Migration
 
         Schema::table('yy_offers', function (Blueprint $table) {
             $table->foreign('driver_id')->references('id')->on('yy_drivers');
-            $table->foreign('client_id')->references('id')->on('yy_clients');
+            // $table->foreign('client_id')->references('id')->on('yy_clients');
             $table->foreign('order_id')->references('id')->on('yy_orders');
             $table->foreign('order_detail_id')->references('id')->on('yy_order_details');
         });

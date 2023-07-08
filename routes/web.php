@@ -32,6 +32,17 @@ use App\Http\Controllers\CouponContoller;
 
 Auth::routes();
 
+Route::post('phone', [UserController::class, 'loginPhone'])->name('loginPhone');
+Route::post('token', [UserController::class, 'loginToken'])->name('loginToken');
+Route::get('page-phone', [UserController::class, 'pagePhone'])->name('pagePhone');
+Route::get('page-token/{id}', [UserController::class, 'pageToken'])->name('pageToken');
+
+Route::group(['middleware'=>['is_auth']], function(){
+    Route::get('/welcome', function () {
+        return view('welcome');
+    })->name('welcome');
+});
+
 Route::group(['middleware'=>['auth', 'language']], function(){
     Route::get('/', function () {
         return view('index');
@@ -39,6 +50,7 @@ Route::group(['middleware'=>['auth', 'language']], function(){
 
     Route::group(['prefix' => 'user'], function () {
         Route::get('/settings', [UserController::class, 'settings'])->name('settings.index');
+        Route::get('/account', [UserController::class, 'account'])->name('account');
     });
 
     Route::group(['prefix' => 'orders'], function () {
@@ -47,9 +59,9 @@ Route::group(['middleware'=>['auth', 'language']], function(){
         Route::get('/show/{id}', [OrderController::class, 'show'])->name('order.show');
         Route::delete('/destroy/{id}', [OrderController::class, 'destroy'])->name('order.destroy');
         Route::put('/update/{id}', [OrderController::class, 'update'])->name('order.update');
-
         // for api 
         Route::get('/search/taxi', [OrderController::class, 'searchTaxi']);
+        Route::get('/api/order/show', [OrderController::class, 'orderShow']);
     });
 
     Route::group(['prefix' => 'offers'], function () {
@@ -107,6 +119,7 @@ Route::group(['middleware'=>['auth', 'language']], function(){
         Route::post('/store', [CouponContoller::class, 'store'])->name('coupon.store');
         // Route::get('/', [CouponContoller::class, 'index'])->name('coupon.create');
     });
+
     Route::group(['prefix' => 'role'], function () {
         Route::get('/', [RoleController::class, 'index'])->name('role.index');
         Route::get('create', [RoleController::class, 'create'])->name('role.create');
@@ -117,8 +130,10 @@ Route::group(['middleware'=>['auth', 'language']], function(){
         Route::post('/store', [RoleController::class, 'store'])->name('role.store');
         // Route::get('/', [RoleController::class, 'index'])->name('coupon.create');
     });
+
 });
 
+<<<<<<< HEAD
 // Route::controller(OrderController::class)->group(function () {
 //     // Route::get('/', [OrderController, 'index'])->name('order.index');
 //     Route::get('/order/', 'index')->name('order.index');
@@ -172,3 +187,5 @@ Route::group(['prefix' => 'role'], function () {
     // Route::get('/', [RoleController::class, 'index'])->name('coupon.create');
 });
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+=======
+>>>>>>> 9308b3ac32c4fe9a54db37903cba155b98077ac2

@@ -25,8 +25,8 @@ return new class extends Migration
         });
 
         Schema::table('yy_comment_scores', function (Blueprint $table) {
-            $table->foreign('client_id')->references('id')->on('yy_clients');
-            $table->foreign('driver_id')->references('id')->on('yy_drivers');
+            $table->foreign('client_id')->references('id')->on('yy_users');
+            $table->foreign('driver_id')->references('id')->on('yy_users');
             $table->foreign('order_id')->references('id')->on('yy_orders');
         });
     }
