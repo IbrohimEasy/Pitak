@@ -5,7 +5,6 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\OptionsController;
 use App\Http\Controllers\CarsController;
@@ -42,7 +41,7 @@ Route::group(['middleware'=>['auth', 'language']], function(){
         Route::get('/settings', [UserController::class, 'settings'])->name('settings.index');
     });
 
-    Route::group(['prefix' => 'order'], function () {
+    Route::group(['prefix' => 'orders'], function () {
         Route::get('/', [OrderController::class, 'index'])->name('order.index');
         Route::get('/edit/{id}', [OrderController::class, 'edit'])->name('order.edit');
         Route::get('/show/{id}', [OrderController::class, 'show'])->name('order.show');
@@ -53,7 +52,7 @@ Route::group(['middleware'=>['auth', 'language']], function(){
         Route::get('/search/taxi', [OrderController::class, 'searchTaxi']);
     });
 
-    Route::group(['prefix' => 'offer'], function () {
+    Route::group(['prefix' => 'offers'], function () {
         Route::get('/', [OfferController::class, 'index'])->name('offer.index');
         Route::get('/edit/{id}', [OfferController::class, 'edit'])->name('offer.edit');
         Route::get('/show/{id}', [OfferController::class, 'show'])->name('offer.show');
@@ -67,6 +66,14 @@ Route::group(['middleware'=>['auth', 'language']], function(){
         Route::get('/show/{id}', [ClientController::class, 'show'])->name('client.show');
         Route::delete('/destroy/{id}', [ClientController::class, 'destroy'])->name('client.destroy');
         Route::put('/update/{id}', [ClientController::class, 'update'])->name('client.update');
+    });
+
+    Route::group(['prefix' => 'drivers'], function () {
+        Route::get('/', [DriverController::class, 'index'])->name('driver.index');
+        Route::get('/edit/{id}', [DriverController::class, 'edit'])->name('driver.edit');
+        Route::get('/show/{id}', [DriverController::class, 'show'])->name('driver.show');
+        Route::delete('/destroy/{id}', [DriverController::class, 'destroy'])->name('driver.destroy');
+        Route::put('/update/{id}', [DriverController::class, 'update'])->name('driver.update');
     });
 
     Route::resource('user', UserController::class);
@@ -121,40 +128,7 @@ Route::group(['middleware'=>['auth', 'language']], function(){
 //     // Route::post('/orders', 'store');
 // });
 
-Route::group(['prefix' => 'orders'], function () {
-    Route::get('/', [OrderController::class, 'index'])->name('order.index');
-    Route::get('/edit/{id}', [OrderController::class, 'edit'])->name('order.edit');
-    Route::get('/show/{id}', [OrderController::class, 'show'])->name('order.show');
-    Route::delete('/destroy/{id}', [OrderController::class, 'destroy'])->name('order.destroy');
-    Route::put('/update/{id}', [OrderController::class, 'update'])->name('order.update');
-});
 
-Route::group(['prefix' => 'offers'], function () {
-    Route::get('/', [OfferController::class, 'index'])->name('offer.index');
-    Route::get('/edit/{id}', [OfferController::class, 'edit'])->name('offer.edit');
-    Route::get('/show/{id}', [OfferController::class, 'show'])->name('offer.show');
-    Route::delete('/destroy/{id}', [OfferController::class, 'destroy'])->name('offer.destroy');
-    Route::put('/update/{id}', [OfferController::class, 'update'])->name('offer.update');
-});
-
-Route::group(['prefix' => 'clients'], function () {
-    Route::get('/', [ClientController::class, 'index'])->name('client.index');
-    Route::get('/edit/{id}', [ClientController::class, 'edit'])->name('client.edit');
-    Route::get('/show/{id}', [ClientController::class, 'show'])->name('client.show');
-    Route::delete('/destroy/{id}', [ClientController::class, 'destroy'])->name('client.destroy');
-    Route::put('/update/{id}', [ClientController::class, 'update'])->name('client.update');
-});
-
-Route::group(['prefix' => 'drivers'], function () {
-    Route::get('/', [DriverController::class, 'index'])->name('driver.index');
-    Route::get('/edit/{id}', [DriverController::class, 'edit'])->name('driver.edit');
-    Route::get('/show/{id}', [DriverController::class, 'show'])->name('driver.show');
-    Route::delete('/destroy/{id}', [DriverController::class, 'destroy'])->name('driver.destroy');
-    Route::put('/update/{id}', [DriverController::class, 'update'])->name('driver.update');
-});
-
-Route::get('/register', [AuthController::class, 'registerPage'])->name('register');
-Route::get('/login', [AuthController::class, 'loginPage'])->name('login');
 Route::resource('user', UserController::class);
 // Route::resource('role', RoleController::class);
 Route::resource('cars', CarsController::class);
@@ -162,24 +136,21 @@ Route::resource('car-types', CarTypesController::class);
 Route::resource('class-list', ClassListController::class);
 Route::resource('car-list', CarListController::class);
 
-Route::post('/register-post', [AuthController::class, 'register'])->name('register_post');
-Route::post('/login-post', [AuthController::class, 'login'])->name('login_post');
 
+// Route::group(['prefix' => 'language'], function () {
 
-Route::group(['prefix' => 'language'], function () {
-
-    Route::get('/', [LanguageController::class, 'index'])->name('language.index');
-    Route::get('/language/show/{id}', [LanguageController::class, 'show'])->name('language.show');
-    Route::post('/translation/save/', [LanguageController::class, 'translation_save'])->name('translation.save');
-    Route::post('/language/change/', [LanguageController::class, 'changeLanguage'])->name('language.change');
-    Route::post('/env_key_update', [LanguageController::class, 'env_key_update'])->name('env_key_update.update');
-    Route::get('/language/create/', [LanguageController::class, 'create'])->name('languages.create');
-    Route::post('/language/added/', [LanguageController::class, 'store'])->name('languages.store');
-    Route::get('/language/edit/{id}', [LanguageController::class, 'languageEdit'])->name('language.edit');
-    Route::post('/language/update/', [LanguageController::class, 'update'])->name('languages.update');
-    Route::get('/language/delete/{id}', [LanguageController::class, 'languageDestroy'])->name('language.destroy');
-    Route::post('/language/update/value', [LanguageController::class, 'updateValue'])->name('languages.update_value');
-});
+//     Route::get('/', [LanguageController::class, 'index'])->name('language.index');
+//     Route::get('/language/show/{id}', [LanguageController::class, 'show'])->name('language.show');
+//     Route::post('/translation/save/', [LanguageController::class, 'translation_save'])->name('translation.save');
+//     Route::post('/language/change/', [LanguageController::class, 'changeLanguage'])->name('language.change');
+//     Route::post('/env_key_update', [LanguageController::class, 'env_key_update'])->name('env_key_update.update');
+//     Route::get('/language/create/', [LanguageController::class, 'create'])->name('languages.create');
+//     Route::post('/language/added/', [LanguageController::class, 'store'])->name('languages.store');
+//     Route::get('/language/edit/{id}', [LanguageController::class, 'languageEdit'])->name('language.edit');
+//     Route::post('/language/update/', [LanguageController::class, 'update'])->name('languages.update');
+//     Route::get('/language/delete/{id}', [LanguageController::class, 'languageDestroy'])->name('language.destroy');
+//     Route::post('/language/update/value', [LanguageController::class, 'updateValue'])->name('languages.update_value');
+// });
 
 
 Route::group(['prefix' => 'coupon'], function () {
