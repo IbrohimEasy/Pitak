@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cars;
 use App\Models\CarList;
-use App\Models\Drivers;
+use App\Models\Driver;
 use App\Models\Status;
 use App\Models\ColorList;
 use App\Models\ClassList;
@@ -28,7 +28,7 @@ class CarsController extends Controller
     public function create()
     {
         $carLists = CarList::all();
-        $drivers = Drivers::all();
+        $drivers = Driver::all();
         $statuses = Status::all();
         $colorLists = ColorList::all();
         $classLists = ClassList::all();
@@ -88,7 +88,7 @@ class CarsController extends Controller
     {
         $model = Cars::find($id);
         $carLists = CarList::all();
-        $drivers = Drivers::all();
+        $drivers = Driver::all();
         $statuses = Status::all();
         $colorLists = ColorList::all();
         $classLists = ClassList::all();

@@ -12,6 +12,7 @@ class ColorList extends Model
     protected $table = 'yy_color_lists';
 
     protected $fillable = [
-        'name'
+        'name',
+        'code'
     ];
 }
