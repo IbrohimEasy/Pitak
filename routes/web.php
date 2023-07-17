@@ -10,6 +10,7 @@ use App\Http\Controllers\OptionsController;
 use App\Http\Controllers\CarsController;
 use App\Http\Controllers\ClassListController;
 use App\Http\Controllers\CarTypesController;
+use App\Http\Controllers\ColorsListController;
 use App\Http\Controllers\CarListController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\OfferController;
@@ -93,6 +94,7 @@ Route::group(['middleware'=>['auth', 'language']], function(){
     Route::resource('option', OptionsController::class);
     Route::resource('carTypes', CarTypesController::class);
     Route::resource('classList', ClassListController::class);
+    Route::resource('colorList', ColorsListController::class);
     Route::resource('carList', CarListController::class);
 
     Route::group(['prefix' => 'language'], function () {
@@ -186,3 +188,4 @@ Route::group(['prefix' => 'role'], function () {
     // Route::get('/', [RoleController::class, 'index'])->name('coupon.create');
 });
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+});

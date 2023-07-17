@@ -8,6 +8,7 @@ use App\Models\Role;
 use App\Models\Company;
 use App\Models\PersonalInfo;
 use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 class UserController extends Controller
@@ -40,12 +41,11 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        $data = $request->validated();
         $personal_info = new PersonalInfo();
-        $personal_info->first_name = $data['first_name'];
-        $personal_info->last_name = $data['last_name'];
-        $personal_info->middle_name = $data['middle_name'];
-        $personal_info->phone_number = $data['phone_number'];
+        $personal_info->first_name = $request->first_name;
+        $personal_info->last_name = $request->last_name;
+        $personal_info->middle_name = $request->middle_name;
+        $personal_info->phone_number = $request->phone_number;
         $letters = range('a', 'z');
         $random_array = [$letters[rand(0,25)], $letters[rand(0,25)], $letters[rand(0,25)], $letters[rand(0,25)], $letters[rand(0,25)]];
         $random = implode("", $random_array);
@@ -55,20 +55,20 @@ class UserController extends Controller
             $file->storeAs('public/user/', $image_name);
             $personal_info->avatar = $image_name;
         }
-        $personal_info->gender = $data['gender'];
-        $personal_info->birth_date = $data['birth_date'];
+        $personal_info->gender = $request->gender;
+        $personal_info->birth_date = $request->birth_date;
         $personal_info->save();
         $model = new User();
-        $model->email =  $data['email'];
+        $model->email =  $request->email;
         if(isset($request->password)){
-            $model->password = Hash::make($data['password']);
+            $model->password = Hash::make($request->password);
         }
-        $model->password = Hash::make($data['password']);
+        $model->password = Hash::make($request->password);
         if($request->role_id =! "0"){
-            $model->role_id = (int)$data['role_id'];
+            $model->role_id = (int)$request->role_id;
         }
         if($request->company_id =! "0"){
-            $model->company_id = (int)$data['company_id'];
+            $model->company_id = (int)$request->company_id;
         }
         $model->personal_info_id = $personal_info->id;
         $model->save();
@@ -100,13 +100,12 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, string $id)
     {
-        $data = $request->validated();
         $model = User::find($id);
         $personal_info = $model->personalInfo;
-        $personal_info->first_name = $data['first_name'];
-        $personal_info->last_name = $data['last_name'];
-        $personal_info->middle_name = $data['middle_name'];
-        $personal_info->phone_number = $data['phone_number'];
+        $personal_info->first_name = $request->first_name;
+        $personal_info->last_name = $request->last_name;
+        $personal_info->middle_name = $request->middle_name;
+        $personal_info->phone_number = $request->phone_number;
         $letters = range('a', 'z');
         $random_array = [$letters[rand(0,25)], $letters[rand(0,25)], $letters[rand(0,25)], $letters[rand(0,25)], $letters[rand(0,25)]];
         $random = implode("", $random_array);
@@ -120,20 +119,20 @@ class UserController extends Controller
             $file->storeAs('public/user/', $image_name);
             $personal_info->avatar = $image_name;
         }
-        $personal_info->gender = $data['gender'];
-        $personal_info->birth_date = $data['birth_date'];
+        $personal_info->gender = $request->gender;
+        $personal_info->birth_date = $request->birth_date;
         $personal_info->save();
-        $model->email = $data['email'];
-        if(isset($data['new_password'])){
-            if($data['new_password'] == $data['password_confirmation']){
-                $model->password = Hash::make($data['new_password']);
+        $model->email = $request->email;
+        if(isset($request->new_password)){
+            if($request->new_password == $request->password_confirmation){
+                $model->password = Hash::make($request->new_password);
             }
         }
-        if($data['role_id'] =! "0"){
-            $model->role_id = (int)$data['role_id'];
+        if($request->role_id =! "0"){
+            $model->role_id = (int)$request->role_id;
         }
-        if($data['company_id'] =! "0"){
-            $model->company_id = (int)$data['company_id'];
+        if($request->company_id =! "0"){
+            $model->company_id = (int)$request->company_id;
         }
         $model->personal_info_id = $personal_info->id;
         $model->save();
@@ -153,5 +152,11 @@ class UserController extends Controller
         $model->personalInfo->delete();
         $model->delete();
         return redirect()->route('user.index')->with('status', translate('Successfully deleted'));
+    }
+
+    public function account(){
+        $user = Auth::user();
+        $stuffs = User::all();
+        return view('user.account', ['stuffs'=>$stuffs, 'user'=>$user]);
     }
 }

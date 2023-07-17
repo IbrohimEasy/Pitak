@@ -387,9 +387,9 @@
         </div>
         <!-- end Topbar -->
         <!-- ========== Left Sidebar Start ========== -->
-        <div class="left-side-menu">
+        <div class="left-side-menu" style="overflow: scroll">
 
-            <div class="h-100" data-simplebar>
+            <div class="h-100">
 
                 <!-- User box -->
                 <div class="user-box text-center">
@@ -532,6 +532,9 @@
                                     </li>
                                     <li>
                                         <a href="{{route('carTypes.index')}}">{{translate('Car Types')}}</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('colorList.index')}}">{{translate('Cars\' Color')}}</a>
                                     </li>
                                     <li>
                                         <a href="{{route('classList.index')}}">{{translate('Class list')}}</a>
