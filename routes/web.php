@@ -133,7 +133,6 @@ Route::group(['middleware'=>['auth', 'language']], function(){
 
 });
 
-<<<<<<< HEAD
 // Route::controller(OrderController::class)->group(function () {
 //     // Route::get('/', [OrderController, 'index'])->name('order.index');
 //     Route::get('/order/', 'index')->name('order.index');
@@ -187,5 +186,3 @@ Route::group(['prefix' => 'role'], function () {
     // Route::get('/', [RoleController::class, 'index'])->name('coupon.create');
 });
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-=======
->>>>>>> 9308b3ac32c4fe9a54db37903cba155b98077ac2
