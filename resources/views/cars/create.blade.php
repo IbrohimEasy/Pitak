@@ -53,7 +53,7 @@
                     <select id="color_list_id" class="form-select" name="color_list_id">
                         <option value="">{{translate('Choose..')}}</option>
                         @foreach($colorLists as $colorList)
-                            <option value="{{$colorList->id}}">{{$colorList->name}}</option>
+                            <option value="{{$colorList->id}}" style="background-color: {{$colorList->code}}; color:{{strtolower($colorList->name)=='white'?'black':'white'}}">{{$colorList->name}}</option>
                         @endforeach
                     </select>
                 </div>
