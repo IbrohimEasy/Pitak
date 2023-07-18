@@ -55,7 +55,7 @@
                                     @if(file_exists($image_big))
                                         <img src="{{asset('storage/media/'.$media_history->media_history->url_big)}}" alt="" width="140px">
                                     @elseif(file_exists($video_big))
-                                        <video width="150" controls>
+                                        <video width="150" height="150" controls>
                                             <source src="{{asset('storage/media/videos/'.$media_history->media_history->url_big)}}" type="video/mp4">
                                         </video>
                                     @else
