@@ -1,8 +1,8 @@
 @extends('layout.layout')
 
 @section('title')
-    {{-- Client Edit --}}
-    {{ translate("Client Edit") }}
+    {{-- Users Edit --}}
+    {{ translate("Users Edit") }}
 @endsection
 
 @section('styles')

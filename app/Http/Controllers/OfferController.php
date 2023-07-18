@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Offer;
 use App\Models\Driver;
-use App\Models\Client;
+use App\Models\Users;
 use Illuminate\Http\Request;
 
 class OfferController extends Controller
@@ -52,7 +52,7 @@ class OfferController extends Controller
     {
         $model = Offer::findOrFail($id);
         $driver = Driver::all();
-        $client = Client::all();
+        $client = Users::all();
 
         return view('offer.edit', [
             'model' => $model, 

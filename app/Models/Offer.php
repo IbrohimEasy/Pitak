@@ -30,7 +30,7 @@ class Offer extends Model
 
     public function client(): BelongsTo
     {
-        return $this->belongsTo(Client::class);
+        return $this->belongsTo(Users::class);
     }
 
     public function order(): BelongsTo

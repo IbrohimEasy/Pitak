@@ -34,7 +34,6 @@ class CarsController extends Controller
         $classLists = ClassList::all();
         return view('cars.create', ['carLists'=>$carLists, 'drivers'=>$drivers, 'statuses'=>$statuses, 'colorLists'=>$colorLists, 'classLists'=>$classLists]);
     }
-
     /**
      * Store a newly created resource in storage.
      */
