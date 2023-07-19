@@ -83,8 +83,9 @@ class MediaHistoryController extends Controller
      */
     public function edit(string $id)
     {
+        $users = Users::all();
         $media_history_user = MediaHistoryUser::find($id);
-        return view('media-history.edit', ['media_history_user'=>$media_history_user]);
+        return view('media-history.edit', ['media_history_user'=>$media_history_user, 'users'=>$users]);
     }
 
     /**
@@ -94,7 +95,7 @@ class MediaHistoryController extends Controller
     {
         $request->validate([
             'video'=>'mimes:mp4,ogx,ogs,ogv,ogg,webm,avi',
-            'image'=>'required|mimes:jpg,png,jpeg,webp'
+            'image'=>'mimes:jpg,png,jpeg,webp'
         ]);
         $model = MediaHistoryUser::find($id);
         $media_history = $model->media_history;
@@ -110,32 +111,44 @@ class MediaHistoryController extends Controller
                 unlink($avatar_main);
             }
         }
-        if(isset($video)){
+        if($request->is_video == 'true' && isset($video)){
             $video_main = storage_path('app/public/media/'.$media_history->url_big);
             if(file_exists($video_main)){
                 unlink($video_main);
             }
         }
-        $letters = range('a', 'z');
-        $random_array = [$letters[rand(0,25)], $letters[rand(0,25)], $letters[rand(0,25)], $letters[rand(0,25)], $letters[rand(0,25)]];
-        $random = implode("", $random_array);
-        $image_name = $random . '' . date('Y-m-dh-i-s') . '.' . $file->extension();
-        $img = Image::make($file->path());
-        $img->resize(150, 150, function($constraint){
-            $constraint->aspectRatio();
-        })->save(storage_path('app/public/media/thumb/'.$image_name));
-        $media_history->url_small = $image_name;
-        if(isset($request->video)){
-            $letters_new = range('a', 'z');
-            $random_array_new = [$letters_new[rand(0,25)], $letters_new[rand(0,25)], $letters_new[rand(0,25)], $letters_new[rand(0,25)], $letters_new[rand(0,25)]];
-            $random_new = implode("", $random_array_new);
-            $video_name = $random_new . '' . date('Y-m-dh-i-s') . '.' . $video->extension();
-            $video->storeAs('public/media/videos/', $video_name);
-            $media_history->url_big = $video_name;
-        }else{
-            $file->storeAs('public/media/', $image_name);
-            $media_history->url_big = $image_name;
+        if(isset($file)){
+            $letters = range('a', 'z');
+            $random_array = [$letters[rand(0, 25)], $letters[rand(0, 25)], $letters[rand(0, 25)], $letters[rand(0, 25)], $letters[rand(0, 25)]];
+            $random = implode("", $random_array);
+            $image_name = $random . '' . date('Y-m-dh-i-s') . '.' . $file->extension();
+            $img = Image::make($file->path());
+            $img->resize(150, 150, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save(storage_path('app/public/media/thumb/' . $image_name));
+            $media_history->url_small = $image_name;
         }
+        if (isset($request->video)) {
+            $video_array = explode(".", $request->video);
+            if(!in_array($video_array[1], ['jpg','png','jpeg','webp'])) {
+                if ($request->is_video == 'true') {
+                    $video_main = storage_path('app/public/media/' . $media_history->url_big);
+                    if (file_exists($video_main)) {
+                        unlink($video_main);
+                    }
+                }
+                $letters_new = range('a', 'z');
+                $random_array_new = [$letters_new[rand(0, 25)], $letters_new[rand(0, 25)], $letters_new[rand(0, 25)], $letters_new[rand(0, 25)], $letters_new[rand(0, 25)]];
+                $random_new = implode("", $random_array_new);
+                $video_name = $random_new . '' . date('Y-m-dh-i-s') . '.' . $video->extension();
+                $video->storeAs('public/media/videos/', $video_name);
+                $media_history->url_big = $video_name;
+            }else {
+                $file->storeAs('public/media/', $image_name);
+                $media_history->url_big = $image_name;
+            }
+        }
+
         $media_history->save();
         $model->user_id = $request->user_id;
         $model->media_history_id = $media_history->id;

@@ -18,21 +18,72 @@
             <p class="text-muted font-14">
                 {{translate('Car class list edit')}}
             </p>
-            <form action="{{route('classList.update', $classList->id)}}" class="parsley-examples" method="POST">
+            <form action="{{route('mediaHistory.update', $media_history_user->id)}}" class="parsley-examples" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method("PUT")
                 <div class="mb-3">
-                    <label class="form-label">{{translate('Name')}}</label>
-                    <input type="text" name="name" class="form-control" required value="{{$classList->name??''}}"/>
-                </div>
-                <div class="mb-3">
-                    <label for="status_id" class="form-label">{{translate('Status')}}</label>
-                    <select id="status_id" class="form-select" name="status_id" required>
+                    <label for="user" class="form-label">{{translate('Select user')}}</label>
+                    <select id="user" class="form-select" name="user_id" required>
                         <option value="">{{translate('Choose..')}}</option>
-                        @foreach($statuses as $status)
-                            <option value="{{$status->id??''}}" {{$classList->status->id == $status->id?'selected':''}}>{{$status->name??''}}</option>
+                        @foreach($users as $user)
+                            <option value="{{$user->id??''}}" {{$media_history_user->user_id == $user->id?'selected':''}}>
+                                {{$user->personalInfo->first_name??''}} {{$user->personalInfo->last_name??''}} {{$user->personalInfo->middle_name??''}}
+                            </option>
                         @endforeach
                     </select>
+                </div>
+                <ul class="nav nav-pills navtab-bg"> {{--  nav-justified --}}
+                    <li class="nav-item">
+                        <a href="#uploadImage" data-bs-toggle="tab" aria-expanded="true" class="nav-link active" id="upload_image">
+                            {{ translate('Upload image') }}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#uploadVideo" data-bs-toggle="tab" aria-expanded="false" class="nav-link" id="upload_video">
+                            {{ translate('Upload video') }}
+                        </a>
+                    </li>
+                </ul>
+                @php
+                    $big_image_array = explode('.', $media_history_user->media_history->url_big);
+                    $image_small = storage_path('app/public/media/thumb/'.$media_history_user->media_history->url_small);
+                    $image_big = storage_path('app/public/media/'.$media_history_user->media_history->url_big);
+                    $video_big = storage_path('app/public/media/videos/'.$media_history_user->media_history->url_big);
+                @endphp
+
+                <div class="tab-content d-flex justify-content-between">
+                    <div class="mb-3" style="width:44%">
+                        <div style="height: 94px">
+                            @if(file_exists($image_small))
+                                <img src="{{asset('storage/media/thumb/'.$media_history_user->media_history->url_small)}}" alt="" height="90px">
+                            @endif
+                        </div>
+                        <br>
+                        <label class="form-label">{{translate('File')}}</label>
+                        <input type="file" name="image" class="form-control"/>
+                    </div>
+                    <div class="tab-pane show active" id="uploadImage">
+
+                    </div>
+                    <div class="tab-pane" id="uploadVideo" style="width:44%">
+                        <div class="mb-3">
+                            <div style="height: 94px">
+                                @if(file_exists($video_big))
+                                    <video height="90" width="90" controls>
+                                        <source src="{{asset('storage/media/videos/'.$media_history_user->media_history->url_big)}}" type="video/mp4">
+                                    </video>
+                                @endif
+                            </div>
+                            <br>
+                            <label class="form-label">{{translate('Video')}}</label>
+                            @if(file_exists($video_big))
+                                <input type="file" name="video" class="form-control" value="{{$video_big}}"/>
+                            @else
+                                <input type="file" name="video" class="form-control"/>
+                            @endif
+                            <input type="hidden" name="is_video" id="is_video" value="false">
+                        </div>
+                    </div>
                 </div>
                 <div>
                     <button type="submit" class="btn btn-primary waves-effect waves-light">{{translate('Update')}}</button>
@@ -41,4 +92,18 @@
             </form>
         </div>
     </div>
+    <script>
+        let uploadVideo = document.getElementById('upload_video')
+        let is_video = document.getElementById('is_video')
+        let uploadImage = document.getElementById('upload_image')
+        uploadVideo.addEventListener('click', function () {
+            is_video.value = 'true';
+        })
+        uploadImage.addEventListener('click', function () {
+            is_video.value = 'false';
+        })
+        if(uploadImage.classList.contains('active')){
+            is_video.value = 'false';
+        }
+    </script>
 @endsection
