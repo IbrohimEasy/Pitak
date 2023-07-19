@@ -1,8 +1,8 @@
 @extends('layout.layout')
 
 @section('title')
-    {{-- Client Index --}}
-    {{ translate("Client Index") }}
+    {{-- Users Index --}}
+    {{ translate("Users Index") }}
 @endsection
 @section('content')
 

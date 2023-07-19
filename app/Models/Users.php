@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Client extends Model
+class Users extends Model
 {
     const MALE = 1;
     const FEMALE = 0;
 
     use HasFactory, SoftDeletes;
 
-    protected $table = 'yy_clients';
+    protected $table = 'yy_users';
 
     protected $fillable = [
         'personal_info_id',

@@ -491,7 +491,7 @@
                             <a href="{{ route('client.index') }}">
                                 <i class="mdi mdi-account-star-outline"></i>
                                 <!-- <span class="badge bg-success rounded-pill float-end">9+</span> -->
-                                {{-- <span> Client </span> --}}
+                                {{-- <span> Users </span> --}}
                                 <span> {{ translate('Client') }} </span>
                             </a>
                         </li>
@@ -499,7 +499,7 @@
                             <a href="{{ route('driver.index') }}">
                                 <i class="mdi mdi-taxi"></i>
                                 <!-- <span class="badge bg-success rounded-pill float-end">9+</span> -->
-                                {{-- <span> Client </span> --}}
+                                {{-- <span> Users </span> --}}
                                 <span> {{ translate('Driver') }} </span>
                             </a>
                         </li>
@@ -541,6 +541,13 @@
                                     </li>
                                 </ul>
                             </div>
+                        </li>
+                        <li>
+                            <a href="{{route('mediaHistory.index')}}">
+                                <i class="mdi mdi-video"></i>
+                                {{-- <span class="badge bg-success rounded-pill float-end">9+</span> --}}
+                                <span> {{translate('Media history') }} </span>
+                            </a>
                         </li>
                         <li>
                             <a href="{{route('option.index')}}">

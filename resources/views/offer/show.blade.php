@@ -24,8 +24,8 @@
                     <td>{{ ($offer->driver && $offer->driver->personalInfo) ? $offer->driver->personalInfo->last_name : '' }}</td>
                 </tr>
                 <tr>
-                    <th>{{ translate('Client') }}</th>
-                    {{-- <th>Client</th> --}}
+                    <th>{{ translate('Users') }}</th>
+                    {{-- <th>Users</th> --}}
                     <td>{{ ($offer->client && $offer->client->personalInfo) ? $offer->client->personalInfo->last_name : '' }}</td>
                 </tr>
                 <tr>
