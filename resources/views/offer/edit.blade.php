@@ -40,8 +40,8 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="example-select" class="form-label">{{ translate('Client') }}</label>
-                    {{-- <label for="example-select" class="form-label">Client</label> --}}
+                    <label for="example-select" class="form-label">{{ translate('Users') }}</label>
+                    {{-- <label for="example-select" class="form-label">Users</label> --}}
                     <select class="form-select" id="example-select" name="client_id">
                         @if (count($client) > 0)
                             @foreach ($client as $valClient)

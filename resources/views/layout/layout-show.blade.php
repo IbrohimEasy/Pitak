@@ -402,8 +402,8 @@
                             <a href="{{ route('client.index') }}">
                                 <i class="mdi mdi-account-star-outline"></i>
                                 <!-- <span class="badge bg-success rounded-pill float-end">9+</span> -->
-                                {{-- <span> Client </span> --}}
-                                <span> {{ translate('Client') }} </span>
+                                {{-- <span> Users </span> --}}
+                                <span> {{ translate('Users') }} </span>
                             </a>
                         </li>
                         <li>

@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Users;
 use Illuminate\Http\Request;
-use App\Models\Client;
 use App\Models\Status;
 use App\Models\PersonalInfo;
 
-use App\Http\Requests\ClientRequest;
 
 class ClientController extends Controller
 {
@@ -16,8 +15,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $model = Client::all();
-
+        $model = Users::all();
         return view('client.index', [
             'model' => $model
         ]);
@@ -44,7 +42,7 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-        $model = Client::find($id);
+        $model = Users::find($id);
         // dd($model->commentScores);
 
         return view('client.show', [
@@ -59,7 +57,7 @@ class ClientController extends Controller
      */
     public function edit(string $id)
     {
-        $model = Client::findOrfail($id);
+        $model = Users::findOrfail($id);
         $modelStatus = Status::all();
         $modelPersonalInfo = PersonalInfo::where(['id' => $model->personal_info_id])->first();
 
@@ -67,8 +65,8 @@ class ClientController extends Controller
             'model' => $model,
             'modelStatus' => $modelStatus,
             'modelPersonalInfo' => $modelPersonalInfo,
-            'male' => Client::MALE,
-            'female' => Client::FEMALE,
+            'male' => Users::MALE,
+            'female' => Users::FEMALE,
         ]);
     }
 
@@ -79,7 +77,7 @@ class ClientController extends Controller
     {
         $data = $request->validated();
 
-        $client = Client::findOrFail($id);
+        $client = Users::findOrFail($id);
         $client->update($request->all());
         $client->save();
 
@@ -100,7 +98,7 @@ class ClientController extends Controller
      */
     public function destroy(string $id)
     {
-        $client = Client::findOrFail($id);
+        $client = Users::findOrFail($id);
         $client->delete();
 
         $personalInfo = PersonalInfo::where(['id' => $client->personal_info_id])->first();

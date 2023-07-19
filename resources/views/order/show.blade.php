@@ -155,7 +155,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>{{ translate('Driver') }}</th>
-                                    <th>{{ translate('Client') }}</th>
+                                    <th>{{ translate('Users') }}</th>
                                     <th>{{ translate('For whom') }}</th>
                                     <th>{{ translate('Date') }}</th>
                                     <th>{{ translate('Text') }}</th>
@@ -181,7 +181,7 @@
                                                     {{ ($valCS->client && $valCS->client->personalInfo) ? $valCS->client->personalInfo->last_name . ' ' . $valCS->client->personalInfo->first_name . ' ' . $valCS->client->personalInfo->middle_name : '' }}
                                                 </a>
                                             </td>
-                                            <td>{{ ($valCS->type == 1) ? translate('Client') : translate('Driver') }}</td>
+                                            <td>{{ ($valCS->type == 1) ? translate('Users') : translate('Driver') }}</td>
                                             <td>{{ date('d.m.Y H:i', strtotime($valCS->date)) }}</td>
                                             <td>{{ $valCS->text }}</td>
                                             <td>{{ $valCS->score }}</td>
@@ -199,7 +199,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>{{ translate('Driver') }}</th>
-                                    <th>{{ translate('Client') }}</th>
+                                    <th>{{ translate('Users') }}</th>
                                     <th>{{ translate('Price') }} date</th>
                                     <th>{{ translate('Comment') }}</th>
                                     <th>{{ translate('Status') }}</th>

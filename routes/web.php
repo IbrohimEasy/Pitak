@@ -16,6 +16,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\CouponContoller;
+use App\Http\Controllers\MediaHistoryController;
 
 
 /*
@@ -96,6 +97,7 @@ Route::group(['middleware'=>['auth', 'language']], function(){
     Route::resource('classList', ClassListController::class);
     Route::resource('colorList', ColorsListController::class);
     Route::resource('carList', CarListController::class);
+    Route::resource('mediaHistory', MediaHistoryController::class);
 
     Route::group(['prefix' => 'language'], function () {
 

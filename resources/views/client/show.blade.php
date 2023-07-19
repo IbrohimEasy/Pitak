@@ -1,7 +1,7 @@
 @extends('layout.layout')
 
 @section('title')
-    {{ translate("Client Show") }}
+    {{ translate("Users Show") }}
 @endsection
 
 @section('content')

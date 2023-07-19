@@ -12,8 +12,8 @@
                 <th>#</th>
                 <th>{{ translate('Driver') }}</th>
                 {{-- <th>Driver</th> --}}
-                <th>{{ translate('Client') }}</th>
-                {{-- <th>Client</th> --}}
+                <th>{{ translate('Users') }}</th>
+                {{-- <th>Users</th> --}}
                 <th>{{ translate('Order') }}</th>
                 {{-- <th>Order</th> --}}
                 <th>{{ translate('Order detail') }}</th>
