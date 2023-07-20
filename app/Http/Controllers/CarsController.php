@@ -71,40 +71,6 @@ class CarsController extends Controller
         return redirect()->route('cars.index')->with('status', translate('Successfully created'));
     }
 
-    public function store_api(Request $request)
-    {
-        $model = new Cars();
-        $model->car_list_id = $request->model_id;
-        $model->driver_id = $request->driver_id;
-        $model->status_id = 1;
-        $model->color_list_id = $request->color_id;
-        $model->class_list_id = $request->class_id;
-        $model->reg_certificate = $request->reg_certificate;
-        $letters = range('a', 'z');
-        $certificate_random_array = [$letters[rand(0,25)], $letters[rand(0,25)], $letters[rand(0,25)], $letters[rand(0,25)], $letters[rand(0,25)]];
-        $certificate_random = implode("", $certificate_random_array);
-        $certificate_img = $request->file('reg_certificate_image');
-        if(isset($certificate_img)) {
-            $image_name = $certificate_random . '' . date('Y-m-dh-i-s') . '.' . $certificate_img->extension();
-            $certificate_img->storeAs('public/certificate/', $image_name);
-            $model->reg_certificate_image = $image_name;
-        }
-
-        $images = $request->file('images');
-        if(isset($images)){
-            foreach ($images as $image){
-                $images_random_array = [$letters[rand(0,25)], $letters[rand(0,25)], $letters[rand(0,25)], $letters[rand(0,25)], $letters[rand(0,25)]];
-                $images_random = implode("", $images_random_array);
-                $image_name = $images_random . '' . date('Y-m-dh-i-s') . '.' . $image->extension();
-                $image->storeAs('public/cars/', $image_name);
-                $images_array[] = $image_name;
-            }
-            $model->images = json_encode($images_array);
-        }
-        $model->save();
-        return redirect()->route('cars.index')->with('status', translate('Successfully created'));
-    }
-
     /**
      * Display the specified resource.
      */
