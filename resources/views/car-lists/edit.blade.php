@@ -43,6 +43,10 @@
                     <label class="form-label">{{translate('Name')}}</label>
                     <input type="text" name="name" class="form-control" value="{{ $model->name }}" required />
                 </div>
+                <div class="mb-3">
+                    <label class="form-label">{{translate("Default seats' number")}}</label>
+                    <input type="number" name="default_seats" class="form-control" value="{{ $model->default_seats }}" required/>
+                </div>
                 <div>
                     <button type="submit" class="btn btn-primary waves-effect waves-light">{{translate('Update')}}</button>
                     <button type="reset" class="btn btn-secondary waves-effect">{{translate('Cancel')}}</button>

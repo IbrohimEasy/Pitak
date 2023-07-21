@@ -30,6 +30,8 @@ class CarsRequest extends FormRequest
             'reg_certificate'=>'required|string',
             'reg_certificate_image'=>'nullable|mimes:jpeg,jpg,png,webp|max:10240',
             'images'=>'nullable|array',
+            'wheel_side'=>'nullable|integer',
+            'default_seats'=>'nullable|integer',
         ];
     }
 }

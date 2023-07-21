@@ -298,17 +298,19 @@
                     <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light"
                         data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false"
                         aria-expanded="false">
-                        @php
-                            $sms_avatar = storage_path('app/public/user/'.$current_user->personalInfo->avatar);
-                        @endphp
-                        @if(file_exists($sms_avatar))
-                            <img class="rounded-circle" src="{{asset('storage/user/'.$current_user->personalInfo->avatar)}}" alt="">
-                        @else
-                            <img class="rounded-circle" src="{{asset('assets/images/man.jpg')}}" alt="">
+                        @if(isset($current_user->personalInfo))
+                            @php
+                                $sms_avatar = storage_path('app/public/user/'.$current_user->personalInfo->avatar);
+                            @endphp
+                            @if(file_exists($sms_avatar))
+                                <img class="rounded-circle" src="{{asset('storage/user/'.$current_user->personalInfo->avatar)}}" alt="">
+                            @else
+                                <img class="rounded-circle" src="{{asset('assets/images/man.jpg')}}" alt="">
+                            @endif
+                            <span class="pro-user-name ms-1">
+                                {{$current_user->personalInfo->first_name??''}} <i class="mdi mdi-chevron-down"></i>
+                            </span>
                         @endif
-                        <span class="pro-user-name ms-1">
-                            {{$current_user->personalInfo->first_name??''}} <i class="mdi mdi-chevron-down"></i>
-                        </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
                         <!-- item-->
@@ -394,17 +396,20 @@
                 <!-- User box -->
                 <div class="user-box text-center">
 
-                    @php
-                        $sms_avatar = storage_path('app/public/user/'.$current_user->personalInfo->avatar);
-                    @endphp
-                    @if(file_exists($sms_avatar))
-                        <img class="rounded-circle img-thumbnail avatar-md" src="{{asset('storage/user/'.$current_user->personalInfo->avatar)}}" alt="">
-                    @else
-                        <img class="rounded-circle img-thumbnail avatar-md" src="{{asset('assets/images/man.jpg')}}" alt="">
+                    @if(isset($current_user->personalInfo))
+                        @php
+                            $sms_avatar = storage_path('app/public/user/'.$current_user->personalInfo->avatar);
+                        @endphp
+                        @if(file_exists($sms_avatar))
+                            <img class="rounded-circle img-thumbnail avatar-md" src="{{asset('storage/user/'.$current_user->personalInfo->avatar)}}" alt="">
+                        @else
+                            <img class="rounded-circle img-thumbnail avatar-md" src="{{asset('assets/images/man.jpg')}}" alt="">
+                        @endif
                     @endif
                     <div class="dropdown">
                         <a href="#" class="user-name dropdown-toggle h5 mt-2 mb-1 d-block"
-                            data-bs-toggle="dropdown" aria-expanded="false">{{$current_user->personalInfo->first_name??''}} {{$current_user->personalInfo->last_name??''}}</a>
+
+                            data-bs-toggle="dropdown" aria-expanded="false">{{$current_user?$current_user->personalInfo->first_name:''}} {{$current_user?$current_user->personalInfo->last_name:''}}</a>
                         <div class="dropdown-menu user-pro-dropdown">
 
                             <!-- item-->

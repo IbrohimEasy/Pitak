@@ -42,7 +42,7 @@
                             @if(file_exists($sms_image))
                                 <img class="user_photo" src="{{asset('storage/certificate/'.$car->reg_certificate_image)}}" alt="">
                             @else
-                                <img class="user_photo" src="{{asset('storage/certificate/no_certificate.webp')}}" alt="">
+                                <img class="user_photo" src="{{asset('storage/no_certificate.webp')}}" alt="">
                             @endif
                         </td>
                         <td>{{$car->updated_at??''}}</td>

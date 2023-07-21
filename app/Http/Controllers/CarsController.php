@@ -46,6 +46,8 @@ class CarsController extends Controller
         $model->color_list_id = $request->color_list_id;
         $model->class_list_id = $request->class_list_id;
         $model->reg_certificate = $request->reg_certificate;
+        $model->wheel_side = $request->wheel_side;
+        $model->production_date = $request->production_date;
         $letters = range('a', 'z');
         $certificate_random_array = [$letters[rand(0,25)], $letters[rand(0,25)], $letters[rand(0,25)], $letters[rand(0,25)], $letters[rand(0,25)]];
         $certificate_random = implode("", $certificate_random_array);
@@ -106,6 +108,8 @@ class CarsController extends Controller
         $model->color_list_id = $request->color_list_id;
         $model->class_list_id = $request->class_list_id;
         $model->reg_certificate = $request->reg_certificate;
+        $model->wheel_side = $request->wheel_side;
+        $model->production_date = $request->production_date;
         $letters = range('a', 'z');
         $certificate_random_array = [$letters[rand(0,25)], $letters[rand(0,25)], $letters[rand(0,25)], $letters[rand(0,25)], $letters[rand(0,25)]];
         $certificate_random = implode("", $certificate_random_array);

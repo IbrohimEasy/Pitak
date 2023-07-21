@@ -38,6 +38,7 @@ class CarListController extends Controller
         $model->status_id = $request->status_id;
         $model->car_type_id = $request->car_type_id;
         $model->name = $request->name;
+        $model->default_seats = $request->default_seats;
         $model->save();
         return redirect()->route('carList.index')->with('status', translate('Successfully created'));
     }
@@ -71,6 +72,7 @@ class CarListController extends Controller
         $model->status_id = $request->status_id;
         $model->car_type_id = $request->car_type_id;
         $model->name = $request->name;
+        $model->default_seats = $request->default_seats;
         $model->save();
         return redirect()->route('carList.index')->with('status', translate('Successfully updated'));
     }
