@@ -21,18 +21,6 @@
             <form action="{{route('mediaHistory.store')}}" class="parsley-examples" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method("POST")
-                <div class="mb-3">
-                    <label for="user" class="form-label">{{translate('Select user')}}</label>
-                    <select id="user" class="form-select" name="user_id" required>
-                        <option value="">{{translate('Choose..')}}</option>
-                        @foreach($users as $user)
-                            <option value="{{$user->id??''}}">
-                                {{$user->personalInfo->first_name??''}} {{$user->personalInfo->last_name??''}} {{$user->personalInfo->middle_name??''}}
-                            </option>
-                        @endforeach
-                    </select>
-                </div>
-
                 <ul class="nav nav-pills navtab-bg"> {{--  nav-justified --}}
                     <li class="nav-item">
                         <a href="#uploadImage" data-bs-toggle="tab" aria-expanded="true" class="nav-link active">
