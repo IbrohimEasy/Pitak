@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('yy_users', function (Blueprint $table) {
-//            $table->string('device_type')->nullable();
-//            $table->string('device_id')->nullable();
+            $table->dropColumn('device_type');
+            $table->dropColumn('device_id');
         });
     }
 
