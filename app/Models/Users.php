@@ -19,7 +19,15 @@ class Users extends Model
     protected $fillable = [
         'personal_info_id',
         'status_id',
-        'company_id'
+        'company_id',
+        'token',
+        'balance',
+        'personal_account',
+        'type', // 0 - not confirmed, 1 - confirmed driver
+        'about_me',
+        'email',
+        'password',
+        'rating',
     ];
 
     public function status(): BelongsTo
@@ -45,5 +53,30 @@ class Users extends Model
     public function commentScores()
     {
         return $this->hasMany(CommentScore::class, 'client_id', 'id');
+    }
+
+    public function carLists(): BelongsTo
+    {
+        return $this->belongsTo(CarList::class);
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class, 'driver_id', 'id');
+    }
+
+    public function cars()
+    {
+        return $this->hasMany(Cars::class, 'driver_id', 'id');
+    }
+
+    public function balanceHistory()
+    {
+        return $this->hasMany(BalanceHistory::class, 'user_id', 'id')->where('type', 1);
+    }
+
+    public function driver(): BelongsTo
+    {
+        return $this->belongsTo(Driver::class, 'id', 'user_id');
     }
 }

@@ -20,7 +20,11 @@ class PersonalInfo extends Model
         'phone_number',
         'avatar',
         'gender',
-        'birth_date'
+        'birth_date',
+        'passport_serial_number',
+        'passport_issued_by',
+        'passport_expired_date',
+        'passport_images'
     ];
 
 

@@ -4,11 +4,11 @@
     {{-- Your page title --}}
 @endsection
 @section('content')
-    <div class="card">
-        <div class="card-body">
-            <div class="dropdown float-end">
+    {{-- <div class="card">
+        <div class="card-body"> --}}
+            {{-- <div class="dropdown float-end">
                 <a class="form_functions btn btn-success" href="{{route('user.create')}}">{{translate('Create')}}</a>
-            </div>
+            </div> --}}
             <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap">
                 <thead>
                     <tr>
@@ -62,6 +62,6 @@
                 @endforeach
                 </tbody>
             </table>
-        </div>
-    </div>
+        {{-- </div>
+    </div> --}}
 @endsection

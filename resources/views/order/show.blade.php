@@ -133,7 +133,7 @@
                                     </tr>
                                     <tr>
                                         <th>{{ translate('Seats') }}</th>
-                                        <td>
+                                        {{-- <td>
                                             @php
                                                 $seats = [];
                                                 if ($order->seats)
@@ -142,6 +142,11 @@
                                             @foreach ($seats as $orderSeat)
                                                 <button type="button" class="btn btn-soft-secondary waves-effect">{{ $orderSeat }}</button>
                                             @endforeach
+                                        </td> --}}
+                                        <td>
+                                            @if ($order->seats)
+                                                <button type="button" class="btn btn-soft-secondary waves-effect">{{ $order->seats }}</button>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endif
@@ -172,7 +177,7 @@
                                         <tr>
                                             <td>{{ $n++ }}</td>
                                             <td>
-                                                <a href="{{ route('client.show', $valCS->driver->id) }}">
+                                                <a href="{{ route('client.show', $valCS->driver->id ?? 0) }}">
                                                     {{ ($valCS->driver && $valCS->driver->personalInfo) ? $valCS->driver->personalInfo->last_name . ' ' . $valCS->driver->personalInfo->first_name . ' ' . $valCS->driver->personalInfo->middle_name : '' }}
                                                 </a>
                                             </td>

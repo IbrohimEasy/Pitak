@@ -17,6 +17,7 @@ use App\Http\Controllers\OfferController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\CouponContoller;
 use App\Http\Controllers\MediaHistoryController;
+use App\Http\Controllers\UsersController;
 
 
 /*
@@ -72,6 +73,15 @@ Route::group(['middleware'=>['auth', 'language']], function(){
         Route::get('/show/{id}', [OfferController::class, 'show'])->name('offer.show');
         Route::delete('/destroy/{id}', [OfferController::class, 'destroy'])->name('offer.destroy');
         Route::put('/update/{id}', [OfferController::class, 'update'])->name('offer.update');
+    });
+
+    Route::group(['prefix' => 'users'], function () {
+        Route::get('/', [UsersController::class, 'index'])->name('users.index');
+        Route::get('/edit/{id}', [UsersController::class, 'edit'])->name('users.edit');
+        Route::get('/show/{id}', [UsersController::class, 'show'])->name('users.show');
+        Route::delete('/destroy/{id}', [UsersController::class, 'destroy'])->name('users.destroy');
+        Route::put('/update/{id}', [UsersController::class, 'update'])->name('users.update');
+        Route::post('/confirm-dirver', [UsersController::class, 'confirmDirver'])->name('users.confirm-dirver');
     });
 
     Route::group(['prefix' => 'clients'], function () {

@@ -25,7 +25,7 @@ class CommentScore extends Model
 
     public function driver(): BelongsTo
     {
-        return $this->belongsTo(Driver::class);
+        return $this->belongsTo(Users::class);
     }
 
     public function client(): BelongsTo

@@ -2,6 +2,7 @@
 <html lang="en">
 @php
     $current_user = \Illuminate\Support\Facades\Auth::user();
+    // dd($current_user);
 @endphp
 <head>
     <meta charset="utf-8" />
@@ -299,9 +300,10 @@
                         data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false"
                         aria-expanded="false">
                         @php
-                            $sms_avatar = storage_path('app/public/user/'.$current_user->personalInfo->avatar);
+                            if ($current_user)
+                                $sms_avatar = storage_path('app/public/user/'.$current_user->personalInfo->avatar);
                         @endphp
-                        @if(file_exists($sms_avatar))
+                        @if(isset($sms_avatar) && file_exists($sms_avatar))
                             <img class="rounded-circle" src="{{asset('storage/user/'.$current_user->personalInfo->avatar)}}" alt="">
                         @else
                             <img class="rounded-circle" src="{{asset('assets/images/man.jpg')}}" alt="">
@@ -351,22 +353,22 @@
             </ul>
             <!-- LOGO -->
             <div class="logo-box">
-                <a href="index.html" class="logo logo-light text-center">
+{{--                 <a href="index.html" class="logo logo-light text-center">
                     <span class="logo-sm">
                         <img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="22">
                     </span>
                     <span class="logo-lg">
                         <img src="{{ asset('assets/images/logo-light.png') }}" alt="" height="16">
                     </span>
-                </a>
-                <a href="index.html" class="logo logo-dark text-center">
+                </a> --}}
+                {{-- <a href="index.html" class="logo logo-dark text-center">
                     <span class="logo-sm">
                         <img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="22">
                     </span>
                     <span class="logo-lg">
                         <img src="{{ asset('assets/images/logo-dark.png') }}" alt="" height="16">
                     </span>
-                </a>
+                </a> --}}
             </div>
 
             <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
@@ -395,9 +397,10 @@
                 <div class="user-box text-center">
 
                     @php
-                        $sms_avatar = storage_path('app/public/user/'.$current_user->personalInfo->avatar);
+                        if ($current_user)
+                            $sms_avatar = storage_path('app/public/user/'.$current_user->personalInfo->avatar);
                     @endphp
-                    @if(file_exists($sms_avatar))
+                    @if(isset($sms_avatar) && file_exists($sms_avatar))
                         <img class="rounded-circle img-thumbnail avatar-md" src="{{asset('storage/user/'.$current_user->personalInfo->avatar)}}" alt="">
                     @else
                         <img class="rounded-circle img-thumbnail avatar-md" src="{{asset('assets/images/man.jpg')}}" alt="">
@@ -437,7 +440,7 @@
                         </div>
                     </div>
 
-                    <p class="text-muted left-user-info">{{$current_user->role->name??''}}</p>
+                    {{-- <p class="text-muted left-user-info">{{$current_user->role->name??''}}</p> --}}
 
                     <ul class="list-inline">
                         <li class="list-inline-item">
@@ -479,35 +482,35 @@
                                 <span> {{ translate('Order') }} </span>
                             </a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('offer.index') }}">
                                 <i class="mdi mdi-offer"></i>
-                                <!-- <span class="badge bg-success rounded-pill float-end">9+</span> -->
-                                {{-- <span> Offer </span> --}}
                                 <span> {{ translate('Offer') }} </span>
                             </a>
-                        </li>
+                        </li> --}}
                         <li>
+                            <a href="{{ route('users.index') }}">
+                                <i class="mdi mdi-account-star-outline"></i>
+                                <span> {{ translate('Users') }} </span>
+                            </a>
+                        </li>
+                        {{-- <li>
                             <a href="{{ route('client.index') }}">
                                 <i class="mdi mdi-account-star-outline"></i>
-                                <!-- <span class="badge bg-success rounded-pill float-end">9+</span> -->
-                                {{-- <span> Users </span> --}}
                                 <span> {{ translate('Client') }} </span>
                             </a>
                         </li>
                         <li>
                             <a href="{{ route('driver.index') }}">
                                 <i class="mdi mdi-taxi"></i>
-                                <!-- <span class="badge bg-success rounded-pill float-end">9+</span> -->
-                                {{-- <span> Users </span> --}}
                                 <span> {{ translate('Driver') }} </span>
                             </a>
-                        </li>
+                        </li> --}}
                         <li>
                             <a href="{{route('user.index')}}">
                                 <i class="mdi mdi-account-multiple-plus-outline"></i>
                                 {{-- <span class="badge bg-success rounded-pill float-end">9+</span> --}}
-                                <span> {{ translate('Users') }} </span>
+                                <span> {{ translate('Employees') }} </span>
                             </a>
                         </li>
                         {{-- <li>
@@ -646,16 +649,17 @@
         <!-- ============================================================== -->
 
         <div class="content-page">
+            <br>
             <div class="content">
                 <!-- Start Content-->
                 <div class="container-fluid">
-                    <div class="card">
-                        <div class="card-body">
+                    {{-- <div class="card">
+                        <div class="card-body"> --}}
 
                             @yield('content')
 
-                        </div>
-                    </div>
+                        {{-- </div>
+                    </div> --}}
                 </div>
                 <!-- container-fluid -->
             </div>
@@ -868,6 +872,26 @@
     </div><!-- /.modal -->
 
 
+    <!-- Standard modal content -->
+    <div id="standard-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="standard-modalLabel"></h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">{{ translate('Close') }}</button>
+                    <button type="button" class="btn btn-primary">{{ translate('Save changes') }}</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
     <!-- Right bar overlay-->
     <div class="rightbar-overlay"></div>
 
@@ -975,10 +999,66 @@
                 });
             }
         })
+        
         $(document).on('click', '.delete-order', function(e) {
             var url = $(this).attr('data-url')
             $('#warning-alert-modal').find('form').attr('action', url)
         })
+
+        $(document).on('click', '.confirm-driver', function(e) {
+            $('#standard-modal .modal-body').html(' ')
+            $('#standard-modal .modal-footer').remove()
+
+            var id = $(this).attr('data-id')
+
+            $('#standard-modal .modal-body').html(`
+                <form action="{{ route('users.confirm-dirver') }}" class="parsley-examples" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('POST')
+                    <input type="hidden" class="form-control" name="user_id" value="` + id + `"/>
+                    <h4>{{ translate('Passport information') }}</h4>
+                    <div class="row">
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label">{{ translate('Serial number') }}</label>
+                            <input type="text" class="form-control" name="passport_serial_number"/>
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label">{{ translate('Images') }}</label>
+                            <input type="file" class="form-control" name="passport_images"/>
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label">{{ translate('Issued by') }}</label>
+                            <input type="date" class="form-control" name="passport_issued_by"/>
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label">{{ translate('Expired date') }}</label>
+                            <input type="date" class="form-control" name="passport_expired_date"/>
+                        </div>
+                    </div>
+
+                    <h4>{{ translate("Driver's license information") }}</h4>
+                    <div class="row">
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label">{{ translate('License number') }}</label>
+                            <input type="text" class="form-control" name="license_number"/>
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label">{{ translate('License image') }}</label>
+                            <input type="file" class="form-control" name="license_image"/>
+                        </div>
+                        <div class="mb-3 col-md-12">
+                            <label class="form-label">{{ translate('License expired date') }}</label>
+                            <input type="date" class="form-control" name="license_expired_date"/>
+                        </div>
+                    </div>
+
+                    <div>
+                        <button type="submit" class="btn btn-primary waves-effect waves-light" style="float: right;">{{translate('Create')}}</button>
+                    </div>
+                </form>
+            `)
+        })
+
         let dropdownMenuButton = document.getElementById('dropdownMenuButton')
         let language_flag = document.getElementById('language_flag')
         dropdownMenuButton.addEventListener('click', function() {
