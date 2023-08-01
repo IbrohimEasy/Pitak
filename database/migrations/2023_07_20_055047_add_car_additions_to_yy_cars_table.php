@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('yy_user_verifies', function (Blueprint $table) {
-//            $table->integer('user_id')->nullable();
+        Schema::table('yy_cars', function (Blueprint $table) {
+            $table->timestamp('production_date')->nullable();
+            $table->tinyInteger('wheel_side')->nullable();
         });
     }
 
@@ -21,8 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('yy_user_verifies', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('yy_cars');
     }
 };

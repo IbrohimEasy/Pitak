@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('yy_user_verifies', function (Blueprint $table) {
+        Schema::create('yy_city_translations', function (Blueprint $table) {
             $table->id();
-            $table->integer('status_id');
-            $table->integer('user_id')->nullable();
-            $table->string('phone_number');
-            $table->string('verify_code')->nullable();
-            $table->timestamp('verify_date')->nullable();
+            $table->string('lang')->nullable();
+            $table->integer('city_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('city_id')->references('id')->on('yy_cities')->onDelete('cascade');
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('yy_user_verifies');
+        Schema::dropIfExists('yy_city_translations');
     }
 };

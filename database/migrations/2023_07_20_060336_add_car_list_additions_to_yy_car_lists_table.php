@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('yy_user_verifies', function (Blueprint $table) {
-//            $table->integer('user_id')->nullable();
+        Schema::table('yy_car_lists', function (Blueprint $table) {
+            $table->integer('default_seats')->nullable();
         });
     }
 
@@ -21,8 +21,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('yy_user_verifies', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('yy_car_lists');
     }
 };

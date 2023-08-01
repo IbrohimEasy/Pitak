@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('token')->unique()->nullable();
             $table->integer('company_id')->nullable();
             $table->integer('balance')->nullable();
-            $table->integer('personal_account')->unique();
+            $table->integer('personal_account')->nullable()->unique();
             $table->integer('type')->nullable();
             $table->text('about_me')->nullable();
             $table->timestamps();

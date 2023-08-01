@@ -16,22 +16,11 @@
                 </div>
             @endif
             <p class="text-muted font-14">
-                {{translate('Car class list edit')}}
+                {{translate('Media list edit')}}
             </p>
-            <form action="{{route('mediaHistory.update', $media_history_user->id)}}" class="parsley-examples" method="POST" enctype="multipart/form-data">
+            <form action="{{route('mediaHistory.update', $media_history->id)}}" class="parsley-examples" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method("PUT")
-                <div class="mb-3">
-                    <label for="user" class="form-label">{{translate('Select user')}}</label>
-                    <select id="user" class="form-select" name="user_id" required>
-                        <option value="">{{translate('Choose..')}}</option>
-                        @foreach($users as $user)
-                            <option value="{{$user->id??''}}" {{$media_history_user->user_id == $user->id?'selected':''}}>
-                                {{$user->personalInfo->first_name??''}} {{$user->personalInfo->last_name??''}} {{$user->personalInfo->middle_name??''}}
-                            </option>
-                        @endforeach
-                    </select>
-                </div>
                 <ul class="nav nav-pills navtab-bg"> {{--  nav-justified --}}
                     <li class="nav-item">
                         <a href="#uploadImage" data-bs-toggle="tab" aria-expanded="true" class="nav-link active" id="upload_image">
@@ -45,17 +34,17 @@
                     </li>
                 </ul>
                 @php
-                    $big_image_array = explode('.', $media_history_user->media_history->url_big);
-                    $image_small = storage_path('app/public/media/thumb/'.$media_history_user->media_history->url_small);
-                    $image_big = storage_path('app/public/media/'.$media_history_user->media_history->url_big);
-                    $video_big = storage_path('app/public/media/videos/'.$media_history_user->media_history->url_big);
+                    $big_image_array = explode('.', $media_history->url_big);
+                    $image_small = storage_path('app/public/media/thumb/'.$media_history->url_small);
+                    $image_big = storage_path('app/public/media/'.$media_history->url_big);
+                    $video_big = storage_path('app/public/media/videos/'.$media_history->url_big);
                 @endphp
 
                 <div class="tab-content d-flex justify-content-between">
                     <div class="mb-3" style="width:44%">
                         <div style="height: 94px">
                             @if(file_exists($image_small))
-                                <img src="{{asset('storage/media/thumb/'.$media_history_user->media_history->url_small)}}" alt="" height="90px">
+                                <img src="{{asset('storage/media/thumb/'.$media_history->url_small)}}" alt="" height="90px">
                             @endif
                         </div>
                         <br>
@@ -70,7 +59,7 @@
                             <div style="height: 94px">
                                 @if(file_exists($video_big))
                                     <video height="90" width="90" controls>
-                                        <source src="{{asset('storage/media/videos/'.$media_history_user->media_history->url_big)}}" type="video/mp4">
+                                        <source src="{{asset('storage/media/videos/'.$media_history->url_big)}}" type="video/mp4">
                                     </video>
                                 @endif
                             </div>

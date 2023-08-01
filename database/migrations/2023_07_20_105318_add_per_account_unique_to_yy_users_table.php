@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('yy_user_verifies', function (Blueprint $table) {
-//            $table->integer('user_id')->nullable();
+        Schema::table('yy_users', function (Blueprint $table) {
+//            $table->integer('personal_account')->unique()->change();
         });
     }
 
@@ -21,8 +21,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('yy_user_verifies', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('yy_users');
     }
 };

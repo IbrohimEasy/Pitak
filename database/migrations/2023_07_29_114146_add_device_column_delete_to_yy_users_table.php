@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('yy_user_verifies', function (Blueprint $table) {
-//            $table->integer('user_id')->nullable();
+        Schema::table('yy_users', function (Blueprint $table) {
+//            $table->dropColumn('device_type');
+//            $table->dropColumn('device_id');
         });
     }
 
@@ -21,7 +22,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('yy_user_verifies', function (Blueprint $table) {
+        Schema::table('yy_users', function (Blueprint $table) {
             //
         });
     }

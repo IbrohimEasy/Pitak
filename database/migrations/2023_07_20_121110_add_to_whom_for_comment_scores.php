@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('yy_user_verifies', function (Blueprint $table) {
-//            $table->integer('user_id')->nullable();
+        Schema::table('yy_comment_scores', function (Blueprint $table) {
+            $table->integer('to_whom')->nullable();
         });
     }
 
@@ -21,7 +21,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('yy_user_verifies', function (Blueprint $table) {
+        Schema::table('yy_comment_scores', function (Blueprint $table) {
             //
         });
     }
