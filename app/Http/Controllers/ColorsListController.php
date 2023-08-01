@@ -53,7 +53,7 @@ class ColorsListController extends Controller
     public function edit(string $id)
     {
         $colorLists = ColorList::find($id);
-        return view('color-list.edit', ['colorLists'=>$colorLists]);
+        return view('color-lists.edit', ['colorLists'=>$colorLists]);
     }
 
     /**

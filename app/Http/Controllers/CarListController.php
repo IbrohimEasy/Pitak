@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\CarListRequest;
-use App\Models\Carlist;
+use App\Models\CarList;
 use App\Models\Status;
 use App\Models\CarTypes;
 
