@@ -18,16 +18,16 @@
             <p class="text-muted font-14">
                 {{translate('Car color list edit')}}
             </p>
-            <form action="{{route('colorList.update', $classList->id)}}" class="parsley-examples" method="POST">
+            <form action="{{route('colorList.update', $colorLists->id)}}" class="parsley-examples" method="POST">
                 @csrf
                 @method("PUT")
                 <div class="mb-3">
                     <label class="form-label">{{translate('Name')}}</label>
-                    <input type="text" name="name" class="form-control" required value="{{$classList->name??''}}"/>
+                    <input type="text" name="name" class="form-control" required value="{{$colorLists->name??''}}"/>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">{{translate('Code')}}</label>
-                    <input type="text" name="name" class="form-control" required value="{{$classList->code??''}}"/>
+                    <input type="text" name="name" class="form-control" required value="{{$colorLists->code??''}}"/>
                 </div>
                 <div>
                     <button type="submit" class="btn btn-primary waves-effect waves-light">{{translate('Update')}}</button>
