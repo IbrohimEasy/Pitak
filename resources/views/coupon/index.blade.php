@@ -54,7 +54,7 @@
 
 <script>
 
-var conn = new WebSocket('wss://185.196.213.73:8090/');
+var conn = new WebSocket('ws://185.196.213.73:8090/');
 conn.onopen = function(e) {
     console.log("Connection established!");
 };
