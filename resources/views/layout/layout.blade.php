@@ -472,7 +472,7 @@
 
                         <li>
                             <a href="{{route('dashboard')}}">
-                            <i class="mdi mdi-account-multiple-plus-outline"></i>
+                            <i class="mdi mdi-home-outline"></i>
                                  <span class="badge bg-success rounded-pill float-end">9+</span>
                                 <span> {{translate('Home')}} </span>
                             </a>
@@ -550,23 +550,16 @@
                         </li>
                         <li>
                             <a href="{{route('mediaHistory.index')}}">
-                                <i class="mdi mdi-video"></i>
+                                <i class="mdi mdi-video-outline"></i>
                                 {{-- <span class="badge bg-success rounded-pill float-end">9+</span> --}}
                                 <span> {{translate('Media history') }} </span>
                             </a>
                         </li>
                         <li>
                             <a href="{{route('option.index')}}">
-                                <i class="mdi mdi-account-multiple-plus-outline"></i>
+                                <i class="mdi mdi-caravan"></i>
                                 {{-- <span class="badge bg-success rounded-pill float-end">9+</span> --}}
                                 <span> {{translate('Option') }} </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{route('pagePhone')}}">
-                                <i class="mdi mdi-account-multiple-plus-outline"></i>
-                                {{-- <span class="badge bg-success rounded-pill float-end">9+</span> --}}
-                                <span> {{translate('Phone') }} </span>
                             </a>
                         </li>
                         {{-- <li class="menu-title mt-2">Apps</li>
