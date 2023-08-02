@@ -54,7 +54,7 @@
 
 <script>
 
-var conn = new WebSocket("wss://admin.easygo.uz/wss");
+var conn = new WebSocket('wss://185.196.213.73:8090/');
 conn.onopen = function(e) {
     console.log("Connection established!");
 };
