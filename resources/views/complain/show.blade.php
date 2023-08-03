@@ -12,20 +12,20 @@
             </div>
             <table id="datatable-buttons" class="table dt-responsive nowrap table_show">
                 <thead>
-                <tr>
-                    <th>{{translate('Attributes')}}</th>
-                    <th>{{translate('Informations')}}</th>
-                </tr>
+                    <tr>
+                        <th>{{translate('Attributes')}}</th>
+                        <th>{{translate('Informations')}}</th>
+                    </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th>{{translate('Name')}}</th>
-                    <td>{{$model->text??''}}</td>
-                </tr>
-                <tr>
-                    <th>{{translate('Updated at')}}</th>
-                    <td>{{$model->updated_at??''}}</td>
-                </tr>
+                    <tr>
+                        <th>{{translate('Name')}}</th>
+                        <td>{{$model->text??''}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{translate('Updated at')}}</th>
+                        <td>{{$model->updated_at??''}}</td>
+                    </tr>
                 </tbody>
             </table>
         </div>

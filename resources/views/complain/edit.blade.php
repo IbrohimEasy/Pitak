@@ -23,9 +23,7 @@
                 @method("PUT")
                 <div class="mb-3">
                     <label class="form-label" for="text">{{translate('Text')}}</label>
-                    <textarea name="text" class="form-control" required id="text" cols="30" rows="4">
-                        {{$ComplainReason->text??''}}
-                    </textarea>
+                    <textarea name="text" class="form-control" required id="text" cols="30" rows="4">{{$ComplainReason->text??''}}</textarea>
                 </div>
                 <div>
                     <button type="submit" class="btn btn-primary waves-effect waves-light">{{translate('Update')}}</button>

@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('yy_drivers', function (Blueprint $table) {
-//            $table->integer('user_id');
+        Schema::table('yy_complains', function (Blueprint $table) {
+            $table->tinyInteger('type')->nullable();
+            $table->integer('order_id')->nullable();
+            $table->integer('order_detail_id')->nullable();
         });
     }
 
@@ -21,7 +23,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('yy_drivers', function (Blueprint $table) {
+        Schema::table('yy_complains', function (Blueprint $table) {
             //
         });
     }
