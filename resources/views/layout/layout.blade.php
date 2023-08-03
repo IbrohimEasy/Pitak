@@ -557,9 +557,15 @@
                         </li>
                         <li>
                             <a href="{{route('option.index')}}">
-                                <i class="mdi mdi-caravan"></i>
+                                <i class="mdi mdi-file-outline"></i>
                                 {{-- <span class="badge bg-success rounded-pill float-end">9+</span> --}}
                                 <span> {{translate('Option') }} </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{route('complain.index')}}">
+                                <i class="mdi mdi-alert-circle-outline"></i>
+                                <span> {{translate('Complain') }} </span>
                             </a>
                         </li>
                         {{-- <li class="menu-title mt-2">Apps</li>

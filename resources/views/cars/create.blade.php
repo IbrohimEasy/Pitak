@@ -34,9 +34,11 @@
                     <label for="driver_id" class="form-label">{{translate('Driver')}}</label>
                     <select id="driver_id" class="form-select" name="driver_id">
                         <option value="">{{translate('Choose..')}}</option>
-                        @foreach($drivers as $driver)
-                            <option value="{{$driver->id}}">{{$driver->personalInfo->first_name.' '.$driver->personalInfo->last_name.' '.$driver->personalInfo->middle_name}}</option>
-                        @endforeach
+                        @if(isset($driver->personalInfo))
+                            @foreach($drivers as $driver)
+                                <option value="{{$driver->id}}">{{$driver->personalInfo->first_name.' '.$driver->personalInfo->last_name.' '.$driver->personalInfo->middle_name}}</option>
+                            @endforeach
+                        @endif
                     </select>
                 </div>
                 <div class="mb-3">
