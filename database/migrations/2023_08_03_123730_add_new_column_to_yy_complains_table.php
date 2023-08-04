@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::table('yy_complains', function (Blueprint $table) {
             $table->tinyInteger('type')->nullable();
-            $table->integer('order_id')->nullable();
             $table->integer('order_detail_id')->nullable();
         });
     }
