@@ -57,7 +57,7 @@
                     <th>{{translate('Reg certificate image')}}</th>
                     <td>
                         @if(isset($model->reg_certificate_image))
-                            <img src="{{'http://admin.easygo.uz/storage/certificate/'.$model->reg_certificate_image}}" alt="">
+                            <img src="{{'http://api.easygo.uz/storage/certificate/'.$model->reg_certificate_image}}" alt="">
                         @else
                             <img src="{{'http://admin.easygo.uz/icon/'.$model->reg_certificate_image}}" alt="">
                         @endif
@@ -72,7 +72,7 @@
                                     $images = json_decode($model->images);
                                 @endphp
                                 @foreach($images as $image)
-                                    <img class="col-4 mb-2" src="{{'http://admin.easygo.uz/storage/cars/'.$image}}" alt="">
+                                    <img class="col-4 mb-2" src="{{'http://api.easygo.uz/storage/cars/'.$image}}" alt="">
                                 @endforeach
                             @else
                                 <img class="user_photo" src="{{'http://admin.easygo.uz/icon/no_photo.jpg'}}" alt="">
