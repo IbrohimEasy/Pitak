@@ -56,7 +56,11 @@
                 <tr>
                     <th>{{translate('Reg certificate image')}}</th>
                     <td>
-                        <img src="{{'http://admin.easygo.uz/storage/certificate/'.$model->reg_certificate_image}}" alt="">
+                        @if(isset($model->reg_certificate_image))
+                            <img src="{{'http://admin.easygo.uz/storage/certificate/'.$model->reg_certificate_image}}" alt="">
+                        @else
+                            <img src="{{'http://admin.easygo.uz/icon/'.$model->reg_certificate_image}}" alt="">
+                        @endif
                     </td>
                 </tr>
                 <tr>
@@ -71,7 +75,7 @@
                                     <img class="col-4 mb-2" src="{{'http://admin.easygo.uz/storage/cars/'.$image}}" alt="">
                                 @endforeach
                             @else
-                                <img class="user_photo" src="{{'http://admin.easygo.uz/storage/no_photo.jpg'}}" alt="">
+                                <img class="user_photo" src="{{'http://admin.easygo.uz/icon/no_photo.jpg'}}" alt="">
                             @endif
                         </div>
                     </td>

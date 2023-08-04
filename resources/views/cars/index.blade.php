@@ -39,7 +39,7 @@
                             @if(isset($car->reg_certificate_image))
                                 <img class="user_photo" src="{{'http://admin.easygo.uz/storage/certificate/'.$car->reg_certificate_image}}" alt="">
                             @else
-                                <img class="user_photo" src="http://admin.easygo.uz/storage/no_certificate.webp" alt="">
+                                <img class="user_photo" src="http://admin.easygo.uz/icon/no_certificate.webp" alt="">
                             @endif
                         </td>
                         <td>{{$car->updated_at??''}}</td>
