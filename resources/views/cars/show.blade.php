@@ -15,6 +15,10 @@
                 $firstname = $model->driver->personalInfo->first_name;
                 $lastname = $model->driver->personalInfo->last_name;
                 $middlename = $model->driver->personalInfo->middle_name;
+            }else{
+                $firstname = '';
+                $lastname = '';
+                $middlename = '';
             }
 
             @endphp
@@ -32,7 +36,7 @@
                 </tr>
                 <tr>
                     <th>{{translate('Driver')}}</th>
-                    <td>{{$firstname?$firstname.' ':''}}{{$lastname?$lastname.' ':''}}{{$middlename?$middlename.' ':''}}</td>
+                    <td>{{$firstname.' '$lastname.' '$middlename}}</td>
                 </tr>
                 <tr>
                     <th>{{translate('Status')}}</th>
