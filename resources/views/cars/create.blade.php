@@ -83,8 +83,8 @@
                 <div class="mb-3">
                     <label class="form-label">{{translate('Steering wheel side')}}</label>
                     <select id="class" class="form-select" name="wheel_side">
-                        <option value="0">{{translate('Right')}}</option>
-                        <option value="1">{{translate('Left')}}</option>
+                        <option value="0">{{translate('Left')}}</option>
+                        <option value="1">{{translate('Right')}}</option>
                     </select>
                 </div>
                 <div class="mb-3">
