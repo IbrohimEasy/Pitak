@@ -20,7 +20,6 @@
                 $lastname = '';
                 $middlename = '';
             }
-
             @endphp
             <table id="datatable-buttons" class="table dt-responsive nowrap table_show">
                 <thead>
@@ -36,7 +35,7 @@
                 </tr>
                 <tr>
                     <th>{{translate('Driver')}}</th>
-                    <td>{{$firstname.' '$lastname.' '$middlename}}</td>
+                    <td>{{$firstname.' '.$lastname.' '.$middlename}}</td>
                 </tr>
                 <tr>
                     <th>{{translate('Status')}}</th>
@@ -56,7 +55,9 @@
                 </tr>
                 <tr>
                     <th>{{translate('Reg certificate image')}}</th>
-                    <td><img src="{{asset('storage/certificate/'.$model->reg_certificate_image)}}" alt="no image"></td>
+                    <td>
+                        <img src="{{'http://admin.easygo.uz/storage/certificate/'.$model->reg_certificate_image}}" alt="">
+                    </td>
                 </tr>
                 <tr>
                     <th>{{translate('Image')}}</th>
@@ -67,8 +68,10 @@
                                     $images = json_decode($model->images);
                                 @endphp
                                 @foreach($images as $image)
-                                    <img class="col-4 mb-2" src="{{asset('storage/cars/'.$image)}}" alt="">
+                                    <img class="col-4 mb-2" src="{{'http://admin.easygo.uz/storage/cars/'.$image}}" alt="">
                                 @endforeach
+                            @else
+                                <img class="user_photo" src="{{'http://admin.easygo.uz/storage/no_photo.jpg'}}" alt="">
                             @endif
                         </div>
                     </td>

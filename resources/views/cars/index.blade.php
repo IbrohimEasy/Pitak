@@ -36,13 +36,10 @@
                         <td>{{$car->driver->personalInfo->first_name??''}}</td>
                         <td>{{$car->colorList->name??''}}</td>
                         <td>
-                            @php
-                              $sms_image = storage_path('app/public/certificate/'.$car->reg_certificate_image);
-                            @endphp
-                            @if(file_exists($sms_image))
-                                <img class="user_photo" src="{{asset('storage/certificate/'.$car->reg_certificate_image)}}" alt="">
+                            @if(isset($car->reg_certificate_image))
+                                <img class="user_photo" src="{{'http://admin.easygo.uz/storage/certificate/'.$car->reg_certificate_image}}" alt="">
                             @else
-                                <img class="user_photo" src="{{asset('storage/no_certificate.webp')}}" alt="">
+                                <img class="user_photo" src="http://admin.easygo.uz/storage/no_certificate.webp" alt="">
                             @endif
                         </td>
                         <td>{{$car->updated_at??''}}</td>
