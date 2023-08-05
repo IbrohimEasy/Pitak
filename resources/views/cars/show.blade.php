@@ -10,6 +10,17 @@
             <div class="dropdown float-end">
                 <a class="form_functions btn btn-success" href="{{route('cars.create')}}">{{translate('Create')}}</a>
             </div>
+            @php
+            if(isset($model->driver->personalInfo)){
+                $firstname = $model->driver->personalInfo->first_name;
+                $lastname = $model->driver->personalInfo->last_name;
+                $middlename = $model->driver->personalInfo->middle_name;
+            }else{
+                $firstname = '';
+                $lastname = '';
+                $middlename = '';
+            }
+            @endphp
             <table id="datatable-buttons" class="table dt-responsive nowrap table_show">
                 <thead>
                 <tr>
@@ -20,49 +31,58 @@
                 <tbody>
                 <tr>
                     <th>{{translate('Car list')}}</th>
-                    <td>{{$model->carList->name}}</td>
+                    <td>{{$model->carList->name??''}}</td>
                 </tr>
                 <tr>
                     <th>{{translate('Driver')}}</th>
-                    <td>{{$model->driver->personalInfo->first_name.' '.$model->driver->personalInfo->last_name.' '.$model->driver->personalInfo->middle_name}}</td>
+                    <td>{{$firstname.' '.$lastname.' '.$middlename}}</td>
                 </tr>
                 <tr>
                     <th>{{translate('Status')}}</th>
-                    <td>{{$model->status->name}}</td>
+                    <td>{{$model->status->name??''}}</td>
                 </tr>
                 <tr>
                     <th>{{translate('Color')}}</th>
-                    <td>{{$model->colorList->name}}</td>
+                    <td>{{$model->colorList->name??''}}</td>
                 </tr>
                 <tr>
                     <th>{{translate('Class')}}</th>
-                    <td>{{$model->classList->name}}</td>
+                    <td>{{$model->classList->name??''}}</td>
                 </tr>
                 <tr>
                     <th>{{translate('Registration certificate')}}</th>
-                    <td>{{$model->reg_certificate}}</td>
+                    <td>{{$model->reg_certificate??''}}</td>
                 </tr>
                 <tr>
                     <th>{{translate('Reg certificate image')}}</th>
-                    <td><img src="{{asset('storage/certificate/'.$model->reg_certificate_image)}}" alt=""></td>
+                    <td>
+                        @if(isset($model->reg_certificate_image))
+                            <img src="{{'http://api.easygo.uz/storage/certificate/'.$model->reg_certificate_image}}" alt="">
+                        @else
+                            <img src="{{'http://admin.easygo.uz/icon/'.$model->reg_certificate_image}}" alt="">
+                        @endif
+                    </td>
                 </tr>
                 <tr>
                     <th>{{translate('Image')}}</th>
                     <td>
                         <div class="row">
-                            @php
-                                $images = json_decode($model->images);
-                            @endphp
-                            @foreach($images as $image)
-                                <img class="col-4 mb-2" src="{{asset('storage/cars/'.$image)}}" alt="">
-                            @endforeach
+                            @if(isset($model->images))
+                                @php
+                                    $images = json_decode($model->images);
+                                @endphp
+                                @foreach($images as $image)
+                                    <img class="col-4 mb-2" src="{{'http://api.easygo.uz/storage/cars/'.$image}}" alt="">
+                                @endforeach
+                            @else
+                                <img class="user_photo" src="{{'http://admin.easygo.uz/icon/no_photo.jpg'}}" alt="">
+                            @endif
                         </div>
-
                     </td>
                 </tr>
                 <tr>
                     <th>{{translate('Updated at')}}</th>
-                    <td>{{$model->updated_at}}</td>
+                    <td>{{$model->updated_at??''}}</td>
                 </tr>
                 </tbody>
             </table>

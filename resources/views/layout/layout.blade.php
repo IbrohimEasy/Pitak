@@ -397,17 +397,6 @@
 
                 <!-- User box -->
                 <div class="user-box text-center">
-
-<<<<<<< HEAD
-                    @php
-                        if ($current_user)
-                            $sms_avatar = storage_path('app/public/user/'.$current_user->personalInfo->avatar);
-                    @endphp
-                    @if(isset($sms_avatar) && file_exists($sms_avatar))
-                        <img class="rounded-circle img-thumbnail avatar-md" src="{{asset('storage/user/'.$current_user->personalInfo->avatar)}}" alt="">
-                    @else
-                        <img class="rounded-circle img-thumbnail avatar-md" src="{{asset('assets/images/man.jpg')}}" alt="">
-=======
                     @if(isset($current_user->personalInfo))
                         @php
                             $sms_avatar = storage_path('app/public/user/'.$current_user->personalInfo->avatar);
@@ -417,7 +406,6 @@
                         @else
                             <img class="rounded-circle img-thumbnail avatar-md" src="{{asset('assets/images/man.jpg')}}" alt="">
                         @endif
->>>>>>> 78ba657bfb304993eb7feec63721fa5b0ef7b938
                     @endif
                     <div class="dropdown">
                         <a href="#" class="user-name dropdown-toggle h5 mt-2 mb-1 d-block"
@@ -484,7 +472,7 @@
 
                         <li>
                             <a href="{{route('dashboard')}}">
-                            <i class="mdi mdi-account-multiple-plus-outline"></i>
+                            <i class="mdi mdi-home-outline"></i>
                                  <span class="badge bg-success rounded-pill float-end">9+</span>
                                 <span> {{translate('Home')}} </span>
                             </a>
@@ -562,23 +550,22 @@
                         </li>
                         <li>
                             <a href="{{route('mediaHistory.index')}}">
-                                <i class="mdi mdi-video"></i>
+                                <i class="mdi mdi-video-outline"></i>
                                 {{-- <span class="badge bg-success rounded-pill float-end">9+</span> --}}
                                 <span> {{translate('Media history') }} </span>
                             </a>
                         </li>
                         <li>
                             <a href="{{route('option.index')}}">
-                                <i class="mdi mdi-account-multiple-plus-outline"></i>
+                                <i class="mdi mdi-file-outline"></i>
                                 {{-- <span class="badge bg-success rounded-pill float-end">9+</span> --}}
                                 <span> {{translate('Option') }} </span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('pagePhone')}}">
-                                <i class="mdi mdi-account-multiple-plus-outline"></i>
-                                {{-- <span class="badge bg-success rounded-pill float-end">9+</span> --}}
-                                <span> {{translate('Phone') }} </span>
+                            <a href="{{route('complain.index')}}">
+                                <i class="mdi mdi-alert-circle-outline"></i>
+                                <span> {{translate('Complain') }} </span>
                             </a>
                         </li>
                         {{-- <li class="menu-title mt-2">Apps</li>

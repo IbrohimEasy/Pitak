@@ -75,13 +75,15 @@
                     <input type="file" name="reg_certificate_image" class="form-control" />
                 </div>
                 <div class="mb-3">
-                    @php
-                      $images = json_decode($model->images);
-                    @endphp
-                    @if(isset($images))
-                        @foreach($images as $image)
-                            <img src="{{asset('storage/cars/'.$image)}}" alt="">
-                        @endforeach
+                    @if(isset($model->images))
+                        @php
+                          $images = json_decode($model->images);
+                        @endphp
+                        @if(isset($images))
+                            @foreach($images as $image)
+                                <img src="{{asset('storage/cars/'.$image)}}" alt="">
+                            @endforeach
+                        @endif
                     @endif
                 </div>
                 <div class="mb-3">
@@ -91,8 +93,8 @@
                 <div class="mb-3">
                     <label class="form-label">{{translate('Steering wheel side')}}</label>
                     <select id="class" class="form-select" name="wheel_side">
-                        <option value="0" @if(isset($model->status)){{$model->wheel_side == 0?'selected':''}}@endif>{{translate('Right')}}</option>
-                        <option value="1" @if(isset($model->status)){{$model->wheel_side == 1?'selected':''}}@endif>{{translate('Left')}}</option>
+                        <option value="0" @if(isset($model->status)){{$model->wheel_side == 0?'selected':''}}@endif>{{translate('Left')}}</option>
+                        <option value="1" @if(isset($model->status)){{$model->wheel_side == 1?'selected':''}}@endif>{{translate('Right')}}</option>
                     </select>
                 </div>
                 <div class="mb-3">

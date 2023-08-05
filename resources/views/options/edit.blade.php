@@ -34,6 +34,7 @@
                     <div class="mb-3 col-4">
                         <label for="class_list_id" class="form-label">{{translate('Class list')}}</label>
                         <select id="class_list_id" class="form-select" name="class_list_id">
+                            <option value="">{{translate('All')}}</option>
                             @foreach($class_lists as $class_list)
                                 <option value="{{$class_list->id}}" {{$class_list->id==$model->class_list_id?'selected':''}}>{{$class_list->name}}</option>
                             @endforeach

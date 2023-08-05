@@ -15,6 +15,7 @@
                     <tr>
                         <th>#</th>
                         <th>{{translate('Name')}}</th>
+                        <th>{{translate('Color')}}</th>
                         <th>{{translate('Updated_at')}}</th>
                         <th class="text-center">{{translate('Functions')}}</th>
                     </tr>
@@ -30,6 +31,7 @@
                         <tr>
                             <th scope="row">{{$i}}</th>
                             <td>{{$colorList->name??''}}</td>
+                            <td><div style="background-color: {{$colorList->code??''}}; height: 40px; width: 64px; border-radius: 4px; border: solid 1px"></div></td>
                             <td>{{$colorList->updated_at??''}}</td>
                             <td>
                                 <div class="d-flex justify-content-center">

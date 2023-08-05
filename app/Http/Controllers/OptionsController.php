@@ -43,7 +43,9 @@ class OptionsController extends Controller
             $file->storeAs('public/option/', $image_name);
             $model->icon = $image_name;
         }
-        $model->class_list_id = $request->class_list_id;
+        if(isset($request->class_list_id)){
+            $model->class_list_id = $request->class_list_id;
+        }
         $model->save();
         return redirect()->route('option.index')->with('status', translate('Successfully created'));
     }
@@ -87,7 +89,11 @@ class OptionsController extends Controller
             $file->storeAs('public/option/', $image_name);
             $model->icon = $image_name;
         }
-        $model->class_list_id = $request->class_list_id;
+        if(isset($request->class_list_id)){
+            $model->class_list_id = $request->class_list_id;
+        }else{
+            $model->class_list_id = NULL;
+        }
         $model->save();
         return redirect()->route('option.index')->with('status', translate('Successfully updated'));
     }
