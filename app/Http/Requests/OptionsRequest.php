@@ -24,7 +24,7 @@ class OptionsRequest extends FormRequest
         return [
             'name'=>'required|string',
             'icon'=>'nullable|mimes:jpeg,jpg,png,webp|max:10240',
-            'class_list_id'=>'required|integer'
+            'class_list_id'=>'nullable|integer'
         ];
     }
 }

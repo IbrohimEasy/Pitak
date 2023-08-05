@@ -39,7 +39,7 @@
                 </tr>
                 <tr>
                     <th>{{translate('Class list')}}</th>
-                    <td>{{$model->class_list->name}}</td>
+                    <td>{{$model->class_list->name??translate('All')}}</td>
                 </tr>
                 <tr>
                     <th>{{translate('Updated at')}}</th>

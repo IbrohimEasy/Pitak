@@ -43,7 +43,7 @@
                                 @endif
                             @endif
                         </td>
-                        <td>{{$option->class_list->name}}</td>
+                        <td>{{$option->class_list->name??translate('All')}}</td>
                         <td>
                             <div class="d-flex justify-content-center">
                                 <a class="form_functions btn btn-info" href="{{route('option.edit', $option->id)}}"><i class="fe-edit-2"></i></a>
